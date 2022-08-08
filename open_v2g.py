@@ -1,7 +1,6 @@
 import ctypes
 from ctypes import *
 import pathlib
-import os
 from open_v2g_structs import *
 from open_v2g_constants import *
 
@@ -534,9 +533,6 @@ class OpenV2G:
 
     # open_v2g/source/din/dinEXIDataTypesEncoder.h
     def encode_dinExiDocument(self, stream: bitstream_t, exiDoc: dinEXIDocument):
-        print(f"[Python] {ctypes.byref(stream)=}")
-        print(f"[Python] {ctypes.byref(exiDoc)=}")
-
         return self.libopenv2g.encode_dinExiDocument(ctypes.byref(stream), ctypes.byref(exiDoc))
 
     def encode_dinExiFragment(self, stream: bitstream_t, exiFrag: dinEXIFragment):

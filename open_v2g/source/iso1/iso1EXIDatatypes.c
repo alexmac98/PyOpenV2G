@@ -30,6 +30,8 @@
 
 
 #include <stdint.h>
+#include <stddef.h>
+
 
 #include "iso1EXIDatatypes.h"
 #include "../codec/EXITypes.h"
@@ -42,6 +44,88 @@
 
 
 void init_iso1EXIDocument(struct iso1EXIDocument* exiDoc) {
+	// printf("[C] sizeof iso1EXIDocument = %ld\n", sizeof(struct iso1EXIDocument));
+	// printf("[C] exiDoc->V2G_Message_isUsed = %d\n", exiDoc->V2G_Message_isUsed);
+	// printf("[C] exiDoc->ServiceDiscoveryReq_isUsed = %d\n", exiDoc->ServiceDiscoveryReq_isUsed);
+	// printf("[C] exiDoc->ServiceDiscoveryRes_isUsed = %d\n", exiDoc->ServiceDiscoveryRes_isUsed);
+	// printf("[C] exiDoc->MeteringReceiptReq_isUsed = %d\n", exiDoc->MeteringReceiptReq_isUsed);
+	// printf("[C] exiDoc->PaymentDetailsReq_isUsed = %d\n", exiDoc->PaymentDetailsReq_isUsed);
+	// printf("[C] exiDoc->MeteringReceiptRes_isUsed = %d\n", exiDoc->MeteringReceiptRes_isUsed);
+	// printf("[C] exiDoc->PaymentDetailsRes_isUsed = %d\n", exiDoc->PaymentDetailsRes_isUsed);
+	// printf("[C] exiDoc->SessionSetupReq_isUsed = %d\n", exiDoc->SessionSetupReq_isUsed);
+	// printf("[C] exiDoc->SessionSetupRes_isUsed = %d\n", exiDoc->SessionSetupRes_isUsed);
+	// printf("[C] exiDoc->CableCheckReq_isUsed = %d\n", exiDoc->CableCheckReq_isUsed);
+	// printf("[C] exiDoc->CableCheckRes_isUsed = %d\n", exiDoc->CableCheckRes_isUsed);
+	// printf("[C] exiDoc->CertificateInstallationReq_isUsed = %d\n", exiDoc->CertificateInstallationReq_isUsed);
+	// printf("[C] exiDoc->CertificateInstallationRes_isUsed = %d\n", exiDoc->CertificateInstallationRes_isUsed);
+	// printf("[C] exiDoc->WeldingDetectionReq_isUsed = %d\n", exiDoc->WeldingDetectionReq_isUsed);
+	// printf("[C] exiDoc->WeldingDetectionRes_isUsed = %d\n", exiDoc->WeldingDetectionRes_isUsed);
+	// printf("[C] exiDoc->CertificateUpdateReq_isUsed = %d\n", exiDoc->CertificateUpdateReq_isUsed);
+	// printf("[C] exiDoc->CertificateUpdateRes_isUsed = %d\n", exiDoc->CertificateUpdateRes_isUsed);
+	// printf("[C] exiDoc->PaymentServiceSelectionReq_isUsed = %d\n", exiDoc->PaymentServiceSelectionReq_isUsed);
+	// printf("[C] exiDoc->PowerDeliveryReq_isUsed = %d\n", exiDoc->PowerDeliveryReq_isUsed);
+	// printf("[C] exiDoc->PaymentServiceSelectionRes_isUsed = %d\n", exiDoc->PaymentServiceSelectionRes_isUsed);
+	// printf("[C] exiDoc->PowerDeliveryRes_isUsed = %d\n", exiDoc->PowerDeliveryRes_isUsed);
+	// printf("[C] exiDoc->ChargingStatusReq_isUsed = %d\n", exiDoc->ChargingStatusReq_isUsed);
+	// printf("[C] exiDoc->ChargingStatusRes_isUsed = %d\n", exiDoc->ChargingStatusRes_isUsed);
+	// printf("[C] exiDoc->BodyElement_isUsed = %d\n", exiDoc->BodyElement_isUsed);
+	// printf("[C] exiDoc->CurrentDemandReq_isUsed = %d\n", exiDoc->CurrentDemandReq_isUsed);
+	// printf("[C] exiDoc->PreChargeReq_isUsed = %d\n", exiDoc->PreChargeReq_isUsed);
+	// printf("[C] exiDoc->CurrentDemandRes_isUsed = %d\n", exiDoc->CurrentDemandRes_isUsed);
+	// printf("[C] exiDoc->PreChargeRes_isUsed = %d\n", exiDoc->PreChargeRes_isUsed);
+	// printf("[C] exiDoc->SessionStopReq_isUsed = %d\n", exiDoc->SessionStopReq_isUsed);
+	// printf("[C] exiDoc->AuthorizationReq_isUsed = %d\n", exiDoc->AuthorizationReq_isUsed);
+	// printf("[C] exiDoc->SessionStopRes_isUsed = %d\n", exiDoc->SessionStopRes_isUsed);
+	// printf("[C] exiDoc->AuthorizationRes_isUsed = %d\n", exiDoc->AuthorizationRes_isUsed);
+	// printf("[C] exiDoc->ChargeParameterDiscoveryReq_isUsed = %d\n", exiDoc->ChargeParameterDiscoveryReq_isUsed);
+	// printf("[C] exiDoc->ChargeParameterDiscoveryRes_isUsed = %d\n", exiDoc->ChargeParameterDiscoveryRes_isUsed);
+	// printf("[C] exiDoc->ServiceDetailReq_isUsed = %d\n", exiDoc->ServiceDetailReq_isUsed);
+	// printf("[C] exiDoc->ServiceDetailRes_isUsed = %d\n", exiDoc->ServiceDetailRes_isUsed);
+	// printf("[C] exiDoc->DC_EVSEStatus_isUsed = %d\n", exiDoc->DC_EVSEStatus_isUsed);
+	// printf("[C] exiDoc->RelativeTimeInterval_isUsed = %d\n", exiDoc->RelativeTimeInterval_isUsed);
+	// printf("[C] exiDoc->SalesTariffEntry_isUsed = %d\n", exiDoc->SalesTariffEntry_isUsed);
+	// printf("[C] exiDoc->DC_EVPowerDeliveryParameter_isUsed = %d\n", exiDoc->DC_EVPowerDeliveryParameter_isUsed);
+	// printf("[C] exiDoc->SASchedules_isUsed = %d\n", exiDoc->SASchedules_isUsed);
+	// printf("[C] exiDoc->AC_EVChargeParameter_isUsed = %d\n", exiDoc->AC_EVChargeParameter_isUsed);
+	// printf("[C] exiDoc->SAScheduleList_isUsed = %d\n", exiDoc->SAScheduleList_isUsed);
+	// printf("[C] exiDoc->DC_EVStatus_isUsed = %d\n", exiDoc->DC_EVStatus_isUsed);
+	// printf("[C] exiDoc->EVStatus_isUsed = %d\n", exiDoc->EVStatus_isUsed);
+	// printf("[C] exiDoc->DC_EVChargeParameter_isUsed = %d\n", exiDoc->DC_EVChargeParameter_isUsed);
+	// printf("[C] exiDoc->DC_EVSEChargeParameter_isUsed = %d\n", exiDoc->DC_EVSEChargeParameter_isUsed);
+	// printf("[C] exiDoc->EVSEStatus_isUsed = %d\n", exiDoc->EVSEStatus_isUsed);
+	// printf("[C] exiDoc->TimeInterval_isUsed = %d\n", exiDoc->TimeInterval_isUsed);
+	// printf("[C] exiDoc->EVPowerDeliveryParameter_isUsed = %d\n", exiDoc->EVPowerDeliveryParameter_isUsed);
+	// printf("[C] exiDoc->EVSEChargeParameter_isUsed = %d\n", exiDoc->EVSEChargeParameter_isUsed);
+	// printf("[C] exiDoc->AC_EVSEStatus_isUsed = %d\n", exiDoc->AC_EVSEStatus_isUsed);
+	// printf("[C] exiDoc->Entry_isUsed = %d\n", exiDoc->Entry_isUsed);
+	// printf("[C] exiDoc->AC_EVSEChargeParameter_isUsed = %d\n", exiDoc->AC_EVSEChargeParameter_isUsed);
+	// printf("[C] exiDoc->PMaxScheduleEntry_isUsed = %d\n", exiDoc->PMaxScheduleEntry_isUsed);
+	// printf("[C] exiDoc->EVChargeParameter_isUsed = %d\n", exiDoc->EVChargeParameter_isUsed);
+	// printf("[C] exiDoc->SignatureProperty_isUsed = %d\n", exiDoc->SignatureProperty_isUsed);
+	// printf("[C] exiDoc->DSAKeyValue_isUsed = %d\n", exiDoc->DSAKeyValue_isUsed);
+	// printf("[C] exiDoc->SignatureProperties_isUsed = %d\n", exiDoc->SignatureProperties_isUsed);
+	// printf("[C] exiDoc->KeyValue_isUsed = %d\n", exiDoc->KeyValue_isUsed);
+	// printf("[C] exiDoc->Transforms_isUsed = %d\n", exiDoc->Transforms_isUsed);
+	// printf("[C] exiDoc->DigestMethod_isUsed = %d\n", exiDoc->DigestMethod_isUsed);
+	// printf("[C] exiDoc->Signature_isUsed = %d\n", exiDoc->Signature_isUsed);
+	// printf("[C] exiDoc->RetrievalMethod_isUsed = %d\n", exiDoc->RetrievalMethod_isUsed);
+	// printf("[C] exiDoc->Manifest_isUsed = %d\n", exiDoc->Manifest_isUsed);
+	// printf("[C] exiDoc->Reference_isUsed = %d\n", exiDoc->Reference_isUsed);
+	// printf("[C] exiDoc->CanonicalizationMethod_isUsed = %d\n", exiDoc->CanonicalizationMethod_isUsed);
+	// printf("[C] exiDoc->RSAKeyValue_isUsed = %d\n", exiDoc->RSAKeyValue_isUsed);
+	// printf("[C] exiDoc->Transform_isUsed = %d\n", exiDoc->Transform_isUsed);
+	// printf("[C] exiDoc->PGPData_isUsed = %d\n", exiDoc->PGPData_isUsed);
+	// printf("[C] exiDoc->MgmtData_isUsed = %d\n", exiDoc->MgmtData_isUsed);
+	// printf("[C] exiDoc->SignatureMethod_isUsed = %d\n", exiDoc->SignatureMethod_isUsed);
+	// printf("[C] exiDoc->KeyInfo_isUsed = %d\n", exiDoc->KeyInfo_isUsed);
+	// printf("[C] exiDoc->SPKIData_isUsed = %d\n", exiDoc->SPKIData_isUsed);
+	// printf("[C] exiDoc->X509Data_isUsed = %d\n", exiDoc->X509Data_isUsed);
+	// printf("[C] exiDoc->SignatureValue_isUsed = %d\n", exiDoc->SignatureValue_isUsed);
+	// printf("[C] exiDoc->KeyName_isUsed = %d\n", exiDoc->KeyName_isUsed);
+	// printf("[C] exiDoc->DigestValue_isUsed = %d\n", exiDoc->DigestValue_isUsed);
+	// printf("[C] exiDoc->SignedInfo_isUsed = %d\n", exiDoc->SignedInfo_isUsed);
+	// printf("[C] exiDoc->Object_isUsed = %d\n", exiDoc->Object_isUsed);
+	// validated
 	exiDoc->V2G_Message_isUsed = 0u;
 	exiDoc->ServiceDiscoveryReq_isUsed = 0u;
 	exiDoc->ServiceDiscoveryRes_isUsed = 0u;
@@ -429,29 +513,49 @@ void init_iso1EXIFragment(struct iso1EXIFragment* exiFrag) {
 	exiFrag->SessionID_isUsed = 0u;
 }
 void init_iso1EXISchemaInformedElementFragmentGrammar(struct iso1EXISchemaInformedElementFragmentGrammar* exiFrag) {
+	// printf("[C] sizeof iso1EXISchemaInformedElementFragmentGrammar = %ld\n", sizeof(struct iso1EXISchemaInformedElementFragmentGrammar));
+	// printf("[C] exiFrag->Id_isUsed = %d\n", exiFrag->Id_isUsed);
+	// printf("[C] exiFrag->CHARACTERS_GENERIC_isUsed = %d\n", exiFrag->CHARACTERS_GENERIC_isUsed);
+	// validated
 	exiFrag->Id_isUsed = 0u;
 	exiFrag->CHARACTERS_GENERIC_isUsed = 0u;
 }
 #endif /* DEPLOY_ISO1_CODEC_FRAGMENT */
 
 void init_iso1MessageHeaderType(struct iso1MessageHeaderType* iso1MessageHeaderType) {
+	// printf("[C] sizeof iso1MessageHeaderType = %ld\n", sizeof(struct iso1MessageHeaderType));
+	// printf("[C] iso1MessageHeaderType->Notification_isUsed = %d\n", iso1MessageHeaderType->Notification_isUsed);
+	// printf("[C] iso1MessageHeaderType->Signature_isUsed = %d\n", iso1MessageHeaderType->Signature_isUsed);
+	// validated
 	iso1MessageHeaderType->Notification_isUsed = 0u;
 	iso1MessageHeaderType->Signature_isUsed = 0u;
 }
 
 void init_iso1SignatureType(struct iso1SignatureType* iso1SignatureType) {
+	// printf("[C] sizeof iso1SignatureType = %ld\n", sizeof(struct iso1SignatureType));
+	// printf("[C] iso1SignatureType->Id_isUsed = %d\n", iso1SignatureType->Id_isUsed);
+	// printf("[C] iso1SignatureType->KeyInfo_isUsed = %d\n", iso1SignatureType->KeyInfo_isUsed);
+	// printf("[C] iso1SignatureType->Object.arrayLen = %d\n", iso1SignatureType->Object.arrayLen);
+	// validated
 	iso1SignatureType->Id_isUsed = 0u;
 	iso1SignatureType->KeyInfo_isUsed = 0u;
 	iso1SignatureType->Object.arrayLen = 0u;
 }
 
 void init_iso1PowerDeliveryReqType(struct iso1PowerDeliveryReqType* iso1PowerDeliveryReqType) {
+	// printf("[C] sizeof iso1PowerDeliveryReqType = %ld\n", sizeof(struct iso1PowerDeliveryReqType));
+	// printf("[C] iso1PowerDeliveryReqType->ChargingProfile_isUsed = %d\n", iso1PowerDeliveryReqType->ChargingProfile_isUsed);
+	// printf("[C] iso1PowerDeliveryReqType->EVPowerDeliveryParameter_isUsed = %d\n", iso1PowerDeliveryReqType->EVPowerDeliveryParameter_isUsed);
+	// printf("[C] iso1PowerDeliveryReqType->DC_EVPowerDeliveryParameter_isUsed = %d\n", iso1PowerDeliveryReqType->DC_EVPowerDeliveryParameter_isUsed);
+	// validated
 	iso1PowerDeliveryReqType->ChargingProfile_isUsed = 0u;
 	iso1PowerDeliveryReqType->EVPowerDeliveryParameter_isUsed = 0u;
 	iso1PowerDeliveryReqType->DC_EVPowerDeliveryParameter_isUsed = 0u;
 }
 
 void init_iso1ParameterType(struct iso1ParameterType* iso1ParameterType) {
+	// printf("[C] sizeof iso1ParameterType = %ld\n", sizeof(struct iso1ParameterType));
+	// validated
 	iso1ParameterType->boolValue_isUsed = 0u;
 	iso1ParameterType->byteValue_isUsed = 0u;
 	iso1ParameterType->shortValue_isUsed = 0u;
@@ -461,93 +565,140 @@ void init_iso1ParameterType(struct iso1ParameterType* iso1ParameterType) {
 }
 
 void init_iso1CertificateInstallationReqType(struct iso1CertificateInstallationReqType* iso1CertificateInstallationReqType) {
+	// printf("[C] sizeof iso1CertificateInstallationReqType = %ld\n", sizeof(struct iso1CertificateInstallationReqType));
+	// validated
 	(void)iso1CertificateInstallationReqType; /* avoid unused warning */
 }
 
 void init_iso1SessionSetupResType(struct iso1SessionSetupResType* iso1SessionSetupResType) {
+	// printf("[C] sizeof iso1SessionSetupResType = %ld\n", sizeof(struct iso1SessionSetupResType));
+	// printf("[C] EVSETimeStamp_isUsed = %d\n", iso1SessionSetupResType->EVSETimeStamp_isUsed);
+	// validated
 	iso1SessionSetupResType->EVSETimeStamp_isUsed = 0u;
 }
 
 void init_iso1EVChargeParameterType(struct iso1EVChargeParameterType* iso1EVChargeParameterType) {
+	// printf("[C] sizeof iso1EVChargeParameterType = %ld\n", sizeof(struct iso1EVChargeParameterType));
+	// validated
 	iso1EVChargeParameterType->DepartureTime_isUsed = 0u;
 }
 
 void init_iso1DiffieHellmanPublickeyType(struct iso1DiffieHellmanPublickeyType* iso1DiffieHellmanPublickeyType) {
+	// printf("[C] sizeof iso1DiffieHellmanPublickeyType = %ld\n", sizeof(struct iso1DiffieHellmanPublickeyType));
+	// printf("[C] contentLen = %d\n", iso1DiffieHellmanPublickeyType->CONTENT.bytesLen);
+	// validated
 	(void)iso1DiffieHellmanPublickeyType; /* avoid unused warning */
 }
 
 void init_iso1ServiceDiscoveryResType(struct iso1ServiceDiscoveryResType* iso1ServiceDiscoveryResType) {
+	// printf("[C] sizeof iso1ServiceDiscoveryResType = %ld\n", sizeof(struct iso1ServiceDiscoveryResType));
+	// validated
 	iso1ServiceDiscoveryResType->ServiceList_isUsed = 0u;
 }
 
 void init_iso1ServiceParameterListType(struct iso1ServiceParameterListType* iso1ServiceParameterListType) {
+	// printf("[C] sizeof iso1ServiceParameterListType = %ld\n", sizeof(struct iso1ServiceParameterListType));
+	// printf("[C] iso1ServiceParameterListType->ParameterSet.arrayLen = %d\n", iso1ServiceParameterListType->ParameterSet.arrayLen);
+	// validated
 	iso1ServiceParameterListType->ParameterSet.arrayLen = 0u;
 }
 
 void init_iso1CertificateChainType(struct iso1CertificateChainType* iso1CertificateChainType) {
+	// printf("[C] sizeof iso1CertificateChainType = %ld\n", sizeof(struct iso1CertificateChainType));
+	// validated
 	iso1CertificateChainType->Id_isUsed = 0u;
 	iso1CertificateChainType->SubCertificates_isUsed = 0u;
 }
 
 void init_iso1SASchedulesType(struct iso1SASchedulesType* iso1SASchedulesType) {
+	// validated
 	(void)iso1SASchedulesType; /* avoid unused warning */
 }
 
 void init_iso1DC_EVSEStatusType(struct iso1DC_EVSEStatusType* iso1DC_EVSEStatusType) {
+	// printf("[C] sizeof iso1DC_EVSEStatusType = %ld\n", sizeof(struct iso1DC_EVSEStatusType));
+	// printf("[C] EVSE status code = %d\n", iso1DC_EVSEStatusType->EVSEStatusCode);
+	// validated
 	iso1DC_EVSEStatusType->EVSEIsolationStatus_isUsed = 0u;
 }
 
 void init_iso1PreChargeResType(struct iso1PreChargeResType* iso1PreChargeResType) {
+	// printf("[C] sizeof iso1PreChargeResType = %ld\n", sizeof(struct iso1PreChargeResType));
+	// validated
 	(void)iso1PreChargeResType; /* avoid unused warning */
 }
 
 void init_iso1ParameterSetType(struct iso1ParameterSetType* iso1ParameterSetType) {
+	// printf("[C] sizeof iso1ParameterSetType = %ld\n", sizeof(struct iso1ParameterSetType));
+	// printf("[C] array len = %d\n",  iso1ParameterSetType->Parameter.arrayLen);
+	// validated
 	iso1ParameterSetType->Parameter.arrayLen = 0u;
 }
 
 void init_iso1ServiceDetailReqType(struct iso1ServiceDetailReqType* iso1ServiceDetailReqType) {
+	// validated
 	(void)iso1ServiceDetailReqType; /* avoid unused warning */
 }
 
 void init_iso1RelativeTimeIntervalType(struct iso1RelativeTimeIntervalType* iso1RelativeTimeIntervalType) {
+	// printf("[C] sizeof iso1RelativeTimeIntervalType = %ld\n", sizeof(struct iso1RelativeTimeIntervalType));
+	// validated
 	iso1RelativeTimeIntervalType->duration_isUsed = 0u;
 }
 
 void init_iso1SignedInfoType(struct iso1SignedInfoType* iso1SignedInfoType) {
+	// printf("[C] sizeof iso1SignedInfoType = %ld\n", sizeof(struct iso1SignedInfoType));
+	// printf("[C] reference algorithm = %ls\n",  iso1SignedInfoType->Reference.array[0].DigestMethod.Algorithm.characters);
+	// validated
 	iso1SignedInfoType->Id_isUsed = 0u;
 	iso1SignedInfoType->Reference.arrayLen = 0u;
 }
 
 void init_iso1EMAIDType(struct iso1EMAIDType* iso1EMAIDType) {
+	// printf("[C] sizeof iso1EMAIDType = %ld\n", sizeof(struct iso1EMAIDType));
+	// validated
 	(void)iso1EMAIDType; /* avoid unused warning */
 }
 
 void init_iso1EVStatusType(struct iso1EVStatusType* iso1EVStatusType) {
+	// validated
 	(void)iso1EVStatusType; /* avoid unused warning */
 }
 
 void init_iso1ServiceListType(struct iso1ServiceListType* iso1ServiceListType) {
+	// printf("[C] sizeof iso1ServiceListType = %ld\n", sizeof(struct iso1ServiceListType));
+	// printf("[C] service scope = %ls\n", iso1ServiceListType->Service.array[1].ServiceScope.characters);
+	// validated
 	iso1ServiceListType->Service.arrayLen = 0u;
 }
 
 void init_iso1EVSEChargeParameterType(struct iso1EVSEChargeParameterType* iso1EVSEChargeParameterType) {
+	// validated
 	(void)iso1EVSEChargeParameterType; /* avoid unused warning */
 }
 
 void init_iso1EVPowerDeliveryParameterType(struct iso1EVPowerDeliveryParameterType* iso1EVPowerDeliveryParameterType) {
+	// validated
 	(void)iso1EVPowerDeliveryParameterType; /* avoid unused warning */
 }
 
 void init_iso1ProfileEntryType(struct iso1ProfileEntryType* iso1ProfileEntryType) {
+	// printf("[C] sizeof iso1ProfileEntryType = %ld\n", sizeof(struct iso1ProfileEntryType));
+	// printf("[C] ChargingProfileEntryMaxNumberOfPhasesInUse_isUsed = %d\n", iso1ProfileEntryType->ChargingProfileEntryMaxNumberOfPhasesInUse_isUsed);
+	// validated
 	iso1ProfileEntryType->ChargingProfileEntryMaxNumberOfPhasesInUse_isUsed = 0u;
 }
 
 void init_iso1AuthorizationReqType(struct iso1AuthorizationReqType* iso1AuthorizationReqType) {
+	// printf("[C] sizeof iso1AuthorizationReqType = %ld\n", sizeof(struct iso1AuthorizationReqType));
+	// validated
 	iso1AuthorizationReqType->Id_isUsed = 0u;
 	iso1AuthorizationReqType->GenChallenge_isUsed = 0u;
 }
 
 void init_iso1MeterInfoType(struct iso1MeterInfoType* iso1MeterInfoType) {
+	// printf("[C] sizeof iso1MeterInfoType = %ld\n", sizeof(struct iso1MeterInfoType));
+	// validated
 	iso1MeterInfoType->MeterReading_isUsed = 0u;
 	iso1MeterInfoType->SigMeterReading_isUsed = 0u;
 	iso1MeterInfoType->MeterStatus_isUsed = 0u;
@@ -555,11 +706,22 @@ void init_iso1MeterInfoType(struct iso1MeterInfoType* iso1MeterInfoType) {
 }
 
 void init_iso1ManifestType(struct iso1ManifestType* iso1ManifestType) {
+	// printf("[C] sizeof iso1ManifestType = %ld\n", sizeof(struct iso1ManifestType));
+	// printf("[C] Id_isUsed = %d\n", iso1ManifestType->Id_isUsed);
+	// printf("[C] Reference digest algorithm = %ls\n", iso1ManifestType->Reference.array[0].DigestMethod.Algorithm.characters);
+	// validated
 	iso1ManifestType->Id_isUsed = 0u;
 	iso1ManifestType->Reference.arrayLen = 0u;
 }
 
 void init_iso1ChargeParameterDiscoveryResType(struct iso1ChargeParameterDiscoveryResType* iso1ChargeParameterDiscoveryResType) {
+	// printf("[C] sizeof iso1ChargeParameterDiscoveryResType = %ld\n", sizeof(struct iso1ChargeParameterDiscoveryResType));
+	// printf("[C] iso1ChargeParameterDiscoveryResType->SASchedules_isUsed = %d\n", iso1ChargeParameterDiscoveryResType->SASchedules_isUsed);
+	// printf("[C] iso1ChargeParameterDiscoveryResType->SAScheduleList_isUsed = %d\n", iso1ChargeParameterDiscoveryResType->SAScheduleList_isUsed);
+	// printf("[C] iso1ChargeParameterDiscoveryResType->EVSEChargeParameter_isUsed = %d\n", iso1ChargeParameterDiscoveryResType->EVSEChargeParameter_isUsed);
+	// printf("[C] iso1ChargeParameterDiscoveryResType->AC_EVSEChargeParameter_isUsed = %d\n", iso1ChargeParameterDiscoveryResType->AC_EVSEChargeParameter_isUsed);
+	// printf("[C] iso1ChargeParameterDiscoveryResType->DC_EVSEChargeParameter_isUsed = %d\n", iso1ChargeParameterDiscoveryResType->DC_EVSEChargeParameter_isUsed);
+	// validated
 	iso1ChargeParameterDiscoveryResType->SASchedules_isUsed = 0u;
 	iso1ChargeParameterDiscoveryResType->SAScheduleList_isUsed = 0u;
 	iso1ChargeParameterDiscoveryResType->EVSEChargeParameter_isUsed = 0u;
@@ -568,12 +730,17 @@ void init_iso1ChargeParameterDiscoveryResType(struct iso1ChargeParameterDiscover
 }
 
 void init_iso1PowerDeliveryResType(struct iso1PowerDeliveryResType* iso1PowerDeliveryResType) {
+	// printf("[C] sizeof iso1PowerDeliveryResType = %ld\n", sizeof(struct iso1PowerDeliveryResType));
+	// printf("[C] evse status code = %d\n", iso1PowerDeliveryResType->DC_EVSEStatus.EVSEStatusCode);
+	// validated
 	iso1PowerDeliveryResType->EVSEStatus_isUsed = 0u;
 	iso1PowerDeliveryResType->AC_EVSEStatus_isUsed = 0u;
 	iso1PowerDeliveryResType->DC_EVSEStatus_isUsed = 0u;
 }
 
 void init_iso1DC_EVChargeParameterType(struct iso1DC_EVChargeParameterType* iso1DC_EVChargeParameterType) {
+	// printf("[C] sizeof iso1DC_EVChargeParameterType = %ld\n", sizeof(struct iso1DC_EVChargeParameterType));
+	// validated
 	iso1DC_EVChargeParameterType->DepartureTime_isUsed = 0u;
 	iso1DC_EVChargeParameterType->EVMaximumPowerLimit_isUsed = 0u;
 	iso1DC_EVChargeParameterType->EVEnergyCapacity_isUsed = 0u;
@@ -583,18 +750,27 @@ void init_iso1DC_EVChargeParameterType(struct iso1DC_EVChargeParameterType* iso1
 }
 
 void init_iso1ConsumptionCostType(struct iso1ConsumptionCostType* iso1ConsumptionCostType) {
+	// printf("[C] sizeof iso1ConsumptionCostType = %ld\n", sizeof(struct iso1ConsumptionCostType));
+	// validated
 	iso1ConsumptionCostType->Cost.arrayLen = 0u;
 }
 
 void init_iso1PMaxScheduleType(struct iso1PMaxScheduleType* iso1PMaxScheduleType) {
+	// printf("[C] sizeof iso1PMaxScheduleType = %ld\n", sizeof(struct iso1PMaxScheduleType));
+	// validated
 	iso1PMaxScheduleType->PMaxScheduleEntry.arrayLen = 0u;
 }
 
 void init_iso1PaymentOptionListType(struct iso1PaymentOptionListType* iso1PaymentOptionListType) {
+	// printf("[C] sizeof iso1PaymentOptionListType = %ld\n", sizeof(struct iso1PaymentOptionListType));
+	// printf("[C] Array len = %d\n", iso1PaymentOptionListType->PaymentOption.arrayLen);
+	// validated
 	iso1PaymentOptionListType->PaymentOption.arrayLen = 0u;
 }
 
 void init_iso1ObjectType(struct iso1ObjectType* iso1ObjectType) {
+	// printf("[C] sizeof iso1ObjectType = %ld\n", sizeof(struct iso1ObjectType));
+	// validated
 	iso1ObjectType->Id_isUsed = 0u;
 	iso1ObjectType->MimeType_isUsed = 0u;
 	iso1ObjectType->Encoding_isUsed = 0u;
@@ -602,49 +778,76 @@ void init_iso1ObjectType(struct iso1ObjectType* iso1ObjectType) {
 }
 
 void init_iso1PhysicalValueType(struct iso1PhysicalValueType* iso1PhysicalValueType) {
+	// printf("[C] sizeof iso1PhysicalValueType = %ld\n", sizeof(struct iso1PhysicalValueType));
+	// printf("[C] value = %d\n", iso1PhysicalValueType->Value);
+	// validated
 	(void)iso1PhysicalValueType; /* avoid unused warning */
 }
 
 void init_iso1RSAKeyValueType(struct iso1RSAKeyValueType* iso1RSAKeyValueType) {
+	// printf("[C] sizeof iso1RSAKeyValueType = %ld\n", sizeof(struct iso1RSAKeyValueType));
+	// validated
 	(void)iso1RSAKeyValueType; /* avoid unused warning */
 }
 
 void init_iso1SessionStopResType(struct iso1SessionStopResType* iso1SessionStopResType) {
+	// printf("[C] sizeof iso1SessionStopResType = %ld\n", sizeof(struct iso1SessionStopResType));
+	// validated
 	(void)iso1SessionStopResType; /* avoid unused warning */
 }
 
 void init_iso1CertificateUpdateReqType(struct iso1CertificateUpdateReqType* iso1CertificateUpdateReqType) {
+	// printf("[C] sizeof iso1CertificateUpdateReqType = %ld\n", sizeof(struct iso1CertificateUpdateReqType));
+	// validated
 	(void)iso1CertificateUpdateReqType; /* avoid unused warning */
 }
 
 void init_iso1SignatureValueType(struct iso1SignatureValueType* iso1SignatureValueType) {
+	// printf("[C] sizeof iso1SignatureValueType = %ld\n", sizeof(struct iso1SignatureValueType));
+	// printf("[C] id is used: %d\n", iso1SignatureValueType->Id_isUsed);
+	// validated
 	iso1SignatureValueType->Id_isUsed = 0u;
 }
 
 void init_iso1PaymentDetailsReqType(struct iso1PaymentDetailsReqType* iso1PaymentDetailsReqType) {
+	// printf("[C] sizeof iso1PaymentDetailsReqType = %ld\n", sizeof(struct iso1PaymentDetailsReqType));
+	// printf("[C] certificate 2 len = %d\n", iso1PaymentDetailsReqType->ContractSignatureCertChain.SubCertificates.Certificate.array[1].bytesLen);
+	// validated
 	(void)iso1PaymentDetailsReqType; /* avoid unused warning */
 }
 
 void init_iso1AuthorizationResType(struct iso1AuthorizationResType* iso1AuthorizationResType) {
+	// printf("[C] sizeof iso1AuthorizationResType = %ld\n", sizeof(struct iso1AuthorizationResType));
+	// validated
 	(void)iso1AuthorizationResType; /* avoid unused warning */
 }
 
 void init_iso1DC_EVSEChargeParameterType(struct iso1DC_EVSEChargeParameterType* iso1DC_EVSEChargeParameterType) {
+	// printf("[C] sizeof iso1DC_EVSEChargeParameterType = %ld\n", sizeof(struct iso1DC_EVSEChargeParameterType));
+	// printf("[C] energy to be delivered = %d\n", iso1DC_EVSEChargeParameterType->EVSEEnergyToBeDelivered.Value);
+	// validated
 	iso1DC_EVSEChargeParameterType->EVSECurrentRegulationTolerance_isUsed = 0u;
 	iso1DC_EVSEChargeParameterType->EVSEEnergyToBeDelivered_isUsed = 0u;
 }
 
 void init_iso1SubCertificatesType(struct iso1SubCertificatesType* iso1SubCertificatesType) {
+	// printf("[C] sizeof iso1SubCertificatesType = %ld\n", sizeof(struct iso1SubCertificatesType));
+	// validated
 	iso1SubCertificatesType->Certificate.arrayLen = 0u;
 }
 
 void init_iso1ChargingStatusResType(struct iso1ChargingStatusResType* iso1ChargingStatusResType) {
+	// printf("[C] sizeof iso1ChargingStatusResType = %ld\n", sizeof(struct iso1ChargingStatusResType));
+	// printf("[C] rcd = %d\n", iso1ChargingStatusResType->AC_EVSEStatus.RCD);
+	// validated
 	iso1ChargingStatusResType->EVSEMaxCurrent_isUsed = 0u;
 	iso1ChargingStatusResType->MeterInfo_isUsed = 0u;
 	iso1ChargingStatusResType->ReceiptRequired_isUsed = 0u;
 }
 
 void init_iso1DSAKeyValueType(struct iso1DSAKeyValueType* iso1DSAKeyValueType) {
+	// printf("[C] sizeof iso1DSAKeyValueType = %ld\n", sizeof(struct iso1DSAKeyValueType));
+	// validated
 	iso1DSAKeyValueType->P_isUsed = 0u;
 	iso1DSAKeyValueType->Q_isUsed = 0u;
 	iso1DSAKeyValueType->G_isUsed = 0u;
@@ -654,46 +857,80 @@ void init_iso1DSAKeyValueType(struct iso1DSAKeyValueType* iso1DSAKeyValueType) {
 }
 
 void init_iso1ListOfRootCertificateIDsType(struct iso1ListOfRootCertificateIDsType* iso1ListOfRootCertificateIDsType) {
+	// printf("[C] sizeof iso1ListOfRootCertificateIDsType = %ld\n", sizeof(struct iso1ListOfRootCertificateIDsType));
+	// printf("[C] Issuer name 2 = %ls\n", iso1ListOfRootCertificateIDsType->RootCertificateID.array[1].X509IssuerName.characters);
+	// validated
 	iso1ListOfRootCertificateIDsType->RootCertificateID.arrayLen = 0u;
 }
 
 void init_iso1ChargeServiceType(struct iso1ChargeServiceType* iso1ChargeServiceType) {
+	// printf("[C] sizeof iso1ChargeServiceType = %ld\n", sizeof(struct iso1ChargeServiceType));
+	// validated
 	iso1ChargeServiceType->ServiceName_isUsed = 0u;
 	iso1ChargeServiceType->ServiceScope_isUsed = 0u;
 }
 
 void init_iso1IntervalType(struct iso1IntervalType* iso1IntervalType) {
+	// validated
 	(void)iso1IntervalType; /* avoid unused warning */
 }
 
 void init_iso1MeteringReceiptReqType(struct iso1MeteringReceiptReqType* iso1MeteringReceiptReqType) {
+	// printf("[C] sizeof iso1MeteringReceiptReqType = %ld\n", sizeof(struct iso1MeteringReceiptReqType));
+	// printf("[C] offsetof iso1MeteringReceiptReqType->Id = %ld\n", offsetof(struct iso1MeteringReceiptReqType, Id));
+	// printf("[C] offsetof iso1MeteringReceiptReqType->SessionID = %ld\n", offsetof(struct iso1MeteringReceiptReqType, SessionID));
+	// printf("[C] offsetof iso1MeteringReceiptReqType->SAScheduleTupleID = %ld\n", offsetof(struct iso1MeteringReceiptReqType, SAScheduleTupleID));
+	// printf("[C] offsetof iso1MeteringReceiptReqType->MeterInfo = %ld\n", offsetof(struct iso1MeteringReceiptReqType, MeterInfo));
+	// validated
 	iso1MeteringReceiptReqType->Id_isUsed = 0u;
 	iso1MeteringReceiptReqType->SAScheduleTupleID_isUsed = 0u;
 }
 
 void init_iso1ServiceDetailResType(struct iso1ServiceDetailResType* iso1ServiceDetailResType) {
+	// printf("[C] sizeof iso1ServiceDetailResType = %ld\n", sizeof(struct iso1ServiceDetailResType));
+	// printf("[C] iso1ServiceDetailResType->ServiceParameterList_isUsed = %d\n", iso1ServiceDetailResType->ServiceParameterList_isUsed);
+	// validated
 	iso1ServiceDetailResType->ServiceParameterList_isUsed = 0u;
 }
 
 void init_iso1KeyValueType(struct iso1KeyValueType* iso1KeyValueType) {
+	// printf("[C] sizeof iso1KeyValueType = %ld\n", sizeof(struct iso1KeyValueType));
+	// validated
 	iso1KeyValueType->DSAKeyValue_isUsed = 0u;
 	iso1KeyValueType->RSAKeyValue_isUsed = 0u;
 	iso1KeyValueType->ANY_isUsed = 0u;
 }
 
 void init_iso1SelectedServiceListType(struct iso1SelectedServiceListType* iso1SelectedServiceListType) {
+	// printf("[C] sizeof iso1SelectedServiceListType = %ld\n", sizeof(struct iso1SelectedServiceListType));
+	// validated
 	iso1SelectedServiceListType->SelectedService.arrayLen = 0u;
 }
 
 void init_iso1CableCheckResType(struct iso1CableCheckResType* iso1CableCheckResType) {
+	// printf("[C] sizeof iso1CableCheckResType = %ld\n", sizeof(struct iso1CableCheckResType));
+	// validated
 	(void)iso1CableCheckResType; /* avoid unused warning */
 }
 
 void init_iso1X509IssuerSerialType(struct iso1X509IssuerSerialType* iso1X509IssuerSerialType) {
+	// printf("[C] sizeof iso1X509IssuerSerialType = %ld\n", sizeof(struct iso1X509IssuerSerialType));
+	// validated
 	(void)iso1X509IssuerSerialType; /* avoid unused warning */
 }
 
 void init_iso1KeyInfoType(struct iso1KeyInfoType* iso1KeyInfoType) {
+	// printf("[C] sizeof iso1KeyInfoType = %ld\n", sizeof(struct iso1KeyInfoType));
+	// printf("[C] iso1KeyInfoType->Id_isUsed = %d\n", iso1KeyInfoType->Id_isUsed);
+	// printf("[C] iso1KeyInfoType->KeyName = %d\n", iso1KeyInfoType->KeyName.arrayLen);
+	// printf("[C] iso1KeyInfoType->KeyValue = %d\n", iso1KeyInfoType->KeyValue.arrayLen);
+	// printf("[C] iso1KeyInfoType->RetrievalMethod = %d\n", iso1KeyInfoType->RetrievalMethod.arrayLen);
+	// printf("[C] iso1KeyInfoType->X509Data = %d\n", iso1KeyInfoType->X509Data.arrayLen);
+	// printf("[C] iso1KeyInfoType->PGPData = %d\n", iso1KeyInfoType->PGPData.arrayLen);
+	// printf("[C] iso1KeyInfoType->SPKIData = %d\n", iso1KeyInfoType->SPKIData.arrayLen);
+	// printf("[C] iso1KeyInfoType->MgmtData = %d\n", iso1KeyInfoType->MgmtData.arrayLen);
+	// printf("[C] iso1KeyInfoType->ANY_isUsed = %d\n", iso1KeyInfoType->ANY_isUsed);
+	// validated
 	iso1KeyInfoType->Id_isUsed = 0u;
 	iso1KeyInfoType->KeyName.arrayLen = 0u;
 	iso1KeyInfoType->KeyValue.arrayLen = 0u;
@@ -706,10 +943,14 @@ void init_iso1KeyInfoType(struct iso1KeyInfoType* iso1KeyInfoType) {
 }
 
 void init_iso1TransformsType(struct iso1TransformsType* iso1TransformsType) {
+	// printf("[C] sizeof iso1TransformsType = %ld\n", sizeof(struct iso1TransformsType));
+	// validated
 	iso1TransformsType->Transform.arrayLen = 0u;
 }
 
 void init_iso1ChargeParameterDiscoveryReqType(struct iso1ChargeParameterDiscoveryReqType* iso1ChargeParameterDiscoveryReqType) {
+	// printf("[C] sizeof iso1ChargeParameterDiscoveryReqType = %ld\n", sizeof(struct iso1ChargeParameterDiscoveryReqType));
+	// validated
 	iso1ChargeParameterDiscoveryReqType->MaxEntriesSAScheduleTuple_isUsed = 0u;
 	iso1ChargeParameterDiscoveryReqType->EVChargeParameter_isUsed = 0u;
 	iso1ChargeParameterDiscoveryReqType->AC_EVChargeParameter_isUsed = 0u;
@@ -717,19 +958,28 @@ void init_iso1ChargeParameterDiscoveryReqType(struct iso1ChargeParameterDiscover
 }
 
 void init_iso1PreChargeReqType(struct iso1PreChargeReqType* iso1PreChargeReqType) {
+	// printf("[C] sizeof iso1PreChargeReqType = %ld\n", sizeof(struct iso1PreChargeReqType));
+	// validated
 	(void)iso1PreChargeReqType; /* avoid unused warning */
 }
 
 void init_iso1EVSEStatusType(struct iso1EVSEStatusType* iso1EVSEStatusType) {
+	// printf("[C] sizeof iso1EVSEStatusType = %ld\n", sizeof(struct iso1EVSEStatusType));
+	// validated
 	(void)iso1EVSEStatusType; /* avoid unused warning */
 }
 
+
 void init_iso1SignatureMethodType(struct iso1SignatureMethodType* iso1SignatureMethodType) {
+	// printf("[C] sizeof iso1SignatureMethodType = %ld\n", sizeof(struct iso1SignatureMethodType));
+	// validated
 	iso1SignatureMethodType->HMACOutputLength_isUsed = 0u;
 	iso1SignatureMethodType->ANY_isUsed = 0u;
 }
 
 void init_iso1X509DataType(struct iso1X509DataType* iso1X509DataType) {
+	// printf("[C] sizeof iso1X509DataType = %ld\n", sizeof(struct iso1X509DataType));
+	// validated
 	iso1X509DataType->X509IssuerSerial.arrayLen = 0u;
 	iso1X509DataType->X509SKI.arrayLen = 0u;
 	iso1X509DataType->X509SubjectName.arrayLen = 0u;
@@ -739,14 +989,56 @@ void init_iso1X509DataType(struct iso1X509DataType* iso1X509DataType) {
 }
 
 void init_iso1NotificationType(struct iso1NotificationType* iso1NotificationType) {
+	// printf("[C] sizeof iso1NotificationType = %ld\n", sizeof(struct iso1NotificationType));
+	// validated
 	iso1NotificationType->FaultMsg_isUsed = 0u;
 }
 
 void init_iso1SAScheduleListType(struct iso1SAScheduleListType* iso1SAScheduleListType) {
+	// printf("[C] sizeof iso1SAScheduleListType = %ld\n", sizeof(struct iso1SAScheduleListType));
+	// printf("[C] iso1SAScheduleListType->SAScheduleTuple.arrayLen = %d\n", iso1SAScheduleListType->SAScheduleTuple.arrayLen);
+	// validated
 	iso1SAScheduleListType->SAScheduleTuple.arrayLen = 0u;
 }
 
 void init_iso1BodyType(struct iso1BodyType* iso1BodyType) {
+	// printf("[C] sizeof iso1BodyType = %ld\n", sizeof(struct iso1BodyType));
+	// printf("[C] iso1BodyType->BodyElement_isUsed = %d\n", iso1BodyType->BodyElement_isUsed);
+	// printf("[C] iso1BodyType->SessionSetupReq_isUsed = %d\n", iso1BodyType->SessionSetupReq_isUsed);
+	// printf("[C] iso1BodyType->SessionSetupRes_isUsed = %d\n", iso1BodyType->SessionSetupRes_isUsed);
+	// printf("[C] iso1BodyType->ServiceDiscoveryReq_isUsed = %d\n", iso1BodyType->ServiceDiscoveryReq_isUsed);
+	// printf("[C] iso1BodyType->ServiceDiscoveryRes_isUsed = %d\n", iso1BodyType->ServiceDiscoveryRes_isUsed);
+	// printf("[C] iso1BodyType->ServiceDetailReq_isUsed = %d\n", iso1BodyType->ServiceDetailReq_isUsed);
+	// printf("[C] iso1BodyType->ServiceDetailRes_isUsed = %d\n", iso1BodyType->ServiceDetailRes_isUsed);
+	// printf("[C] iso1BodyType->PaymentServiceSelectionReq_isUsed = %d\n", iso1BodyType->PaymentServiceSelectionReq_isUsed);
+	// printf("[C] iso1BodyType->PaymentServiceSelectionRes_isUsed = %d\n", iso1BodyType->PaymentServiceSelectionRes_isUsed);
+	// printf("[C] iso1BodyType->PaymentDetailsReq_isUsed = %d\n", iso1BodyType->PaymentDetailsReq_isUsed);
+	// printf("[C] iso1BodyType->PaymentDetailsRes_isUsed = %d\n", iso1BodyType->PaymentDetailsRes_isUsed);
+	// printf("[C] iso1BodyType->AuthorizationReq_isUsed = %d\n", iso1BodyType->AuthorizationReq_isUsed);
+	// printf("[C] iso1BodyType->AuthorizationRes_isUsed = %d\n", iso1BodyType->AuthorizationRes_isUsed);
+	// printf("[C] iso1BodyType->ChargeParameterDiscoveryReq_isUsed = %d\n", iso1BodyType->ChargeParameterDiscoveryReq_isUsed);
+	// printf("[C] iso1BodyType->ChargeParameterDiscoveryRes_isUsed = %d\n", iso1BodyType->ChargeParameterDiscoveryRes_isUsed);
+	// printf("[C] iso1BodyType->PowerDeliveryReq_isUsed = %d\n", iso1BodyType->PowerDeliveryReq_isUsed);
+	// printf("[C] iso1BodyType->PowerDeliveryRes_isUsed = %d\n", iso1BodyType->PowerDeliveryRes_isUsed);
+	// printf("[C] iso1BodyType->MeteringReceiptReq_isUsed = %d\n", iso1BodyType->MeteringReceiptReq_isUsed);
+	// printf("[C] iso1BodyType->MeteringReceiptRes_isUsed = %d\n", iso1BodyType->MeteringReceiptRes_isUsed);
+	// printf("[C] iso1BodyType->SessionStopReq_isUsed = %d\n", iso1BodyType->SessionStopReq_isUsed);
+	// printf("[C] iso1BodyType->SessionStopRes_isUsed = %d\n", iso1BodyType->SessionStopRes_isUsed);
+	// printf("[C] iso1BodyType->CertificateUpdateReq_isUsed = %d\n", iso1BodyType->CertificateUpdateReq_isUsed);
+	// printf("[C] iso1BodyType->CertificateUpdateRes_isUsed = %d\n", iso1BodyType->CertificateUpdateRes_isUsed);
+	// printf("[C] iso1BodyType->CertificateInstallationReq_isUsed = %d\n", iso1BodyType->CertificateInstallationReq_isUsed);
+	// printf("[C] iso1BodyType->CertificateInstallationRes_isUsed = %d\n", iso1BodyType->CertificateInstallationRes_isUsed);
+	// printf("[C] iso1BodyType->ChargingStatusReq_isUsed = %d\n", iso1BodyType->ChargingStatusReq_isUsed);
+	// printf("[C] iso1BodyType->ChargingStatusRes_isUsed = %d\n", iso1BodyType->ChargingStatusRes_isUsed);
+	// printf("[C] iso1BodyType->CableCheckReq_isUsed = %d\n", iso1BodyType->CableCheckReq_isUsed);
+	// printf("[C] iso1BodyType->CableCheckRes_isUsed = %d\n", iso1BodyType->CableCheckRes_isUsed);
+	// printf("[C] iso1BodyType->PreChargeReq_isUsed = %d\n", iso1BodyType->PreChargeReq_isUsed);
+	// printf("[C] iso1BodyType->PreChargeRes_isUsed = %d\n", iso1BodyType->PreChargeRes_isUsed);
+	// printf("[C] iso1BodyType->CurrentDemandReq_isUsed = %d\n", iso1BodyType->CurrentDemandReq_isUsed);
+	// printf("[C] iso1BodyType->CurrentDemandRes_isUsed = %d\n", iso1BodyType->CurrentDemandRes_isUsed);
+	// printf("[C] iso1BodyType->WeldingDetectionReq_isUsed = %d\n", iso1BodyType->WeldingDetectionReq_isUsed);
+	// printf("[C] iso1BodyType->WeldingDetectionRes_isUsed = %d\n", iso1BodyType->WeldingDetectionRes_isUsed);
+	// validated
 	iso1BodyType->BodyElement_isUsed = 0u;
 	iso1BodyType->SessionSetupReq_isUsed = 0u;
 	iso1BodyType->SessionSetupRes_isUsed = 0u;
@@ -785,59 +1077,92 @@ void init_iso1BodyType(struct iso1BodyType* iso1BodyType) {
 }
 
 void init_iso1ChargingProfileType(struct iso1ChargingProfileType* iso1ChargingProfileType) {
+	// printf("[C] sizeof iso1ChargingProfileType = %ld\n", sizeof(struct iso1ChargingProfileType));
+	// validated
 	iso1ChargingProfileType->ProfileEntry.arrayLen = 0u;
 }
 
 void init_iso1TransformType(struct iso1TransformType* iso1TransformType) {
+	// printf("[C] sizeof iso1TransformType = %ld\n", sizeof(struct iso1TransformType));
+	// validated
 	iso1TransformType->ANY_isUsed = 0u;
 	iso1TransformType->XPath.arrayLen = 0u;
 }
 
 void init_iso1SAScheduleTupleType(struct iso1SAScheduleTupleType* iso1SAScheduleTupleType) {
+	// printf("[C] sizeof iso1SAScheduleTupleType = %ld\n", sizeof(struct iso1SAScheduleTupleType));
+	// printf("[C] iso1SAScheduleTupleType->SalesTariff_isUsed = %d\n", iso1SAScheduleTupleType->SalesTariff_isUsed);
+	// validated
 	iso1SAScheduleTupleType->SalesTariff_isUsed = 0u;
 }
 
 void init_iso1AC_EVChargeParameterType(struct iso1AC_EVChargeParameterType* iso1AC_EVChargeParameterType) {
+	// printf("[C] sizeof iso1AC_EVChargeParameterType = %ld\n", sizeof(struct iso1AC_EVChargeParameterType));
+	// validated
 	iso1AC_EVChargeParameterType->DepartureTime_isUsed = 0u;
 }
 
 void init_iso1AnonType_V2G_Message(struct iso1AnonType_V2G_Message* iso1AnonType_V2G_Message) {
+	// printf("[C] sizeof iso1AnonType_V2G_Message = %ld\n", sizeof(struct iso1AnonType_V2G_Message));
+	// validated
 	(void)iso1AnonType_V2G_Message; /* avoid unused warning */
 }
 
 void init_iso1PaymentDetailsResType(struct iso1PaymentDetailsResType* iso1PaymentDetailsResType) {
+	// printf("[C] sizeof iso1PaymentDetailsResType = %ld\n", sizeof(struct iso1PaymentDetailsResType));
+	// printf("[C] datetime now = %ld\n", iso1PaymentDetailsResType->EVSETimeStamp);
+	// validated
 	(void)iso1PaymentDetailsResType; /* avoid unused warning */
 }
 
 void init_iso1ContractSignatureEncryptedPrivateKeyType(struct iso1ContractSignatureEncryptedPrivateKeyType* iso1ContractSignatureEncryptedPrivateKeyType) {
+	// printf("[C] sizeof iso1ContractSignatureEncryptedPrivateKeyType = %ld\n", sizeof(struct iso1ContractSignatureEncryptedPrivateKeyType));
+	// printf("[C] Id = %ls\n", iso1ContractSignatureEncryptedPrivateKeyType->Id.characters);
+	// validated
 	(void)iso1ContractSignatureEncryptedPrivateKeyType; /* avoid unused warning */
 }
 
 void init_iso1PMaxScheduleEntryType(struct iso1PMaxScheduleEntryType* iso1PMaxScheduleEntryType) {
+	// printf("[C] sizeof iso1PMaxScheduleEntryType = %ld\n", sizeof(struct iso1PMaxScheduleEntryType));
+	// printf("[C] pmax value = %d\n", iso1PMaxScheduleEntryType->PMax.Value);
+	// validated
 	iso1PMaxScheduleEntryType->TimeInterval_isUsed = 0u;
 	iso1PMaxScheduleEntryType->RelativeTimeInterval_isUsed = 0u;
 }
 
 void init_iso1SPKIDataType(struct iso1SPKIDataType* iso1SPKIDataType) {
+	// printf("[C] sizeof iso1SPKIDataType = %ld\n", sizeof(struct iso1SPKIDataType));
+	// printf("[C] Any is used =  %d\n",iso1SPKIDataType->ANY_isUsed);
+	// validated
 	iso1SPKIDataType->SPKISexp.arrayLen = 0u;
 	iso1SPKIDataType->ANY_isUsed = 0u;
 }
 
 void init_iso1MeteringReceiptResType(struct iso1MeteringReceiptResType* iso1MeteringReceiptResType) {
+	// printf("[C] sizeof iso1MeteringReceiptResType = %ld\n", sizeof(struct iso1MeteringReceiptResType));
+	// printf("[C] %d\n", iso1MeteringReceiptResType->DC_EVSEStatus_isUsed);
+	// validated
 	iso1MeteringReceiptResType->EVSEStatus_isUsed = 0u;
 	iso1MeteringReceiptResType->AC_EVSEStatus_isUsed = 0u;
 	iso1MeteringReceiptResType->DC_EVSEStatus_isUsed = 0u;
 }
 
 void init_iso1SessionStopReqType(struct iso1SessionStopReqType* iso1SessionStopReqType) {
+	// printf("[C] sizeof iso1SessionStopReqType = %ld\n", sizeof(struct iso1SessionStopReqType));
+	// validated
 	(void)iso1SessionStopReqType; /* avoid unused warning */
 }
 
 void init_iso1WeldingDetectionResType(struct iso1WeldingDetectionResType* iso1WeldingDetectionResType) {
+	// printf("[C] sizeof iso1WeldingDetectionResType = %ld\n", sizeof(struct iso1WeldingDetectionResType));
+	// validated
 	(void)iso1WeldingDetectionResType; /* avoid unused warning */
 }
 
 void init_iso1ReferenceType(struct iso1ReferenceType* iso1ReferenceType) {
+	// printf("[C] sizeof iso1ReferenceType = %ld\n", sizeof(struct iso1ReferenceType));
+	// printf("[C] digest value len = %d\n", iso1ReferenceType->DigestValue.bytesLen);
+	// validated
 	iso1ReferenceType->Id_isUsed = 0u;
 	iso1ReferenceType->URI_isUsed = 0u;
 	iso1ReferenceType->Type_isUsed = 0u;
@@ -845,6 +1170,8 @@ void init_iso1ReferenceType(struct iso1ReferenceType* iso1ReferenceType) {
 }
 
 void init_iso1CurrentDemandReqType(struct iso1CurrentDemandReqType* iso1CurrentDemandReqType) {
+	// printf("[C] sizeof iso1CurrentDemandReqType = %ld\n", sizeof(struct iso1CurrentDemandReqType));
+	// validated
 	iso1CurrentDemandReqType->EVMaximumVoltageLimit_isUsed = 0u;
 	iso1CurrentDemandReqType->EVMaximumCurrentLimit_isUsed = 0u;
 	iso1CurrentDemandReqType->EVMaximumPowerLimit_isUsed = 0u;
@@ -854,6 +1181,12 @@ void init_iso1CurrentDemandReqType(struct iso1CurrentDemandReqType* iso1CurrentD
 }
 
 void init_iso1SalesTariffEntryType(struct iso1SalesTariffEntryType* iso1SalesTariffEntryType) {
+	// printf("[C] sizeof iso1SalesTariffEntryType = %ld\n", sizeof(struct iso1SalesTariffEntryType));
+	// printf("[C] iso1SalesTariffEntryType->TimeInterval_isUsed = %d\n", iso1SalesTariffEntryType->TimeInterval_isUsed);
+	// printf("[C] iso1SalesTariffEntryType->RelativeTimeInterval_isUsed = %d\n", iso1SalesTariffEntryType->RelativeTimeInterval_isUsed);
+	// printf("[C] iso1SalesTariffEntryType->EPriceLevel_isUsed = %d\n", iso1SalesTariffEntryType->EPriceLevel_isUsed);
+	// printf("[C] iso1SalesTariffEntryType->ConsumptionCost.arrayLen = %d\n", iso1SalesTariffEntryType->ConsumptionCost.arrayLen);
+	// validated
 	iso1SalesTariffEntryType->TimeInterval_isUsed = 0u;
 	iso1SalesTariffEntryType->RelativeTimeInterval_isUsed = 0u;
 	iso1SalesTariffEntryType->EPriceLevel_isUsed = 0u;
@@ -861,49 +1194,79 @@ void init_iso1SalesTariffEntryType(struct iso1SalesTariffEntryType* iso1SalesTar
 }
 
 void init_iso1EntryType(struct iso1EntryType* iso1EntryType) {
+	// printf("[C] sizeof iso1EntryType = %ld\n", sizeof(struct iso1EntryType));
+	// printf("[C] duration = %d\n", iso1EntryType->RelativeTimeInterval.duration);
+	// validated
 	iso1EntryType->TimeInterval_isUsed = 0u;
 	iso1EntryType->RelativeTimeInterval_isUsed = 0u;
 }
 
 void init_iso1SessionSetupReqType(struct iso1SessionSetupReqType* iso1SessionSetupReqType) {
+	// printf("[C] sizeof iso1SessionSetupReqType = %ld\n", sizeof(struct iso1SessionSetupReqType));
+	// validated
 	(void)iso1SessionSetupReqType; /* avoid unused warning */
 }
 
 void init_iso1CostType(struct iso1CostType* iso1CostType) {
+	// printf("[C] sizeof iso1CostType = %ld\n", sizeof(struct iso1CostType));
+	// printf("[C] amount multiplier is used = %d\n", iso1CostType->amountMultiplier_isUsed);
+	// validated
 	iso1CostType->amountMultiplier_isUsed = 0u;
 }
 
 void init_iso1DC_EVPowerDeliveryParameterType(struct iso1DC_EVPowerDeliveryParameterType* iso1DC_EVPowerDeliveryParameterType) {
+	// printf("[C] sizeof iso1DC_EVPowerDeliveryParameterType = %ld\n", sizeof(struct iso1DC_EVPowerDeliveryParameterType));
+	// printf("[C] bulk charging complete is used = %d\n", iso1DC_EVPowerDeliveryParameterType->BulkChargingComplete_isUsed);
+	// validated
 	iso1DC_EVPowerDeliveryParameterType->BulkChargingComplete_isUsed = 0u;
 }
 
 void init_iso1RetrievalMethodType(struct iso1RetrievalMethodType* iso1RetrievalMethodType) {
+	// printf("[C] sizeof iso1RetrievalMethodType = %ld\n", sizeof(struct iso1RetrievalMethodType));
+	// validated
 	iso1RetrievalMethodType->URI_isUsed = 0u;
 	iso1RetrievalMethodType->Type_isUsed = 0u;
 	iso1RetrievalMethodType->Transforms_isUsed = 0u;
 }
 
 void init_iso1CertificateUpdateResType(struct iso1CertificateUpdateResType* iso1CertificateUpdateResType) {
+	// printf("[C] sizeof iso1CertificateUpdateResType = %ld\n", sizeof(struct iso1CertificateUpdateResType));
+	// printf("[C] retry counter is used = %d\n", iso1CertificateUpdateResType->RetryCounter_isUsed);
+	// validated
 	iso1CertificateUpdateResType->RetryCounter_isUsed = 0u;
 }
 
 void init_iso1CertificateInstallationResType(struct iso1CertificateInstallationResType* iso1CertificateInstallationResType) {
+	// printf("[C] sizeof iso1CertificateInstallationResType = %ld\n", sizeof(struct iso1CertificateInstallationResType));
+	// printf("[C] emaid content = %ls\n", iso1CertificateInstallationResType->eMAID.CONTENT.characters);
+	// validated
 	(void)iso1CertificateInstallationResType; /* avoid unused warning */
 }
 
 void init_iso1CanonicalizationMethodType(struct iso1CanonicalizationMethodType* iso1CanonicalizationMethodType) {
+	// printf("[C] sizeof iso1CanonicalizationMethodType = %ld\n", sizeof(struct iso1CanonicalizationMethodType));
+	// printf("[C] ANY = %ls\n", iso1CanonicalizationMethodType->ANY.characters);
+	// validated
 	iso1CanonicalizationMethodType->ANY_isUsed = 0u;
 }
 
 void init_iso1WeldingDetectionReqType(struct iso1WeldingDetectionReqType* iso1WeldingDetectionReqType) {
+	// printf("[C] sizeof iso1WeldingDetectionReqType = %ld\n", sizeof(struct iso1WeldingDetectionReqType));
+	// validated
+
 	(void)iso1WeldingDetectionReqType; /* avoid unused warning */
 }
 
 void init_iso1DC_EVStatusType(struct iso1DC_EVStatusType* iso1DC_EVStatusType) {
+	// printf("[C] sizeof iso1DC_EVStatusType = %ld\n", sizeof(struct iso1DC_EVStatusType));
+	// printf("[C] evresssoc = %d\n", iso1DC_EVStatusType->EVRESSSOC);
+	// validated
 	(void)iso1DC_EVStatusType; /* avoid unused warning */
 }
 
 void init_iso1CurrentDemandResType(struct iso1CurrentDemandResType* iso1CurrentDemandResType) {
+	printf("[C] sizeof iso1CurrentDemandResType = %ld\n", sizeof(struct iso1CurrentDemandResType));
+
 	iso1CurrentDemandResType->EVSEMaximumVoltageLimit_isUsed = 0u;
 	iso1CurrentDemandResType->EVSEMaximumCurrentLimit_isUsed = 0u;
 	iso1CurrentDemandResType->EVSEMaximumPowerLimit_isUsed = 0u;
@@ -912,32 +1275,54 @@ void init_iso1CurrentDemandResType(struct iso1CurrentDemandResType* iso1CurrentD
 }
 
 void init_iso1ServiceType(struct iso1ServiceType* iso1ServiceType) {
+	// printf("[C] sizeof iso1ServiceType = %ld\n", sizeof(struct iso1ServiceType));
+	// printf("[C] FreeService = %d\n", iso1ServiceType->FreeService);
+	// validated
 	iso1ServiceType->ServiceName_isUsed = 0u;
 	iso1ServiceType->ServiceScope_isUsed = 0u;
 }
 
 void init_iso1ServiceDiscoveryReqType(struct iso1ServiceDiscoveryReqType* iso1ServiceDiscoveryReqType) {
+	// printf("[C] sizeof iso1ServiceDiscoveryReqType = %ld\n", sizeof(struct iso1ServiceDiscoveryReqType));
+	// validated
 	iso1ServiceDiscoveryReqType->ServiceScope_isUsed = 0u;
 	iso1ServiceDiscoveryReqType->ServiceCategory_isUsed = 0u;
 }
 
 void init_iso1AC_EVSEChargeParameterType(struct iso1AC_EVSEChargeParameterType* iso1AC_EVSEChargeParameterType) {
+	// printf("[C] sizeof iso1AC_EVSEChargeParameterType = %ld\n", sizeof(struct iso1AC_EVSEChargeParameterType));
+	// validated
 	(void)iso1AC_EVSEChargeParameterType; /* avoid unused warning */
 }
 
 void init_iso1CableCheckReqType(struct iso1CableCheckReqType* iso1CableCheckReqType) {
+	// printf("[C] sizeof iso1CableCheckReqType = %ld\n", sizeof(struct iso1CableCheckReqType));
+	// printf("[C] resssoc = %d\n", iso1CableCheckReqType->DC_EVStatus.EVRESSSOC);
+	// validated
 	(void)iso1CableCheckReqType; /* avoid unused warning */
 }
 
 void init_iso1SelectedServiceType(struct iso1SelectedServiceType* iso1SelectedServiceType) {
+	// printf("[C] sizeof iso1SelectedServiceType = %ld\n", sizeof(struct iso1SelectedServiceType));
+	// printf("[C] parameter set id is used = %d\n", iso1SelectedServiceType->ParameterSetID_isUsed);
+	// validated
 	iso1SelectedServiceType->ParameterSetID_isUsed = 0u;
 }
 
 void init_iso1AC_EVSEStatusType(struct iso1AC_EVSEStatusType* iso1AC_EVSEStatusType) {
+	// printf("[C] sizeof iso1AC_EVSEStatusType = %ld\n", sizeof(struct iso1AC_EVSEStatusType));
+	// printf("[C] rcd = %d\n", iso1AC_EVSEStatusType->RCD);
+	// validated
 	(void)iso1AC_EVSEStatusType; /* avoid unused warning */
 }
 
 void init_iso1SalesTariffType(struct iso1SalesTariffType* iso1SalesTariffType) {
+	// printf("[C] sizeof iso1SalesTariffType = %ld\n", sizeof(struct iso1SalesTariffType));
+	// printf("[C] iso1SalesTariffType->Id_isUsed = %d\n", iso1SalesTariffType->Id_isUsed);
+	// printf("[C] iso1SalesTariffType->SalesTariffDescription_isUsed = %d\n", iso1SalesTariffType->SalesTariffDescription_isUsed);
+	// printf("[C] iso1SalesTariffType->NumEPriceLevels_isUsed = %d\n", iso1SalesTariffType->NumEPriceLevels_isUsed);
+	// printf("[C] iso1SalesTariffType->SalesTariffEntry.arrayLen = %d\n", iso1SalesTariffType->SalesTariffEntry.arrayLen);
+	// validated
 	iso1SalesTariffType->Id_isUsed = 0u;
 	iso1SalesTariffType->SalesTariffDescription_isUsed = 0u;
 	iso1SalesTariffType->NumEPriceLevels_isUsed = 0u;
@@ -945,40 +1330,58 @@ void init_iso1SalesTariffType(struct iso1SalesTariffType* iso1SalesTariffType) {
 }
 
 void init_iso1PaymentServiceSelectionReqType(struct iso1PaymentServiceSelectionReqType* iso1PaymentServiceSelectionReqType) {
+	// printf("[C] sizeof iso1PaymentServiceSelectionReqType = %ld\n", sizeof(struct iso1PaymentServiceSelectionReqType));
+	// validated
 	(void)iso1PaymentServiceSelectionReqType; /* avoid unused warning */
 }
 
 void init_iso1SignaturePropertiesType(struct iso1SignaturePropertiesType* iso1SignaturePropertiesType) {
+	// printf("[C] sizeof iso1SignaturePropertiesType = %ld\n", sizeof(struct iso1SignaturePropertiesType));
+	// validated
 	iso1SignaturePropertiesType->Id_isUsed = 0u;
 	iso1SignaturePropertiesType->SignatureProperty.arrayLen = 0u;
 }
 
 void init_iso1BodyBaseType(struct iso1BodyBaseType* iso1BodyBaseType) {
+	// validated
 	(void)iso1BodyBaseType; /* avoid unused warning */
 }
 
 void init_iso1SupportedEnergyTransferModeType(struct iso1SupportedEnergyTransferModeType* iso1SupportedEnergyTransferModeType) {
+	// printf("[C] sizeof iso1SupportedEnergyTransferModeType = %ld\n", sizeof(struct iso1SupportedEnergyTransferModeType));
+	// printf("[C] array len = %d\n", iso1SupportedEnergyTransferModeType->EnergyTransferMode.arrayLen);
+	// validated
 	iso1SupportedEnergyTransferModeType->EnergyTransferMode.arrayLen = 0u;
 }
 
 void init_iso1ChargingStatusReqType(struct iso1ChargingStatusReqType* iso1ChargingStatusReqType) {
+	// validated
 	(void)iso1ChargingStatusReqType; /* avoid unused warning */
 }
 
 void init_iso1PaymentServiceSelectionResType(struct iso1PaymentServiceSelectionResType* iso1PaymentServiceSelectionResType) {
+	// printf("[C] sizeof iso1PaymentServiceSelectionResType = %ld\n", sizeof(struct iso1PaymentServiceSelectionResType));
+	// printf("[C] response code = %d\n", iso1PaymentServiceSelectionResType->ResponseCode);
+	// validated
 	(void)iso1PaymentServiceSelectionResType; /* avoid unused warning */
 }
 
 void init_iso1DigestMethodType(struct iso1DigestMethodType* iso1DigestMethodType) {
+	// printf("[C] sizeof iso1DigestMethodType = %ld\n", sizeof(struct iso1DigestMethodType));
+	// validated
 	iso1DigestMethodType->ANY_isUsed = 0u;
 }
 
 void init_iso1SignaturePropertyType(struct iso1SignaturePropertyType* iso1SignaturePropertyType) {
+	// printf("[C] sizeof iso1SignaturePropertyType = %ld\n", sizeof(struct iso1SignaturePropertyType));
+	// validated
 	iso1SignaturePropertyType->Id_isUsed = 0u;
 	iso1SignaturePropertyType->ANY_isUsed = 0u;
 }
 
 void init_iso1PGPDataType(struct iso1PGPDataType* iso1PGPDataType) {
+	// printf("[C] sizeof iso1PGPDataType = %ld\n", sizeof(struct iso1PGPDataType));
+	// validated
 	iso1PGPDataType->PGPKeyID_isUsed = 0u;
 	iso1PGPDataType->PGPKeyPacket_isUsed = 0u;
 	iso1PGPDataType->ANY_isUsed = 0u;

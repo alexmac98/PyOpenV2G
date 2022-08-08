@@ -1,6 +1,4 @@
 
-from array import ArrayType
-from dbus_next import SignatureType
 from open_v2g_constants import *
 from ctypes import *
 
@@ -4033,10 +4031,13 @@ class iso1EVChargeParameterType(Structure):
 
 
 class iso1DiffieHellmanPublickeyType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1DiffieHellmanPublickeyType_Id_CHARACTERS_SIZE)
+	content_type = ArrayType_factory(c_uint8, "bytes", iso1DiffieHellmanPublickeyType_CONTENT_BYTES_SIZE)
+	
 	_fields_=[
-		("Id", ArrayType_factory(c_uint32, "characters", iso1DiffieHellmanPublickeyType_Id_CHARACTERS_SIZE)),
+		("Id", id_type),
 
-		("CONTENT", ArrayType_factory(c_uint8, "bytes", iso1DiffieHellmanPublickeyType_CONTENT_BYTES_SIZE)),
+		("CONTENT", content_type),
 	]
 
 
@@ -4063,10 +4064,13 @@ class iso1RelativeTimeIntervalType(Structure):
 
 
 class iso1EMAIDType(Structure):
-	_fields_=[
-		("Id", ArrayType_factory(c_uint32, "characters", iso1EMAIDType_Id_CHARACTERS_SIZE)),
+	id_type = ArrayType_factory(c_uint32, "characters", iso1EMAIDType_Id_CHARACTERS_SIZE)
+	content_type = ArrayType_factory(c_uint32, "characters", iso1EMAIDType_CONTENT_CHARACTERS_SIZE)
 
-		("CONTENT", ArrayType_factory(c_uint32, "characters", iso1EMAIDType_CONTENT_CHARACTERS_SIZE)),
+	_fields_=[
+		("Id", id_type),
+
+		("CONTENT", content_type),
 	]
 
 
@@ -4089,64 +4093,80 @@ class iso1EVPowerDeliveryParameterType(Structure):
 
 
 class iso1AuthorizationReqType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1AuthorizationReqType_Id_CHARACTERS_SIZE)
+	gen_challenge_type = ArrayType_factory(c_uint8, "bytes", iso1AuthorizationReqType_GenChallenge_BYTES_SIZE)
+
 	_fields_=[
-		("Id_isUsed", c_uint, 1),
+		("Id", id_type),
 
-		("GenChallenge_isUsed", c_uint, 1),
+		("Id_isUsed", c_uint8, 1),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1AuthorizationReqType_Id_CHARACTERS_SIZE)),
+		("GenChallenge", gen_challenge_type),
 
-		("GenChallenge", ArrayType_factory(c_uint8, "bytes", iso1AuthorizationReqType_GenChallenge_BYTES_SIZE)),
+		("GenChallenge_isUsed", c_uint8, 1),
+
 	]
 
 
 class iso1MeterInfoType(Structure):
+	meter_id_type = ArrayType_factory(c_uint32, "characters", iso1MeterInfoType_MeterID_CHARACTERS_SIZE)
+	sig_meter_reading_type = ArrayType_factory(c_uint8, "bytes", iso1MeterInfoType_SigMeterReading_BYTES_SIZE)
+
 	_fields_=[
+		("MeterID", meter_id_type),
+
 		("MeterReading", c_uint64),
 
-		("MeterReading_isUsed", c_uint, 1),
+		("MeterReading_isUsed", c_uint8, 1),
 
-		("SigMeterReading_isUsed", c_uint, 1),
+		("SigMeterReading", sig_meter_reading_type),
+
+		("SigMeterReading_isUsed", c_uint8, 1),
 
 		("MeterStatus", c_int16),
 
-		("MeterStatus_isUsed", c_uint, 1),
+		("MeterStatus_isUsed", c_uint8, 1),
 
 		("TMeter", c_int64),
 
-		("TMeter_isUsed", c_uint, 1),
+		("TMeter_isUsed", c_uint8, 1),
 
-		("MeterID", ArrayType_factory(c_uint32, "characters", iso1MeterInfoType_MeterID_CHARACTERS_SIZE)),
-
-		("SigMeterReading", ArrayType_factory(c_uint8, "bytes", iso1MeterInfoType_SigMeterReading_BYTES_SIZE)),
 	]
 
 
 class iso1ObjectType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1ObjectType_Id_CHARACTERS_SIZE)
+	mime_type_type = ArrayType_factory(c_uint32, "characters", iso1ObjectType_MimeType_CHARACTERS_SIZE)
+	encoding_type = ArrayType_factory(c_uint32, "characters", iso1ObjectType_Encoding_CHARACTERS_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1ObjectType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
-		("Id_isUsed", c_uint, 1),
+		("Id", id_type),
 
-		("MimeType_isUsed", c_uint, 1),
+		("Id_isUsed", c_uint8, 1),
 
-		("Encoding_isUsed", c_uint, 1),
+		("MimeType", mime_type_type),
 
-		("ANY_isUsed", c_uint, 1),
+		("MimeType_isUsed", c_uint8, 1),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1ObjectType_Id_CHARACTERS_SIZE)),
+		("Encoding", encoding_type),
 
-		("MimeType", ArrayType_factory(c_uint32, "characters", iso1ObjectType_MimeType_CHARACTERS_SIZE)),
+		("Encoding_isUsed", c_uint8, 1),
 
-		("Encoding", ArrayType_factory(c_uint32, "characters", iso1ObjectType_Encoding_CHARACTERS_SIZE)),
+		("ANY", any_type),
 
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1ObjectType_ANY_CHARACTERS_SIZE)),
+		("ANY_isUsed", c_uint8, 1),
 	]
 
 
 class iso1RSAKeyValueType(Structure):
-	_fields_=[
-		("Modulus", ArrayType_factory(c_uint8, "bytes", iso1RSAKeyValueType_Modulus_BYTES_SIZE)),
+	modulus_type = ArrayType_factory(c_uint8, "bytes", iso1RSAKeyValueType_Modulus_BYTES_SIZE)
+	exponent_type = ArrayType_factory(c_uint8, "bytes", iso1RSAKeyValueType_Exponent_BYTES_SIZE)
 
-		("Exponent", ArrayType_factory(c_uint8, "bytes", iso1RSAKeyValueType_Exponent_BYTES_SIZE)),
+	_fields_=[
+		("Modulus", modulus_type),
+
+		("Exponent", exponent_type),
 	]
 
 
@@ -4157,48 +4177,61 @@ class iso1SessionStopResType(Structure):
 
 
 class iso1SignatureValueType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1SignatureValueType_Id_CHARACTERS_SIZE)
+	content_type = ArrayType_factory(c_uint8, "bytes", iso1SignatureValueType_CONTENT_BYTES_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1SignatureValueType_Id_CHARACTERS_SIZE)),
-
-		("CONTENT", ArrayType_factory(c_uint8, "bytes", iso1SignatureValueType_CONTENT_BYTES_SIZE)),
+		("CONTENT", content_type),
 	]
 
 
 class iso1SubCertificatesType(Structure):
+	certificate_type = ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1SubCertificatesType_Certificate_BYTES_SIZE), "array", iso1SubCertificatesType_Certificate_ARRAY_SIZE)
+
 	_fields_=[
-		("Certificate", ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1SubCertificatesType_Certificate_BYTES_SIZE), "array", iso1SubCertificatesType_Certificate_ARRAY_SIZE)),
+		("Certificate", certificate_type),
 	]
 
 
 class iso1DSAKeyValueType(Structure):
+	p_type = ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_P_BYTES_SIZE)
+	q_type = ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_Q_BYTES_SIZE)
+	g_type = ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_G_BYTES_SIZE)
+	y_type = ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_Y_BYTES_SIZE)
+	j_type = ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_J_BYTES_SIZE)
+	seed_type = ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_Seed_BYTES_SIZE)
+	pgen_counter_type = ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_PgenCounter_BYTES_SIZE)
+
 	_fields_=[
-		("P_isUsed", c_uint, 1),
+		("P", p_type),
 
-		("Q_isUsed", c_uint, 1),
+		("P_isUsed", c_uint8, 1),
 
-		("G_isUsed", c_uint, 1),
+		("Q", q_type),
 
-		("J_isUsed", c_uint, 1),
+		("Q_isUsed", c_uint8, 1),
 
-		("Seed_isUsed", c_uint, 1),
+		("G", g_type),
 
-		("PgenCounter_isUsed", c_uint, 1),
+		("G_isUsed", c_uint8, 1),
 
-		("P", ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_P_BYTES_SIZE)),
+		("Y", y_type),
 
-		("Q", ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_Q_BYTES_SIZE)),
+		("J", j_type),
 
-		("G", ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_G_BYTES_SIZE)),
+		("J_isUsed", c_uint8, 1),
 
-		("Y", ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_Y_BYTES_SIZE)),
+		("Seed", seed_type),
 
-		("J", ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_J_BYTES_SIZE)),
+		("Seed_isUsed", c_uint8, 1),
 
-		("Seed", ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_Seed_BYTES_SIZE)),
+		("PgenCounter", pgen_counter_type),
 
-		("PgenCounter", ArrayType_factory(c_uint8, "bytes", iso1DSAKeyValueType_PgenCounter_BYTES_SIZE)),
+		("PgenCounter_isUsed", c_uint8, 1),
 	]
 
 
@@ -4209,42 +4242,51 @@ class iso1IntervalType(Structure):
 
 
 class iso1MeteringReceiptReqType(Structure):
+	session_id_type = ArrayType_factory(c_uint8, "bytes", iso1MeteringReceiptReqType_SessionID_BYTES_SIZE)
+	id_type = ArrayType_factory(c_uint32, "characters", iso1MeteringReceiptReqType_Id_CHARACTERS_SIZE)
+
 	_fields_=[
-		("Id_isUsed", c_uint, 1),
+		("Id", id_type),
+
+		("Id_isUsed", c_uint8, 1),
+
+		("SessionID", session_id_type),
 
 		("SAScheduleTupleID", c_uint8),
 
-		("SAScheduleTupleID_isUsed", c_uint, 1),
+		("SAScheduleTupleID_isUsed", c_uint8, 1),
 
 		("MeterInfo", iso1MeterInfoType),
-
-		("Id", ArrayType_factory(c_uint32, "characters", iso1MeteringReceiptReqType_Id_CHARACTERS_SIZE)),
-
-		("SessionID", ArrayType_factory(c_uint8, "bytes", iso1MeteringReceiptReqType_SessionID_BYTES_SIZE)),
 	]
 
 
 class iso1KeyValueType(Structure):
+	any_type = ArrayType_factory(c_uint32, "characters", iso1KeyValueType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
 		("DSAKeyValue", iso1DSAKeyValueType),
 
-		("DSAKeyValue_isUsed", c_uint, 1),
+		("DSAKeyValue_isUsed", c_uint8, 1),
 
 		("RSAKeyValue", iso1RSAKeyValueType),
 
-		("RSAKeyValue_isUsed", c_uint, 1),
+		("RSAKeyValue_isUsed", c_uint8, 1),
 
-		("ANY_isUsed", c_uint, 1),
+		("ANY", any_type),
 
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1KeyValueType_ANY_CHARACTERS_SIZE)),
+		("ANY_isUsed", c_uint8, 1),
+
 	]
 
 
 class iso1X509IssuerSerialType(Structure):
+	x509_issuer_name_type = ArrayType_factory(c_uint32, "characters", iso1X509IssuerSerialType_X509IssuerName_CHARACTERS_SIZE)
+	
 	_fields_=[
+		("X509IssuerName", x509_issuer_name_type),
+
 		("X509SerialNumber", c_int64),
 
-		("X509IssuerName", ArrayType_factory(c_uint32, "characters", iso1X509IssuerSerialType_X509IssuerName_CHARACTERS_SIZE)),
 	]
 
 
@@ -4257,84 +4299,109 @@ class iso1EVSEStatusType(Structure):
 
 
 class iso1SignatureMethodType(Structure):
+	algorithm_type = ArrayType_factory(c_uint32, "characters", iso1SignatureMethodType_Algorithm_CHARACTERS_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1SignatureMethodType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
+		("Algorithm", algorithm_type),
+
 		("HMACOutputLength", c_int64),
 
-		("HMACOutputLength_isUsed", c_uint, 1),
+		("HMACOutputLength_isUsed", c_uint8, 1),
 
-		("ANY_isUsed", c_uint, 1),
+		("ANY", any_type),
 
-		("Algorithm", ArrayType_factory(c_uint32, "characters", iso1SignatureMethodType_Algorithm_CHARACTERS_SIZE)),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1SignatureMethodType_ANY_CHARACTERS_SIZE)),
+		("ANY_isUsed", c_uint8, 1),
 	]
 
 
 class iso1X509DataType(Structure):
+	x509_issuer_serial_type = ArrayType_factory(iso1X509IssuerSerialType, "array", iso1X509DataType_X509IssuerSerial_ARRAY_SIZE)
+	x509_ski_type = ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1X509DataType_X509SKI_BYTES_SIZE), "array", dinX509DataType_X509SKI_ARRAY_SIZE)
+	x509_subject_name_type = ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1X509DataType_X509SubjectName_CHARACTERS_SIZE), "array", dinX509DataType_X509SubjectName_ARRAY_SIZE)
+	x509_certificate_type = ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1X509DataType_X509Certificate_BYTES_SIZE), "array", dinX509DataType_X509Certificate_ARRAY_SIZE)
+	x509_crl_type = ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1X509DataType_X509CRL_BYTES_SIZE), "array", dinX509DataType_X509CRL_ARRAY_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1X509DataType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
+		
+		("X509IssuerSerial", x509_issuer_serial_type),
+
+		("X509SKI", x509_ski_type),
+
+		("X509SubjectName", x509_subject_name_type),
+
+		("X509Certificate", x509_certificate_type),
+
+		("X509CRL", x509_crl_type),
+
+		("ANY", any_type),
+
 		("ANY_isUsed", c_uint, 1),
-
-		("array", (iso1X509IssuerSerialType*iso1X509DataType_X509IssuerSerial_ARRAY_SIZE)),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1X509DataType_ANY_CHARACTERS_SIZE)),
-
-		("X509SKI", ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1X509DataType_X509SKI_BYTES_SIZE), "array", iso1X509DataType_X509SKI_ARRAY_SIZE)),
-
-		("X509SubjectName", ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1X509DataType_X509SubjectName_CHARACTERS_SIZE), "array", iso1X509DataType_X509SubjectName_ARRAY_SIZE)),
-
-		("X509Certificate", ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1X509DataType_X509Certificate_BYTES_SIZE), "array", iso1X509DataType_X509Certificate_ARRAY_SIZE)),
-
-		("X509CRL", ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1X509DataType_X509CRL_BYTES_SIZE), "array", iso1X509DataType_X509CRL_ARRAY_SIZE)),
 	]
 
 
 class iso1NotificationType(Structure):
+	fault_msg_type = ArrayType_factory(c_uint32, "characters", iso1NotificationType_FaultMsg_CHARACTERS_SIZE)
+
 	_fields_=[
 		("FaultCode", c_uint),
 
-		("FaultMsg_isUsed", c_uint, 1),
+		("FaultMsg", fault_msg_type),
 
-		("FaultMsg", ArrayType_factory(c_uint32, "characters", iso1NotificationType_FaultMsg_CHARACTERS_SIZE)),
+		("FaultMsg_isUsed", c_uint, 1),
 	]
 
 
 class iso1TransformType(Structure):
+	algorithm_type = ArrayType_factory(c_uint32, "characters", iso1TransformType_Algorithm_CHARACTERS_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1TransformType_ANY_CHARACTERS_SIZE)
+	xpath_type = ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1TransformType_XPath_CHARACTERS_SIZE), "array", dinTransformType_XPath_ARRAY_SIZE)
+
 	_fields_=[
+		("Algorithm", algorithm_type),
+
+		("ANY", any_type),
+
 		("ANY_isUsed", c_uint, 1),
 
-		("Algorithm", ArrayType_factory(c_uint32, "characters", iso1TransformType_Algorithm_CHARACTERS_SIZE)),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1TransformType_ANY_CHARACTERS_SIZE)),
-
-		("XPath", ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1TransformType_XPath_CHARACTERS_SIZE), "array", iso1TransformType_XPath_ARRAY_SIZE)),
+		("XPath", xpath_type),
 	]
 
 
 class iso1PaymentDetailsResType(Structure):
+	gen_challenge_type = ArrayType_factory(c_ubyte, "bytes", iso1PaymentDetailsResType_GenChallenge_BYTES_SIZE)
+
 	_fields_=[
 		("ResponseCode", c_uint),
 
-		("EVSETimeStamp", c_int64),
+		("GenChallenge", gen_challenge_type),
 
-		("GenChallenge", ArrayType_factory(c_uint8, "bytes", iso1PaymentDetailsResType_GenChallenge_BYTES_SIZE)),
+		("EVSETimeStamp", c_int64),
 	]
 
 
 class iso1ContractSignatureEncryptedPrivateKeyType(Structure):
-	_fields_=[
-		("Id", ArrayType_factory(c_uint32, "characters", iso1ContractSignatureEncryptedPrivateKeyType_Id_CHARACTERS_SIZE)),
+	id_type = ArrayType_factory(c_uint32, "characters", iso1ContractSignatureEncryptedPrivateKeyType_Id_CHARACTERS_SIZE)
+	content_type = ArrayType_factory(c_uint8, "bytes", iso1ContractSignatureEncryptedPrivateKeyType_CONTENT_BYTES_SIZE)
 
-		("CONTENT", ArrayType_factory(c_uint8, "bytes", iso1ContractSignatureEncryptedPrivateKeyType_CONTENT_BYTES_SIZE)),
+	_fields_=[
+		("Id", id_type),
+
+		("CONTENT", content_type),
 	]
 
 
 class iso1SPKIDataType(Structure):
+	any_type = ArrayType_factory(c_uint32, "characters", iso1SPKIDataType_ANY_CHARACTERS_SIZE)
+	spki_exp_type = ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1SPKIDataType_SPKISexp_BYTES_SIZE), "array", dinSPKIDataType_SPKISexp_ARRAY_SIZE)
+
 	_fields_=[
+		("SPKISexp", spki_exp_type),
+
+		("ANY", any_type),
+
 		("ANY_isUsed", c_uint, 1),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1SPKIDataType_ANY_CHARACTERS_SIZE)),
-
-		("SPKISexp", ArrayType_factory(ArrayType_factory(c_uint8, "bytes", iso1SPKIDataType_SPKISexp_BYTES_SIZE), "array", iso1SPKIDataType_SPKISexp_ARRAY_SIZE)),
 	]
 
 
@@ -4349,22 +4416,32 @@ class iso1EntryType(Structure):
 		("TimeInterval", iso1IntervalType),
 
 		("RelativeTimeInterval", iso1RelativeTimeIntervalType),
+
+		("TimeInterval_isUsed", c_uint, 1),
+
+		("RelativeTimeInterval_isUsed", c_uint, 1),
+
 	]
 
 
 class iso1SessionSetupReqType(Structure):
+	evccid_type = ArrayType_factory(c_uint8, "bytes", iso1SessionSetupReqType_EVCCID_BYTES_SIZE)
+
 	_fields_=[
-		("EVCCID", ArrayType_factory(c_uint8, "bytes", iso1SessionSetupReqType_EVCCID_BYTES_SIZE)),
+		("EVCCID", evccid_type),
 	]
 
 
 class iso1CanonicalizationMethodType(Structure):
+	algorithm_type = ArrayType_factory(c_uint32, "characters", iso1CanonicalizationMethodType_Algorithm_CHARACTERS_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1CanonicalizationMethodType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
+		("Algorithm", algorithm_type),
+
+		("ANY", any_type),
+
 		("ANY_isUsed", c_uint, 1),
-
-		("Algorithm", ArrayType_factory(c_uint32, "characters", iso1CanonicalizationMethodType_Algorithm_CHARACTERS_SIZE)),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1CanonicalizationMethodType_ANY_CHARACTERS_SIZE)),
 	]
 
 
@@ -4379,32 +4456,37 @@ class iso1DC_EVStatusType(Structure):
 
 
 class iso1ServiceType(Structure):
+	service_name_type = ArrayType_factory(c_uint32, "characters", iso1ServiceType_ServiceName_CHARACTERS_SIZE)
+	service_scope_type = ArrayType_factory(c_uint32, "characters", iso1ServiceType_ServiceScope_CHARACTERS_SIZE)
+
 	_fields_=[
 		("ServiceID", c_uint16),
+
+		("ServiceName", service_name_type),
 
 		("ServiceName_isUsed", c_uint, 1),
 
 		("ServiceCategory", c_uint),
 
+		("ServiceScope", service_scope_type),
+
 		("ServiceScope_isUsed", c_uint, 1),
 
 		("FreeService", c_int),
-
-		("ServiceName", ArrayType_factory(c_uint32, "characters", iso1ServiceType_ServiceName_CHARACTERS_SIZE)),
-
-		("ServiceScope", ArrayType_factory(c_uint32, "characters", iso1ServiceType_ServiceScope_CHARACTERS_SIZE)),
 	]
 
 
 class iso1ServiceDiscoveryReqType(Structure):
+	service_scope_type = ArrayType_factory(c_uint32, "characters", iso1ServiceDiscoveryReqType_ServiceScope_CHARACTERS_SIZE)
+
 	_fields_=[
+		("ServiceScope", service_scope_type),
+
 		("ServiceScope_isUsed", c_uint, 1),
 
 		("ServiceCategory", c_uint),
 
 		("ServiceCategory_isUsed", c_uint, 1),
-
-		("ServiceScope", ArrayType_factory(c_uint32, "characters", iso1ServiceDiscoveryReqType_ServiceScope_CHARACTERS_SIZE)),
 	]
 
 
@@ -4441,8 +4523,10 @@ class iso1BodyBaseType(Structure):
 
 
 class iso1SupportedEnergyTransferModeType(Structure):
+	energy_transfer_mode_type = ArrayType_factory(c_uint32, "array", iso1SupportedEnergyTransferModeType_EnergyTransferMode_ARRAY_SIZE)
+
 	_fields_=[
-		("EnergyTransferMode", ArrayType_factory(c_uint32, "array", iso1SupportedEnergyTransferModeType_EnergyTransferMode_ARRAY_SIZE)),
+		("EnergyTransferMode", energy_transfer_mode_type),
 	]
 
 
@@ -4459,68 +4543,85 @@ class iso1PaymentServiceSelectionResType(Structure):
 
 
 class iso1DigestMethodType(Structure):
+	algorithm_type = ArrayType_factory(c_uint32, "characters", iso1DigestMethodType_Algorithm_CHARACTERS_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1DigestMethodType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
+		("Algorithm", algorithm_type),
+
+		("ANY", any_type),
+
 		("ANY_isUsed", c_uint, 1),
-
-		("Algorithm", ArrayType_factory(c_uint32, "characters", iso1DigestMethodType_Algorithm_CHARACTERS_SIZE)),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1DigestMethodType_ANY_CHARACTERS_SIZE)),
 	]
 
 
 class iso1SignaturePropertyType(Structure):
+	target_type = ArrayType_factory(c_uint32, "characters", iso1SignaturePropertyType_Target_CHARACTERS_SIZE)
+	id_type = ArrayType_factory(c_uint32, "characters", iso1SignaturePropertyType_Id_CHARACTERS_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1SignaturePropertyType_ANY_CHARACTERS_SIZE) 
+
 	_fields_=[
+		("Target", target_type),
+
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
+		("ANY", any_type),
+
 		("ANY_isUsed", c_uint, 1),
-
-		("Target", ArrayType_factory(c_uint32, "characters", iso1SignaturePropertyType_Target_CHARACTERS_SIZE)),
-
-		("Id", ArrayType_factory(c_uint32, "characters", iso1SignaturePropertyType_Id_CHARACTERS_SIZE)),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1SignaturePropertyType_ANY_CHARACTERS_SIZE)),
 	]
 
 
 class iso1PGPDataType(Structure):
+	pgp_key_id_type = ArrayType_factory(c_uint8, "bytes", iso1PGPDataType_PGPKeyID_BYTES_SIZE)
+	pgp_key_packet_type = ArrayType_factory(c_uint8, "bytes", iso1PGPDataType_PGPKeyPacket_BYTES_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1PGPDataType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
-		("PGPKeyID_isUsed", c_uint, 1),
+		("PGPKeyID", pgp_key_id_type),
 
-		("PGPKeyPacket_isUsed", c_uint, 1),
+		("PGPKeyID_isUsed", c_uint8, 1),
 
-		("ANY_isUsed", c_uint, 1),
+		("PGPKeyPacket", pgp_key_packet_type),
 
-		("PGPKeyID", ArrayType_factory(c_uint8, "bytes", iso1PGPDataType_PGPKeyID_BYTES_SIZE)),
+		("PGPKeyPacket_isUsed", c_uint8, 1),
 
-		("PGPKeyPacket", ArrayType_factory(c_uint8, "bytes", iso1PGPDataType_PGPKeyPacket_BYTES_SIZE)),
+		("ANY", any_type),
 
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1PGPDataType_ANY_CHARACTERS_SIZE)),
+		("ANY_isUsed", c_uint8, 1),
 	]
 
 
 class iso1SessionSetupResType(Structure):
+	evse_id_type = ArrayType_factory(c_uint32, "characters", iso1SessionSetupResType_EVSEID_CHARACTERS_SIZE)
+
 	_fields_=[
 		("ResponseCode", c_uint),
+
+		("EVSEID", evse_id_type),
 
 		("EVSETimeStamp", c_int64),
 
 		("EVSETimeStamp_isUsed", c_uint, 1),
 
-		("EVSEID", ArrayType_factory(c_uint32, "characters", iso1SessionSetupResType_EVSEID_CHARACTERS_SIZE)),
 	]
 
 
 class iso1CertificateChainType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1CertificateChainType_Id_CHARACTERS_SIZE)
+	certificate_type = ArrayType_factory(c_uint8, "bytes", iso1CertificateChainType_Certificate_BYTES_SIZE)
+
 	_fields_=[
-		("Id_isUsed", c_uint, 1),
+		("Id", id_type),
+
+		("Id_isUsed", c_uint8, 1),
+
+		("Certificate", certificate_type),
 
 		("SubCertificates", iso1SubCertificatesType),
 
-		("SubCertificates_isUsed", c_uint, 1),
-
-		("Id", ArrayType_factory(c_uint32, "characters", iso1CertificateChainType_Id_CHARACTERS_SIZE)),
-
-		("Certificate", ArrayType_factory(c_uint8, "bytes", iso1CertificateChainType_Certificate_BYTES_SIZE)),
+		("SubCertificates_isUsed", c_uint8, 1),
 	]
 
 
@@ -4539,8 +4640,10 @@ class iso1DC_EVSEStatusType(Structure):
 
 
 class iso1ServiceListType(Structure):
+	service_type = ArrayType_factory(iso1ServiceType, "array", iso1ServiceListType_Service_ARRAY_SIZE)
+
 	_fields_=[
-		("array", (iso1ServiceType*iso1ServiceListType_Service_ARRAY_SIZE)),
+		("Service", service_type),
 	]
 
 
@@ -4563,8 +4666,10 @@ class iso1PowerDeliveryResType(Structure):
 
 
 class iso1PaymentOptionListType(Structure):
+	payment_option_type = ArrayType_factory(c_uint32, "array", iso1PaymentOptionListType_PaymentOption_ARRAY_SIZE)
+
 	_fields_=[
-		("PaymentOption", ArrayType_factory(c_uint32, "array", iso1PaymentOptionListType_PaymentOption_ARRAY_SIZE)),
+		("PaymentOption", payment_option_type),
 	]
 
 
@@ -4579,10 +4684,12 @@ class iso1PhysicalValueType(Structure):
 
 
 class iso1PaymentDetailsReqType(Structure):
-	_fields_=[
-		("ContractSignatureCertChain", iso1CertificateChainType),
+	emaid_type = ArrayType_factory(c_uint32, "characters", iso1PaymentDetailsReqType_eMAID_CHARACTERS_SIZE)
 
-		("eMAID", ArrayType_factory(c_uint32, "characters", iso1PaymentDetailsReqType_eMAID_CHARACTERS_SIZE)),
+	_fields_=[
+		("eMAID", emaid_type),
+
+		("ContractSignatureCertChain", iso1CertificateChainType),
 	]
 
 
@@ -4621,8 +4728,12 @@ class iso1DC_EVSEChargeParameterType(Structure):
 
 
 class iso1ChargingStatusResType(Structure):
+	evse_id_type = ArrayType_factory(c_uint32, "characters", iso1ChargingStatusResType_EVSEID_CHARACTERS_SIZE)
+	
 	_fields_=[
 		("ResponseCode", c_uint),
+
+		("EVSEID", evse_id_type),
 
 		("SAScheduleTupleID", c_uint8),
 
@@ -4639,40 +4750,45 @@ class iso1ChargingStatusResType(Structure):
 		("ReceiptRequired_isUsed", c_uint, 1),
 
 		("AC_EVSEStatus", iso1AC_EVSEStatusType),
-
-		("EVSEID", ArrayType_factory(c_uint32, "characters", iso1ChargingStatusResType_EVSEID_CHARACTERS_SIZE)),
 	]
 
 
 class iso1ListOfRootCertificateIDsType(Structure):
+	root_certificate_id_type = ArrayType_factory(iso1X509IssuerSerialType, "array", iso1ListOfRootCertificateIDsType_RootCertificateID_ARRAY_SIZE)
+
 	_fields_=[
-		("array", (iso1X509IssuerSerialType*iso1ListOfRootCertificateIDsType_RootCertificateID_ARRAY_SIZE)),
+		("RootCertificateID", root_certificate_id_type),
 	]
 
 
 class iso1ChargeServiceType(Structure):
+	service_scope_type = ArrayType_factory(c_uint32, "characters", iso1ChargeServiceType_ServiceScope_CHARACTERS_SIZE)
+	service_name_type = ArrayType_factory(c_uint32, "characters", iso1ChargeServiceType_ServiceName_CHARACTERS_SIZE)
+
 	_fields_=[
 		("ServiceID", c_uint16),
+
+		("ServiceName", service_name_type),
 
 		("ServiceName_isUsed", c_uint, 1),
 
 		("ServiceCategory", c_uint),
+
+		("ServiceScope", service_scope_type),
 
 		("ServiceScope_isUsed", c_uint, 1),
 
 		("FreeService", c_int),
 
 		("SupportedEnergyTransferMode", iso1SupportedEnergyTransferModeType),
-
-		("ServiceName", ArrayType_factory(c_uint32, "characters", iso1ChargeServiceType_ServiceName_CHARACTERS_SIZE)),
-
-		("ServiceScope", ArrayType_factory(c_uint32, "characters", iso1ChargeServiceType_ServiceScope_CHARACTERS_SIZE)),
 	]
 
 
 class iso1SelectedServiceListType(Structure):
+	selected_service_type = ArrayType_factory(iso1SelectedServiceType, "array", iso1SelectedServiceListType_SelectedService_ARRAY_SIZE)
+
 	_fields_=[
-		("array", (iso1SelectedServiceType*iso1SelectedServiceListType_SelectedService_ARRAY_SIZE)),
+		("SelectedService", selected_service_type),
 	]
 
 
@@ -4687,8 +4803,10 @@ class iso1CableCheckResType(Structure):
 
 
 class iso1TransformsType(Structure):
+	transform_type = ArrayType_factory(iso1TransformType, "array", iso1TransformsType_Transform_ARRAY_SIZE)
+	
 	_fields_=[
-		("array", (iso1TransformType*iso1TransformsType_Transform_ARRAY_SIZE)),
+		("Transform", transform_type),
 	]
 
 
@@ -4761,10 +4879,21 @@ class iso1WeldingDetectionResType(Structure):
 
 
 class iso1ReferenceType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1ReferenceType_Id_CHARACTERS_SIZE)
+	uri_type = ArrayType_factory(c_uint32, "characters", iso1ReferenceType_URI_CHARACTERS_SIZE)
+	type_type = ArrayType_factory(c_uint32, "characters", iso1ReferenceType_Type_CHARACTERS_SIZE)
+	digest_value_type = ArrayType_factory(c_uint8, "bytes", iso1ReferenceType_DigestValue_BYTES_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
+		("URI", uri_type),
+
 		("URI_isUsed", c_uint, 1),
+
+		("Type", type_type),
 
 		("Type_isUsed", c_uint, 1),
 
@@ -4774,13 +4903,7 @@ class iso1ReferenceType(Structure):
 
 		("DigestMethod", iso1DigestMethodType),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1ReferenceType_Id_CHARACTERS_SIZE)),
-
-		("URI", ArrayType_factory(c_uint32, "characters", iso1ReferenceType_URI_CHARACTERS_SIZE)),
-
-		("Type", ArrayType_factory(c_uint32, "characters", iso1ReferenceType_Type_CHARACTERS_SIZE)),
-
-		("DigestValue", ArrayType_factory(c_uint8, "bytes", iso1ReferenceType_DigestValue_BYTES_SIZE)),
+		("DigestValue", digest_value_type),
 	]
 
 
@@ -4828,7 +4951,7 @@ class iso1CostType(Structure):
 
 		("amountMultiplier", c_int8),
 
-		("amountMultiplier_isUsed", c_uint, 1),
+		("amountMultiplier_isUsed", c_uint8, 1),
 	]
 
 
@@ -4845,8 +4968,15 @@ class iso1DC_EVPowerDeliveryParameterType(Structure):
 
 
 class iso1RetrievalMethodType(Structure):
+	uri_type = ArrayType_factory(c_uint32, "characters", iso1RetrievalMethodType_URI_CHARACTERS_SIZE)
+	type_type = ArrayType_factory(c_uint32, "characters", iso1RetrievalMethodType_Type_CHARACTERS_SIZE)
+
 	_fields_=[
+		("URI", uri_type),
+
 		("URI_isUsed", c_uint, 1),
+
+		("Type", type_type),
 
 		("Type_isUsed", c_uint, 1),
 
@@ -4854,9 +4984,7 @@ class iso1RetrievalMethodType(Structure):
 
 		("Transforms_isUsed", c_uint, 1),
 
-		("URI", ArrayType_factory(c_uint32, "characters", iso1RetrievalMethodType_URI_CHARACTERS_SIZE)),
 
-		("Type", ArrayType_factory(c_uint32, "characters", iso1RetrievalMethodType_Type_CHARACTERS_SIZE)),
 	]
 
 
@@ -4876,7 +5004,7 @@ class iso1CertificateUpdateResType(Structure):
 
 		("RetryCounter", c_int16),
 
-		("RetryCounter_isUsed", c_uint, 1),
+		("RetryCounter_isUsed", c_uint8, 1),
 	]
 
 
@@ -4903,6 +5031,8 @@ class iso1WeldingDetectionReqType(Structure):
 
 
 class iso1CurrentDemandResType(Structure):
+	evse_id_type = ArrayType_factory(c_uint32, "characters", iso1CurrentDemandResType_EVSEID_CHARACTERS_SIZE)
+
 	_fields_=[
 		("ResponseCode", c_uint),
 
@@ -4930,6 +5060,8 @@ class iso1CurrentDemandResType(Structure):
 
 		("EVSEMaximumPowerLimit_isUsed", c_uint, 1),
 
+		("EVSEID", evse_id_type),
+
 		("SAScheduleTupleID", c_uint8),
 
 		("MeterInfo", iso1MeterInfoType),
@@ -4940,7 +5072,6 @@ class iso1CurrentDemandResType(Structure):
 
 		("ReceiptRequired_isUsed", c_uint, 1),
 
-		("EVSEID", ArrayType_factory(c_uint32, "characters", iso1CurrentDemandResType_EVSEID_CHARACTERS_SIZE)),
 	]
 
 
@@ -4963,52 +5094,63 @@ class iso1PaymentServiceSelectionReqType(Structure):
 
 
 class iso1SignaturePropertiesType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1SignaturePropertiesType_Id_CHARACTERS_SIZE)
+	signature_property_type = ArrayType_factory(iso1SignaturePropertyType, "array", iso1SignaturePropertiesType_SignatureProperty_ARRAY_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1SignaturePropertiesType_Id_CHARACTERS_SIZE)),
-
-		("array", (iso1SignaturePropertyType*iso1SignaturePropertiesType_SignatureProperty_ARRAY_SIZE)),
+		("SignatureProperty", signature_property_type),
 	]
 
 
 class iso1ParameterType(Structure):
+	string_value_type = ArrayType_factory(c_uint32, "characters", iso1ParameterType_stringValue_CHARACTERS_SIZE)
+	name_type = ArrayType_factory(c_uint32, "characters", iso1ParameterType_Name_CHARACTERS_SIZE)
+
 	_fields_=[
+		("Name", name_type),
+
 		("boolValue", c_int),
 
-		("boolValue_isUsed", c_uint, 1),
+		("boolValue_isUsed", c_uint8, 1),
 
 		("byteValue", c_int8),
 
-		("byteValue_isUsed", c_uint, 1),
+		("byteValue_isUsed", c_uint8, 1),
 
 		("shortValue", c_int16),
 
-		("shortValue_isUsed", c_uint, 1),
+		("shortValue_isUsed", c_uint8, 1),
 
 		("intValue", c_int32),
 
-		("intValue_isUsed", c_uint, 1),
+		("intValue_isUsed", c_uint8, 1),
 
 		("physicalValue", iso1PhysicalValueType),
 
-		("physicalValue_isUsed", c_uint, 1),
+		("physicalValue_isUsed", c_uint8, 1),
 
-		("stringValue_isUsed", c_uint, 1),
+		("stringValue", string_value_type),
 
-		("Name", ArrayType_factory(c_uint32, "characters", iso1ParameterType_Name_CHARACTERS_SIZE)),
-
-		("stringValue", ArrayType_factory(c_uint32, "characters", iso1ParameterType_stringValue_CHARACTERS_SIZE)),
+		("stringValue_isUsed", c_uint8, 1),
 	]
 
 
 class iso1CertificateInstallationReqType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1CertificateInstallationReqType_Id_CHARACTERS_SIZE)
+	oem_provisioning_cert_type = ArrayType_factory(c_uint8, "bytes", iso1CertificateInstallationReqType_OEMProvisioningCert_BYTES_SIZE)
+	
 	_fields_=[
+		("Id", id_type),
+
+		("OEMProvisioningCert", oem_provisioning_cert_type),
+
 		("ListOfRootCertificateIDs", iso1ListOfRootCertificateIDsType),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1CertificateInstallationReqType_Id_CHARACTERS_SIZE)),
 
-		("OEMProvisioningCert", ArrayType_factory(c_uint8, "bytes", iso1CertificateInstallationReqType_OEMProvisioningCert_BYTES_SIZE)),
 	]
 
 
@@ -5037,24 +5179,29 @@ class iso1PreChargeResType(Structure):
 
 
 class iso1ParameterSetType(Structure):
+	parameter_type = ArrayType_factory(iso1ParameterType, "array", iso1ParameterSetType_Parameter_ARRAY_SIZE)
+
 	_fields_=[
 		("ParameterSetID", c_int16),
 
-		("array", (iso1ParameterType*iso1ParameterSetType_Parameter_ARRAY_SIZE)),
+		("Parameter", parameter_type),
 	]
 
 
 class iso1SignedInfoType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1SignedInfoType_Id_CHARACTERS_SIZE)
+	reference_type = ArrayType_factory(iso1ReferenceType, "array", iso1SignedInfoType_Reference_ARRAY_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
 		("CanonicalizationMethod", iso1CanonicalizationMethodType),
 
 		("SignatureMethod", iso1SignatureMethodType),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1SignedInfoType_Id_CHARACTERS_SIZE)),
-
-		("array", (iso1ReferenceType*iso1SignedInfoType_Reference_ARRAY_SIZE)),
+		("Reference", reference_type),
 	]
 
 
@@ -5066,17 +5213,20 @@ class iso1ProfileEntryType(Structure):
 
 		("ChargingProfileEntryMaxNumberOfPhasesInUse", c_int8),
 
-		("ChargingProfileEntryMaxNumberOfPhasesInUse_isUsed", c_uint, 1),
+		("ChargingProfileEntryMaxNumberOfPhasesInUse_isUsed", c_uint8, 1),
 	]
 
 
 class iso1ManifestType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1ManifestType_Id_CHARACTERS_SIZE)
+	reference_type = ArrayType_factory(iso1ReferenceType, "array", iso1ManifestType_Reference_ARRAY_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1ManifestType_Id_CHARACTERS_SIZE)),
-
-		("array", (iso1ReferenceType*iso1ManifestType_Reference_ARRAY_SIZE)),
+		("Reference", reference_type),
 	]
 
 
@@ -5084,7 +5234,7 @@ class iso1DC_EVChargeParameterType(Structure):
 	_fields_=[
 		("DepartureTime", c_uint32),
 
-		("DepartureTime_isUsed", c_uint, 1),
+		("DepartureTime_isUsed", c_uint8, 1),
 
 		("DC_EVStatus", iso1DC_EVStatusType),
 
@@ -5092,77 +5242,94 @@ class iso1DC_EVChargeParameterType(Structure):
 
 		("EVMaximumPowerLimit", iso1PhysicalValueType),
 
-		("EVMaximumPowerLimit_isUsed", c_uint, 1),
+		("EVMaximumPowerLimit_isUsed", c_uint8, 1),
 
 		("EVMaximumVoltageLimit", iso1PhysicalValueType),
 
 		("EVEnergyCapacity", iso1PhysicalValueType),
 
-		("EVEnergyCapacity_isUsed", c_uint, 1),
+		("EVEnergyCapacity_isUsed", c_uint8, 1),
 
 		("EVEnergyRequest", iso1PhysicalValueType),
 
-		("EVEnergyRequest_isUsed", c_uint, 1),
+		("EVEnergyRequest_isUsed", c_uint8, 1),
 
 		("FullSOC", c_int8),
 
-		("FullSOC_isUsed", c_uint, 1),
+		("FullSOC_isUsed", c_uint8, 1),
 
 		("BulkSOC", c_int8),
 
-		("BulkSOC_isUsed", c_uint, 1),
+		("BulkSOC_isUsed", c_uint8, 1),
 	]
 
 
 class iso1ConsumptionCostType(Structure):
+	cost_type = ArrayType_factory(iso1CostType, "array", iso1ConsumptionCostType_Cost_ARRAY_SIZE)
+
 	_fields_=[
 		("startValue", iso1PhysicalValueType),
 
-		("array", (iso1CostType*iso1ConsumptionCostType_Cost_ARRAY_SIZE)),
+		("Cost", cost_type),
 	]
 
 
 class iso1PMaxScheduleType(Structure):
+	pmax_schedule_entry_type = ArrayType_factory(iso1PMaxScheduleEntryType, "array", iso1PMaxScheduleType_PMaxScheduleEntry_ARRAY_SIZE)
+
 	_fields_=[
-		("array", (iso1PMaxScheduleEntryType*iso1PMaxScheduleType_PMaxScheduleEntry_ARRAY_SIZE)),
+		("PMaxScheduleEntry", pmax_schedule_entry_type),
 	]
 
 
 class iso1CertificateUpdateReqType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1CertificateUpdateReqType_Id_CHARACTERS_SIZE)
+	emaid_type = ArrayType_factory(c_uint32, "characters", iso1CertificateUpdateReqType_eMAID_CHARACTERS_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("ContractSignatureCertChain", iso1CertificateChainType),
 
+		("eMAID", emaid_type),
+
 		("ListOfRootCertificateIDs", iso1ListOfRootCertificateIDsType),
-
-		("Id", ArrayType_factory(c_uint32, "characters", iso1CertificateUpdateReqType_Id_CHARACTERS_SIZE)),
-
-		("eMAID", ArrayType_factory(c_uint32, "characters", iso1CertificateUpdateReqType_eMAID_CHARACTERS_SIZE)),
 	]
 
 
 class iso1KeyInfoType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_Id_CHARACTERS_SIZE)
+	key_name_type = ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_KeyName_CHARACTERS_SIZE), "array", iso1KeyInfoType_KeyName_ARRAY_SIZE)
+	key_value_type = ArrayType_factory(iso1KeyValueType, "array", iso1KeyInfoType_KeyValue_ARRAY_SIZE)
+	retrieval_method_type = ArrayType_factory(iso1RetrievalMethodType, "array", iso1KeyInfoType_RetrievalMethod_ARRAY_SIZE)
+	x509_data_type = ArrayType_factory(iso1X509DataType, "array", iso1KeyInfoType_X509Data_ARRAY_SIZE)
+	pgp_data_type = ArrayType_factory(iso1PGPDataType, "array", iso1KeyInfoType_PGPData_ARRAY_SIZE)
+	spki_data_type = ArrayType_factory(iso1SPKIDataType, "array", iso1KeyInfoType_SPKIData_ARRAY_SIZE)
+	mgmt_data_type = ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_MgmtData_CHARACTERS_SIZE), "array", iso1KeyInfoType_MgmtData_ARRAY_SIZE)
+	any_type = ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_ANY_CHARACTERS_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
+		("KeyName", key_name_type),
+
+		("KeyValue", key_value_type),
+
+		("RetrievalMethod", retrieval_method_type),
+
+		("X509Data", x509_data_type),
+
+		("PGPData", pgp_data_type),
+
+		("SPKIData", spki_data_type),
+
+		("MgmtData", mgmt_data_type),
+
+		("ANY", any_type),
+
 		("ANY_isUsed", c_uint, 1),
-
-		("Id", ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_Id_CHARACTERS_SIZE)),
-
-		("array", (iso1KeyValueType*iso1KeyInfoType_KeyValue_ARRAY_SIZE)),
-
-		("array", (iso1RetrievalMethodType*iso1KeyInfoType_RetrievalMethod_ARRAY_SIZE)),
-
-		("array", (iso1X509DataType*iso1KeyInfoType_X509Data_ARRAY_SIZE)),
-
-		("array", (iso1PGPDataType*iso1KeyInfoType_PGPData_ARRAY_SIZE)),
-
-		("array", (iso1SPKIDataType*iso1KeyInfoType_SPKIData_ARRAY_SIZE)),
-
-		("ANY", ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_ANY_CHARACTERS_SIZE)),
-
-		("KeyName", ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_KeyName_CHARACTERS_SIZE), "array", iso1KeyInfoType_KeyName_ARRAY_SIZE)),
-
-		("MgmtData", ArrayType_factory(ArrayType_factory(c_uint32, "characters", iso1KeyInfoType_MgmtData_CHARACTERS_SIZE), "array", iso1KeyInfoType_MgmtData_ARRAY_SIZE)),
 	]
 
 
@@ -5170,70 +5337,83 @@ class iso1ChargeParameterDiscoveryReqType(Structure):
 	_fields_=[
 		("MaxEntriesSAScheduleTuple", c_uint16),
 
-		("MaxEntriesSAScheduleTuple_isUsed", c_uint, 1),
+		("MaxEntriesSAScheduleTuple_isUsed", c_uint8, 1),
 
 		("RequestedEnergyTransferMode", c_uint),
 
 		("EVChargeParameter", iso1EVChargeParameterType),
 
-		("EVChargeParameter_isUsed", c_uint, 1),
+		("EVChargeParameter_isUsed", c_uint8, 1),
 
 		("AC_EVChargeParameter", iso1AC_EVChargeParameterType),
 
-		("AC_EVChargeParameter_isUsed", c_uint, 1),
+		("AC_EVChargeParameter_isUsed", c_uint8, 1),
 
 		("DC_EVChargeParameter", iso1DC_EVChargeParameterType),
 
-		("DC_EVChargeParameter_isUsed", c_uint, 1),
+		("DC_EVChargeParameter_isUsed", c_uint8, 1),
 	]
 
 
 class iso1ChargingProfileType(Structure):
+	profile_entry_type = ArrayType_factory(iso1ProfileEntryType, "array", iso1ChargingProfileType_ProfileEntry_ARRAY_SIZE)
+
 	_fields_=[
-		("array", (iso1ProfileEntryType*iso1ChargingProfileType_ProfileEntry_ARRAY_SIZE)),
+		("ProfileEntry", profile_entry_type),
 	]
 
 
 class iso1SalesTariffEntryType(Structure):
+	consumption_cost_type = ArrayType_factory(iso1ConsumptionCostType, "array", iso1SalesTariffEntryType_ConsumptionCost_ARRAY_SIZE)
+
 	_fields_=[
 		("TimeInterval", iso1IntervalType),
 
-		("TimeInterval_isUsed", c_uint, 1),
+		("TimeInterval_isUsed", c_uint8, 1),
 
 		("RelativeTimeInterval", iso1RelativeTimeIntervalType),
 
-		("RelativeTimeInterval_isUsed", c_uint, 1),
+		("RelativeTimeInterval_isUsed", c_uint8, 1),
 
 		("EPriceLevel", c_uint8),
 
-		("EPriceLevel_isUsed", c_uint, 1),
+		("EPriceLevel_isUsed", c_uint8, 1),
 
-		("array", (iso1ConsumptionCostType*iso1SalesTariffEntryType_ConsumptionCost_ARRAY_SIZE)),
+		("ConsumptionCost", consumption_cost_type),
 	]
 
 
 class iso1SalesTariffType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1SalesTariffType_Id_CHARACTERS_SIZE)
+	sales_tariff_description_type = ArrayType_factory(c_uint32, "characters", iso1SalesTariffType_SalesTariffDescription_CHARACTERS_SIZE)
+	sales_tariff_entry_type = ArrayType_factory(iso1SalesTariffEntryType, "array", iso1SalesTariffType_SalesTariffEntry_ARRAY_SIZE)
+
 	_fields_=[
-		("Id_isUsed", c_uint, 1),
+		("Id", id_type),
+
+		("Id_isUsed", c_uint8, 1),
 
 		("SalesTariffID", c_uint8),
 
-		("SalesTariffDescription_isUsed", c_uint, 1),
+		("SalesTariffDescription", sales_tariff_description_type),
+
+		("SalesTariffDescription_isUsed", c_uint8, 1),
 
 		("NumEPriceLevels", c_uint8),
 
-		("NumEPriceLevels_isUsed", c_uint, 1),
+		("NumEPriceLevels_isUsed", c_uint8, 1),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1SalesTariffType_Id_CHARACTERS_SIZE)),
-
-		("SalesTariffDescription", ArrayType_factory(c_uint32, "characters", iso1SalesTariffType_SalesTariffDescription_CHARACTERS_SIZE)),
-
-		("array", (iso1SalesTariffEntryType*iso1SalesTariffType_SalesTariffEntry_ARRAY_SIZE)),
+		("SalesTariffEntry", sales_tariff_entry_type),
 	]
 
 
 class iso1SignatureType(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", iso1SignatureType_Id_CHARACTERS_SIZE)
+	object_type = ArrayType_factory(iso1ObjectType, "array", iso1SignatureType_Object_ARRAY_SIZE)
+
 	_fields_=[
+		("Id", id_type),
+
 		("Id_isUsed", c_uint, 1),
 
 		("SignedInfo", iso1SignedInfoType),
@@ -5244,9 +5424,7 @@ class iso1SignatureType(Structure):
 
 		("KeyInfo_isUsed", c_uint, 1),
 
-		("Id", ArrayType_factory(c_uint32, "characters", iso1SignatureType_Id_CHARACTERS_SIZE)),
-
-		("array", (iso1ObjectType*iso1SignatureType_Object_ARRAY_SIZE)),
+		("Object", object_type),
 	]
 
 
@@ -5271,8 +5449,10 @@ class iso1PowerDeliveryReqType(Structure):
 
 
 class iso1ServiceParameterListType(Structure):
+	parameter_set_type = ArrayType_factory(iso1ParameterSetType, "array", iso1ServiceParameterListType_ParameterSet_ARRAY_SIZE)
+
 	_fields_=[
-		("array", (iso1ParameterSetType*iso1ServiceParameterListType_ParameterSet_ARRAY_SIZE)),
+		("ParameterSet", parameter_set_type),
 	]
 
 
@@ -5301,7 +5481,11 @@ class iso1SAScheduleTupleType(Structure):
 
 
 class iso1MessageHeaderType(Structure):
+	session_id_type = ArrayType_factory(c_uint8, "bytes", iso1MessageHeaderType_SessionID_BYTES_SIZE)
+
 	_fields_=[
+		("SessionID", session_id_type),
+
 		("Notification", iso1NotificationType),
 
 		("Notification_isUsed", c_uint, 1),
@@ -5309,14 +5493,14 @@ class iso1MessageHeaderType(Structure):
 		("Signature", iso1SignatureType),
 
 		("Signature_isUsed", c_uint, 1),
-
-		("SessionID", ArrayType_factory(c_uint8, "bytes", iso1MessageHeaderType_SessionID_BYTES_SIZE)),
 	]
 
 
 class iso1SAScheduleListType(Structure):
+	sa_schedule_tuple_type = ArrayType_factory(iso1SAScheduleTupleType, "array", iso1SAScheduleListType_SAScheduleTuple_ARRAY_SIZE)
+
 	_fields_=[
-		("array", (iso1SAScheduleTupleType*iso1SAScheduleListType_SAScheduleTuple_ARRAY_SIZE)),
+		("SAScheduleTuple", sa_schedule_tuple_type),
 	]
 
 
@@ -5419,6 +5603,77 @@ class iso1BodyType(Structure):
 		("WeldingDetectionReq", iso1WeldingDetectionReqType),
 
 		("WeldingDetectionRes", iso1WeldingDetectionResType),
+
+		("BodyElement_isUsed", c_uint8, 1),
+		
+		("SessionSetupReq_isUsed", c_uint8, 1),
+		
+		("SessionSetupRes_isUsed", c_uint8, 1),
+		
+		("ServiceDiscoveryReq_isUsed", c_uint8, 1),
+		
+		("ServiceDiscoveryRes_isUsed", c_uint8, 1),
+		
+		("ServiceDetailReq_isUsed", c_uint8, 1),
+		
+		("ServiceDetailRes_isUsed", c_uint8, 1),
+		
+		("PaymentServiceSelectionReq_isUsed", c_uint8, 1),
+		
+		("PaymentServiceSelectionRes_isUsed", c_uint8, 1),
+		
+		("PaymentDetailsReq_isUsed", c_uint8, 1),
+		
+		("PaymentDetailsRes_isUsed", c_uint8, 1),
+		
+		("AuthorizationReq_isUsed", c_uint8, 1),
+		
+		("AuthorizationRes_isUsed", c_uint8, 1),
+		
+		("ChargeParameterDiscoveryReq_isUsed", c_uint8, 1),
+		
+		("ChargeParameterDiscoveryRes_isUsed", c_uint8, 1),
+		
+		("PowerDeliveryReq_isUsed", c_uint8, 1),
+		
+		("PowerDeliveryRes_isUsed", c_uint8, 1),
+		
+		("MeteringReceiptReq_isUsed", c_uint8, 1),
+		
+		("MeteringReceiptRes_isUsed", c_uint8, 1),
+		
+		("SessionStopReq_isUsed", c_uint8, 1),
+		
+		("SessionStopRes_isUsed", c_uint8, 1),
+		
+		("CertificateUpdateReq_isUsed", c_uint8, 1),
+		
+		("CertificateUpdateRes_isUsed", c_uint8, 1),
+		
+		("CertificateInstallationReq_isUsed", c_uint8, 1),
+		
+		("CertificateInstallationRes_isUsed", c_uint8, 1),
+		
+		("ChargingStatusReq_isUsed", c_uint8, 1),
+		
+		("ChargingStatusRes_isUsed", c_uint8, 1),
+		
+		("CableCheckReq_isUsed", c_uint8, 1),
+		
+		("CableCheckRes_isUsed", c_uint8, 1),
+		
+		("PreChargeReq_isUsed", c_uint8, 1),
+		
+		("PreChargeRes_isUsed", c_uint8, 1),
+		
+		("CurrentDemandReq_isUsed", c_uint8, 1),
+		
+		("CurrentDemandRes_isUsed", c_uint8, 1),
+		
+		("WeldingDetectionReq_isUsed", c_uint8, 1),
+		
+		("WeldingDetectionRes_isUsed", c_uint8, 1),
+		
 	]
 
 
@@ -5431,6 +5686,10 @@ class iso1AnonType_V2G_Message(Structure):
 
 
 class iso1EXIDocument(Structure):
+	mgmt_data_type = ArrayType_factory(c_uint32, "characters", EXIDocument_MgmtData_CHARACTERS_SIZE)
+	key_name_type = ArrayType_factory(c_uint32, "characters", EXIDocument_KeyName_CHARACTERS_SIZE)
+	digest_value_type = ArrayType_factory(c_uint8, "bytes", EXIDocument_DigestValue_BYTES_SIZE)
+
 	_fields_=[
 		("V2G_Message", iso1AnonType_V2G_Message),
 
@@ -5572,6 +5831,8 @@ class iso1EXIDocument(Structure):
 
 		("PGPData", iso1PGPDataType),
 
+		("MgmtData", mgmt_data_type),
+
 		("SignatureMethod", iso1SignatureMethodType),
 
 		("KeyInfo", iso1KeyInfoType),
@@ -5582,29 +5843,194 @@ class iso1EXIDocument(Structure):
 
 		("SignatureValue", iso1SignatureValueType),
 
+		("KeyName", key_name_type),
+
+		("DigestValue", digest_value_type),
+
 		("SignedInfo", iso1SignedInfoType),
 
 		("Object", iso1ObjectType),
 
-		("MgmtData", ArrayType_factory(c_uint32, "characters", EXIDocument_MgmtData_CHARACTERS_SIZE)),
+		("V2G_Message_isUsed", c_uint8, 1),
 
-		("KeyName", ArrayType_factory(c_uint32, "characters", EXIDocument_KeyName_CHARACTERS_SIZE)),
+		("ServiceDiscoveryReq_isUsed", c_uint8, 1),
 
-		("DigestValue", ArrayType_factory(c_uint8, "bytes", EXIDocument_DigestValue_BYTES_SIZE)),
+		("ServiceDiscoveryRes_isUsed", c_uint8, 1),
+
+		("MeteringReceiptReq_isUsed", c_uint8, 1),
+
+		("PaymentDetailsReq_isUsed", c_uint8, 1),
+
+		("MeteringReceiptRes_isUsed", c_uint8, 1),
+
+		("PaymentDetailsRes_isUsed", c_uint8, 1),
+
+		("SessionSetupReq_isUsed", c_uint8, 1),
+
+		("SessionSetupRes_isUsed", c_uint8, 1),
+
+		("CableCheckReq_isUsed", c_uint8, 1),
+
+		("CableCheckRes_isUsed", c_uint8, 1),
+
+		("CertificateInstallationReq_isUsed", c_uint8, 1),
+
+		("CertificateInstallationRes_isUsed", c_uint8, 1),
+
+		("WeldingDetectionReq_isUsed", c_uint8, 1),
+
+		("WeldingDetectionRes_isUsed", c_uint8, 1),
+
+		("CertificateUpdateReq_isUsed", c_uint8, 1),
+
+		("CertificateUpdateRes_isUsed", c_uint8, 1),
+
+		("PaymentServiceSelectionReq_isUsed", c_uint8, 1),
+
+		("PowerDeliveryReq_isUsed", c_uint8, 1),
+
+		("PaymentServiceSelectionRes_isUsed", c_uint8, 1),
+
+		("PowerDeliveryRes_isUsed", c_uint8, 1),
+
+		("ChargingStatusReq_isUsed", c_uint8, 1),
+
+		("ChargingStatusRes_isUsed", c_uint8, 1),
+
+		("BodyElement_isUsed", c_uint8, 1),
+
+		("CurrentDemandReq_isUsed", c_uint8, 1),
+
+		("PreChargeReq_isUsed", c_uint8, 1),
+
+		("CurrentDemandRes_isUsed", c_uint8, 1),
+
+		("PreChargeRes_isUsed", c_uint8, 1),
+
+		("SessionStopReq_isUsed", c_uint8, 1),
+
+		("AuthorizationReq_isUsed", c_uint8, 1),
+
+		("SessionStopRes_isUsed", c_uint8, 1),
+
+		("AuthorizationRes_isUsed", c_uint8, 1),
+
+		("ChargeParameterDiscoveryReq_isUsed", c_uint8, 1),
+
+		("ChargeParameterDiscoveryRes_isUsed", c_uint8, 1),
+
+		("ServiceDetailReq_isUsed", c_uint8, 1),
+
+		("ServiceDetailRes_isUsed", c_uint8, 1),
+
+		("DC_EVSEStatus_isUsed", c_uint8, 1),
+
+		("RelativeTimeInterval_isUsed", c_uint8, 1),
+
+		("SalesTariffEntry_isUsed", c_uint8, 1),
+
+		("DC_EVPowerDeliveryParameter_isUsed", c_uint8, 1),
+
+		("SASchedules_isUsed", c_uint8, 1),
+
+		("AC_EVChargeParameter_isUsed", c_uint8, 1),
+
+		("SAScheduleList_isUsed", c_uint8, 1),
+
+		("DC_EVStatus_isUsed", c_uint8, 1),
+
+		("EVStatus_isUsed", c_uint8, 1),
+
+		("DC_EVChargeParameter_isUsed", c_uint8, 1),
+
+		("DC_EVSEChargeParameter_isUsed", c_uint8, 1),
+
+		("EVSEStatus_isUsed", c_uint8, 1),
+
+		("TimeInterval_isUsed", c_uint8, 1),
+
+		("EVPowerDeliveryParameter_isUsed", c_uint8, 1),
+
+		("EVSEChargeParameter_isUsed", c_uint8, 1),
+
+		("AC_EVSEStatus_isUsed", c_uint8, 1),
+
+		("Entry_isUsed", c_uint8, 1),
+
+		("AC_EVSEChargeParameter_isUsed", c_uint8, 1),
+
+		("PMaxScheduleEntry_isUsed", c_uint8, 1),
+
+		("EVChargeParameter_isUsed", c_uint8, 1),
+
+		("SignatureProperty_isUsed", c_uint8, 1),
+
+		("DSAKeyValue_isUsed", c_uint8, 1),
+
+		("SignatureProperties_isUsed", c_uint8, 1),
+
+		("KeyValue_isUsed", c_uint8, 1),
+
+		("Transforms_isUsed", c_uint8, 1),
+
+		("DigestMethod_isUsed", c_uint8, 1),
+
+		("Signature_isUsed", c_uint8, 1),
+
+		("RetrievalMethod_isUsed", c_uint8, 1),
+
+		("Manifest_isUsed", c_uint8, 1),
+
+		("Reference_isUsed", c_uint8, 1),
+
+		("CanonicalizationMethod_isUsed", c_uint8, 1),
+
+		("RSAKeyValue_isUsed", c_uint8, 1),
+
+		("Transform_isUsed", c_uint8, 1),
+
+		("PGPData_isUsed", c_uint8, 1),
+
+		("MgmtData_isUsed", c_uint8, 1),
+
+		("SignatureMethod_isUsed", c_uint8, 1),
+
+		("KeyInfo_isUsed", c_uint8, 1),
+
+		("SPKIData_isUsed", c_uint8, 1),
+
+		("X509Data_isUsed", c_uint8, 1),
+
+		("SignatureValue_isUsed", c_uint8, 1),
+
+		("KeyName_isUsed", c_uint8, 1),
+
+		("DigestValue_isUsed", c_uint8, 1),
+
+		("SignedInfo_isUsed", c_uint8, 1),
+
+		("Object_isUsed", c_uint8, 1),
+
+		("_warning_", c_int),
 	]
 
 
 class iso1EXISchemaInformedElementFragmentGrammar(Structure):
+	id_type = ArrayType_factory(c_uint32, "characters", exiElementFrag_Id_CHARACTERS_SIZE)
+	characters_generic_type = ArrayType_factory(c_uint32, "characters", exiElementFrag_CHARACTERS_GENERIC_CHARACTERS_SIZE)
+	
 	_fields_=[
 		("Id_isUsed", c_uint, 1),
 
+		("Id", id_type),
+
 		("CHARACTERS_GENERIC_isUsed", c_uint, 1),
+
+		("CHARACTERS_GENERIC", characters_generic_type),
 
 		("_warning_", c_int),
 
-		("Id", ArrayType_factory(c_uint32, "characters", exiElementFrag_Id_CHARACTERS_SIZE)),
 
-		("CHARACTERS_GENERIC", ArrayType_factory(c_uint32, "characters", exiElementFrag_CHARACTERS_GENERIC_CHARACTERS_SIZE)),
 	]
 
 

@@ -10033,11 +10033,10 @@ static int encode_dinSubCertificatesType(bitstream_t* stream, struct dinSubCerti
 
 
 int encode_dinExiDocument(bitstream_t* stream, struct dinEXIDocument* exiDoc) {
-	printf("[C] stream pointer = %p\n", stream);
-	printf("[C] exidoc pointer = %p\n", exiDoc);
-
-	printf("[C] exiDoc->SessionSetupRes_isUsed = %d\n", exiDoc->SessionSetupRes_isUsed);
-
+	// printf("[C] stream pointer = %p\n", stream);
+	// printf("[C] exidoc pointer = %p\n", exiDoc);
+	// printf("[C] exiDoc->SessionSetupRes_isUsed = %d\n", exiDoc->SessionSetupRes_isUsed);
+	// validated
 	errn = writeEXIHeader(stream);
 
 	if(errn == 0) {

@@ -46,7 +46,92 @@
 void init_dinEXIDocument(struct dinEXIDocument* exiDoc) {
 	// printf("[C] sizeof dinEXIDocument = %ld\n", sizeof(struct dinEXIDocument));
 	// printf("[C] datetimenow = %ld\n", exiDoc->SessionSetupRes.DateTimeNow);
+	// printf("[C] dinEXIDocument.BodyElement.offset = %ld\n", offsetof(struct dinEXIDocument, BodyElement));
+	// printf("[C] dinEXIDocument.V2G_Message.offset = %ld\n", offsetof(struct dinEXIDocument, V2G_Message));
+	// printf("[C] dinEXIDocument.SignatureProperty.offset = %ld\n", offsetof(struct dinEXIDocument, SignatureProperty));
+	// printf("[C] dinEXIDocument.DSAKeyValue.offset = %ld\n", offsetof(struct dinEXIDocument, DSAKeyValue));
+	// printf("[C] dinEXIDocument.SignatureProperties.offset = %ld\n", offsetof(struct dinEXIDocument, SignatureProperties));
+	// printf("[C] dinEXIDocument.KeyValue.offset = %ld\n", offsetof(struct dinEXIDocument, KeyValue));
+	// printf("[C] dinEXIDocument.Transforms.offset = %ld\n", offsetof(struct dinEXIDocument, Transforms));
+	// printf("[C] dinEXIDocument.DigestMethod.offset = %ld\n", offsetof(struct dinEXIDocument, DigestMethod));
+	// printf("[C] dinEXIDocument.Signature.offset = %ld\n", offsetof(struct dinEXIDocument, Signature));
+	// printf("[C] dinEXIDocument.RetrievalMethod.offset = %ld\n", offsetof(struct dinEXIDocument, RetrievalMethod));
+	// printf("[C] dinEXIDocument.Manifest.offset = %ld\n", offsetof(struct dinEXIDocument, Manifest));
+	// printf("[C] dinEXIDocument.Reference.offset = %ld\n", offsetof(struct dinEXIDocument, Reference));
+	// printf("[C] dinEXIDocument.CanonicalizationMethod.offset = %ld\n", offsetof(struct dinEXIDocument, CanonicalizationMethod));
+	// printf("[C] dinEXIDocument.RSAKeyValue.offset = %ld\n", offsetof(struct dinEXIDocument, RSAKeyValue));
+	// printf("[C] dinEXIDocument.Transform.offset = %ld\n", offsetof(struct dinEXIDocument, Transform));
+	// printf("[C] dinEXIDocument.PGPData.offset = %ld\n", offsetof(struct dinEXIDocument, PGPData));
+	// printf("[C] dinEXIDocument.MgmtData.offset = %ld\n", offsetof(struct dinEXIDocument, MgmtData));
+	// printf("[C] dinEXIDocument.MgmtData.offset = %ld\n", offsetof(struct dinEXIDocument, MgmtData));
+	// printf("[C] dinEXIDocument.SignatureMethod.offset = %ld\n", offsetof(struct dinEXIDocument, SignatureMethod));
+	// printf("[C] dinEXIDocument.KeyInfo.offset = %ld\n", offsetof(struct dinEXIDocument, KeyInfo));
+	// printf("[C] dinEXIDocument.SPKIData.offset = %ld\n", offsetof(struct dinEXIDocument, SPKIData));
+	// printf("[C] dinEXIDocument.X509Data.offset = %ld\n", offsetof(struct dinEXIDocument, X509Data));
+	// printf("[C] dinEXIDocument.SignatureValue.offset = %ld\n", offsetof(struct dinEXIDocument, SignatureValue));
+	// printf("[C] dinEXIDocument.KeyName.offset = %ld\n", offsetof(struct dinEXIDocument, KeyName));
+	// printf("[C] dinEXIDocument.KeyName.offset = %ld\n", offsetof(struct dinEXIDocument, KeyName));
+	// printf("[C] dinEXIDocument.DigestValue.offset = %ld\n", offsetof(struct dinEXIDocument, DigestValue));
+	// printf("[C] dinEXIDocument.DigestValue.offset = %ld\n", offsetof(struct dinEXIDocument, DigestValue));
+	// printf("[C] dinEXIDocument.SignedInfo.offset = %ld\n", offsetof(struct dinEXIDocument, SignedInfo));
+	// printf("[C] dinEXIDocument.Object.offset = %ld\n", offsetof(struct dinEXIDocument, Object));
+	// printf("[C] dinEXIDocument.DC_EVSEStatus.offset = %ld\n", offsetof(struct dinEXIDocument, DC_EVSEStatus));
+	// printf("[C] dinEXIDocument.RelativeTimeInterval.offset = %ld\n", offsetof(struct dinEXIDocument, RelativeTimeInterval));
+	// printf("[C] dinEXIDocument.SalesTariffEntry.offset = %ld\n", offsetof(struct dinEXIDocument, SalesTariffEntry));
+	// printf("[C] dinEXIDocument.DC_EVPowerDeliveryParameter.offset = %ld\n", offsetof(struct dinEXIDocument, DC_EVPowerDeliveryParameter));
+	// printf("[C] dinEXIDocument.SASchedules.offset = %ld\n", offsetof(struct dinEXIDocument, SASchedules));
+	// printf("[C] dinEXIDocument.AC_EVChargeParameter.offset = %ld\n", offsetof(struct dinEXIDocument, AC_EVChargeParameter));
+	// printf("[C] dinEXIDocument.SAScheduleList.offset = %ld\n", offsetof(struct dinEXIDocument, SAScheduleList));
+	// printf("[C] dinEXIDocument.DC_EVStatus.offset = %ld\n", offsetof(struct dinEXIDocument, DC_EVStatus));
+	// printf("[C] dinEXIDocument.ServiceCharge.offset = %ld\n", offsetof(struct dinEXIDocument, ServiceCharge));
+	// printf("[C] dinEXIDocument.EVStatus.offset = %ld\n", offsetof(struct dinEXIDocument, EVStatus));
+	// printf("[C] dinEXIDocument.DC_EVChargeParameter.offset = %ld\n", offsetof(struct dinEXIDocument, DC_EVChargeParameter));
+	// printf("[C] dinEXIDocument.DC_EVSEChargeParameter.offset = %ld\n", offsetof(struct dinEXIDocument, DC_EVSEChargeParameter));
+	// printf("[C] dinEXIDocument.EVSEStatus.offset = %ld\n", offsetof(struct dinEXIDocument, EVSEStatus));
+	// printf("[C] dinEXIDocument.TimeInterval.offset = %ld\n", offsetof(struct dinEXIDocument, TimeInterval));
+	// printf("[C] dinEXIDocument.EVPowerDeliveryParameter.offset = %ld\n", offsetof(struct dinEXIDocument, EVPowerDeliveryParameter));
+	// printf("[C] dinEXIDocument.EVSEChargeParameter.offset = %ld\n", offsetof(struct dinEXIDocument, EVSEChargeParameter));
+	// printf("[C] dinEXIDocument.AC_EVSEStatus.offset = %ld\n", offsetof(struct dinEXIDocument, AC_EVSEStatus));
+	// printf("[C] dinEXIDocument.Entry.offset = %ld\n", offsetof(struct dinEXIDocument, Entry));
+	// printf("[C] dinEXIDocument.AC_EVSEChargeParameter.offset = %ld\n", offsetof(struct dinEXIDocument, AC_EVSEChargeParameter));
+	// printf("[C] dinEXIDocument.PMaxScheduleEntry.offset = %ld\n", offsetof(struct dinEXIDocument, PMaxScheduleEntry));
+	// printf("[C] dinEXIDocument.EVChargeParameter.offset = %ld\n", offsetof(struct dinEXIDocument, EVChargeParameter));
+	// printf("[C] dinEXIDocument.ServiceDiscoveryReq.offset = %ld\n", offsetof(struct dinEXIDocument, ServiceDiscoveryReq));
+	// printf("[C] dinEXIDocument.ServiceDiscoveryRes.offset = %ld\n", offsetof(struct dinEXIDocument, ServiceDiscoveryRes));
+	// printf("[C] dinEXIDocument.MeteringReceiptReq.offset = %ld\n", offsetof(struct dinEXIDocument, MeteringReceiptReq));
+	// printf("[C] dinEXIDocument.PaymentDetailsReq.offset = %ld\n", offsetof(struct dinEXIDocument, PaymentDetailsReq));
+	// printf("[C] dinEXIDocument.MeteringReceiptRes.offset = %ld\n", offsetof(struct dinEXIDocument, MeteringReceiptRes));
+	// printf("[C] dinEXIDocument.PaymentDetailsRes.offset = %ld\n", offsetof(struct dinEXIDocument, PaymentDetailsRes));
+	// printf("[C] dinEXIDocument.SessionSetupReq.offset = %ld\n", offsetof(struct dinEXIDocument, SessionSetupReq));
+	// printf("[C] dinEXIDocument.SessionSetupRes.offset = %ld\n", offsetof(struct dinEXIDocument, SessionSetupRes));
+	// printf("[C] dinEXIDocument.CableCheckReq.offset = %ld\n", offsetof(struct dinEXIDocument, CableCheckReq));
+	// printf("[C] dinEXIDocument.CableCheckRes.offset = %ld\n", offsetof(struct dinEXIDocument, CableCheckRes));
+	// printf("[C] dinEXIDocument.ContractAuthenticationReq.offset = %ld\n", offsetof(struct dinEXIDocument, ContractAuthenticationReq));
+	// printf("[C] dinEXIDocument.CertificateInstallationReq.offset = %ld\n", offsetof(struct dinEXIDocument, CertificateInstallationReq));
+	// printf("[C] dinEXIDocument.ContractAuthenticationRes.offset = %ld\n", offsetof(struct dinEXIDocument, ContractAuthenticationRes));
+	// printf("[C] dinEXIDocument.CertificateInstallationRes.offset = %ld\n", offsetof(struct dinEXIDocument, CertificateInstallationRes));
+	// printf("[C] dinEXIDocument.WeldingDetectionReq.offset = %ld\n", offsetof(struct dinEXIDocument, WeldingDetectionReq));
+	// printf("[C] dinEXIDocument.WeldingDetectionRes.offset = %ld\n", offsetof(struct dinEXIDocument, WeldingDetectionRes));
+	// printf("[C] dinEXIDocument.CertificateUpdateReq.offset = %ld\n", offsetof(struct dinEXIDocument, CertificateUpdateReq));
+	// printf("[C] dinEXIDocument.CertificateUpdateRes.offset = %ld\n", offsetof(struct dinEXIDocument, CertificateUpdateRes));
+	// printf("[C] dinEXIDocument.PowerDeliveryReq.offset = %ld\n", offsetof(struct dinEXIDocument, PowerDeliveryReq));
+	// printf("[C] dinEXIDocument.PowerDeliveryRes.offset = %ld\n", offsetof(struct dinEXIDocument, PowerDeliveryRes));
+	// printf("[C] dinEXIDocument.ChargingStatusReq.offset = %ld\n", offsetof(struct dinEXIDocument, ChargingStatusReq));
+	// printf("[C] dinEXIDocument.ChargingStatusRes.offset = %ld\n", offsetof(struct dinEXIDocument, ChargingStatusRes));
+	// printf("[C] dinEXIDocument.CurrentDemandReq.offset = %ld\n", offsetof(struct dinEXIDocument, CurrentDemandReq));
+	// printf("[C] dinEXIDocument.PreChargeReq.offset = %ld\n", offsetof(struct dinEXIDocument, PreChargeReq));
+	// printf("[C] dinEXIDocument.CurrentDemandRes.offset = %ld\n", offsetof(struct dinEXIDocument, CurrentDemandRes));
+	// printf("[C] dinEXIDocument.PreChargeRes.offset = %ld\n", offsetof(struct dinEXIDocument, PreChargeRes));
+	// printf("[C] dinEXIDocument.ServicePaymentSelectionReq.offset = %ld\n", offsetof(struct dinEXIDocument, ServicePaymentSelectionReq));
+	// printf("[C] dinEXIDocument.SessionStopReq.offset = %ld\n", offsetof(struct dinEXIDocument, SessionStopReq));
+	// printf("[C] dinEXIDocument.ServicePaymentSelectionRes.offset = %ld\n", offsetof(struct dinEXIDocument, ServicePaymentSelectionRes));
+	// printf("[C] dinEXIDocument.SessionStopRes.offset = %ld\n", offsetof(struct dinEXIDocument, SessionStopRes));
+	// printf("[C] dinEXIDocument.ChargeParameterDiscoveryReq.offset = %ld\n", offsetof(struct dinEXIDocument, ChargeParameterDiscoveryReq));
+	// printf("[C] dinEXIDocument.ChargeParameterDiscoveryRes.offset = %ld\n", offsetof(struct dinEXIDocument, ChargeParameterDiscoveryRes));
+	// printf("[C] dinEXIDocument.ServiceDetailReq.offset = %ld\n", offsetof(struct dinEXIDocument, ServiceDetailReq));
+	// printf("[C] dinEXIDocument.ServiceDetailRes.offset = %ld\n", offsetof(struct dinEXIDocument, ServiceDetailRes));
 	// validated
+
 	exiDoc->BodyElement_isUsed = 0u;
 	exiDoc->V2G_Message_isUsed = 0u;
 	exiDoc->SignatureProperty_isUsed = 0u;
@@ -897,6 +982,9 @@ void init_dinMessageHeaderType(struct dinMessageHeaderType* dinMessageHeaderType
 
 void init_dinBodyBaseType(struct dinBodyBaseType* dinBodyBaseType) {
 	// validated
+	printf("[C] sizeof dinBodyBaseType = %ld\n", sizeof(struct dinBodyBaseType));
+	printf("[C] noContent = %d\n", dinBodyBaseType->noContent);
+
 	(void)dinBodyBaseType; /* avoid unused warning */
 }
 

@@ -1,10 +1,4 @@
-from asyncio import protocols
-from audioop import mul
-from dis import Instruction
-from inspect import Parameter, signature
 import unittest
-from pkg_resources import declare_namespace
-
 from requests import Response
 from open_v2g_utils import OpenV2GUtils
 from open_v2g import OpenV2G
@@ -846,7 +840,7 @@ class OpenV2GTester(unittest.TestCase):
 
     # Validated
     def test_init_dinMeterInfoType(self):
-        print("\n[+] Testing init_dinChargingStatusResType")
+        print("\n[+] Testing init_dinMeterInfoType")
 
         meter_info = OpenV2GStructDeclarator.dinMeterInfoType(
             MeterID="AC_Meter1",
@@ -1702,6 +1696,8 @@ class OpenV2GTester(unittest.TestCase):
         print("\n[+] Testing init_dinBodyBaseType")
 
         body_base = OpenV2GStructDeclarator.dinBodyBaseType(noContent=1)
+
+        print(f"[Python] {sizeof(dinBodyBaseType)=}")
 
         self.ov2g.init_dinBodyBaseType(dinBodyBaseType=body_base)
 
@@ -3730,7 +3726,92 @@ class OpenV2GTester(unittest.TestCase):
             SessionSetupRes_isUsed=1
         )
 
-        print(f"[Python] {sizeof(dinEXIDocument)=}")
+        # print(f"[Python] {sizeof(dinEXIDocument)=}")
+        # print(f"{dinEXIDocument.BodyElement.offset=}")
+        # print(f"{dinEXIDocument.V2G_Message.offset=}")
+        # print(f"{dinEXIDocument.SignatureProperty.offset=}")
+        # print(f"{dinEXIDocument.DSAKeyValue.offset=}")
+        # print(f"{dinEXIDocument.SignatureProperties.offset=}")
+        # print(f"{dinEXIDocument.KeyValue.offset=}")
+        # print(f"{dinEXIDocument.Transforms.offset=}")
+        # print(f"{dinEXIDocument.DigestMethod.offset=}")
+        # print(f"{dinEXIDocument.Signature.offset=}")
+        # print(f"{dinEXIDocument.RetrievalMethod.offset=}")
+        # print(f"{dinEXIDocument.Manifest.offset=}")
+        # print(f"{dinEXIDocument.Reference.offset=}")
+        # print(f"{dinEXIDocument.CanonicalizationMethod.offset=}")
+        # print(f"{dinEXIDocument.RSAKeyValue.offset=}")
+        # print(f"{dinEXIDocument.Transform.offset=}")
+        # print(f"{dinEXIDocument.PGPData.offset=}")
+        # print(f"{dinEXIDocument.MgmtData.offset=}")
+        # print(f"{dinEXIDocument.MgmtData.offset=}")
+        # print(f"{dinEXIDocument.SignatureMethod.offset=}")
+        # print(f"{dinEXIDocument.KeyInfo.offset=}")
+        # print(f"{dinEXIDocument.SPKIData.offset=}")
+        # print(f"{dinEXIDocument.X509Data.offset=}")
+        # print(f"{dinEXIDocument.SignatureValue.offset=}")
+        # print(f"{dinEXIDocument.KeyName.offset=}")
+        # print(f"{dinEXIDocument.KeyName.offset=}")
+        # print(f"{dinEXIDocument.DigestValue.offset=}")
+        # print(f"{dinEXIDocument.DigestValue.offset=}")
+        # print(f"{dinEXIDocument.SignedInfo.offset=}")
+        # print(f"{dinEXIDocument.Object.offset=}")
+        # print(f"{dinEXIDocument.DC_EVSEStatus.offset=}")
+        # print(f"{dinEXIDocument.RelativeTimeInterval.offset=}")
+        # print(f"{dinEXIDocument.SalesTariffEntry.offset=}")
+        # print(f"{dinEXIDocument.DC_EVPowerDeliveryParameter.offset=}")
+        # print(f"{dinEXIDocument.SASchedules.offset=}")
+        # print(f"{dinEXIDocument.AC_EVChargeParameter.offset=}")
+        # print(f"{dinEXIDocument.SAScheduleList.offset=}")
+        # print(f"{dinEXIDocument.DC_EVStatus.offset=}")
+        # print(f"{dinEXIDocument.ServiceCharge.offset=}")
+        # print(f"{dinEXIDocument.EVStatus.offset=}")
+        # print(f"{dinEXIDocument.DC_EVChargeParameter.offset=}")
+        # print(f"{dinEXIDocument.DC_EVSEChargeParameter.offset=}")
+        # print(f"{dinEXIDocument.EVSEStatus.offset=}")
+        # print(f"{dinEXIDocument.TimeInterval.offset=}")
+        # print(f"{dinEXIDocument.EVPowerDeliveryParameter.offset=}")
+        # print(f"{dinEXIDocument.EVSEChargeParameter.offset=}")
+        # print(f"{dinEXIDocument.AC_EVSEStatus.offset=}")
+        # print(f"{dinEXIDocument.Entry.offset=}")
+        # print(f"{dinEXIDocument.AC_EVSEChargeParameter.offset=}")
+        # print(f"{dinEXIDocument.PMaxScheduleEntry.offset=}")
+        # print(f"{dinEXIDocument.EVChargeParameter.offset=}")
+        # print(f"{dinEXIDocument.ServiceDiscoveryReq.offset=}")
+        # print(f"{dinEXIDocument.ServiceDiscoveryRes.offset=}")
+        # print(f"{dinEXIDocument.MeteringReceiptReq.offset=}")
+        # print(f"{dinEXIDocument.PaymentDetailsReq.offset=}")
+        # print(f"{dinEXIDocument.MeteringReceiptRes.offset=}")
+        # print(f"{dinEXIDocument.PaymentDetailsRes.offset=}")
+        # print(f"{dinEXIDocument.SessionSetupReq.offset=}")
+        # print(f"{dinEXIDocument.SessionSetupRes.offset=}")
+        # print(f"{dinEXIDocument.CableCheckReq.offset=}")
+        # print(f"{dinEXIDocument.CableCheckRes.offset=}")
+        # print(f"{dinEXIDocument.ContractAuthenticationReq.offset=}")
+        # print(f"{dinEXIDocument.CertificateInstallationReq.offset=}")
+        # print(f"{dinEXIDocument.ContractAuthenticationRes.offset=}")
+        # print(f"{dinEXIDocument.CertificateInstallationRes.offset=}")
+        # print(f"{dinEXIDocument.WeldingDetectionReq.offset=}")
+        # print(f"{dinEXIDocument.WeldingDetectionRes.offset=}")
+        # print(f"{dinEXIDocument.CertificateUpdateReq.offset=}")
+        # print(f"{dinEXIDocument.CertificateUpdateRes.offset=}")
+        # print(f"{dinEXIDocument.PowerDeliveryReq.offset=}")
+        # print(f"{dinEXIDocument.PowerDeliveryRes.offset=}")
+        # print(f"{dinEXIDocument.ChargingStatusReq.offset=}")
+        # print(f"{dinEXIDocument.ChargingStatusRes.offset=}")
+        # print(f"{dinEXIDocument.CurrentDemandReq.offset=}")
+        # print(f"{dinEXIDocument.PreChargeReq.offset=}")
+        # print(f"{dinEXIDocument.CurrentDemandRes.offset=}")
+        # print(f"{dinEXIDocument.PreChargeRes.offset=}")
+        # print(f"{dinEXIDocument.ServicePaymentSelectionReq.offset=}")
+        # print(f"{dinEXIDocument.SessionStopReq.offset=}")
+        # print(f"{dinEXIDocument.ServicePaymentSelectionRes.offset=}")
+        # print(f"{dinEXIDocument.SessionStopRes.offset=}")
+        # print(f"{dinEXIDocument.ChargeParameterDiscoveryReq.offset=}")
+        # print(f"{dinEXIDocument.ChargeParameterDiscoveryRes.offset=}")
+        # print(f"{dinEXIDocument.ServiceDetailReq.offset=}")
+        # print(f"{dinEXIDocument.ServiceDetailRes.offset=}")
+
 
         self.ov2g.init_dinEXIDocument(exiDoc=exi_document)
         
@@ -3907,6 +3988,2948 @@ class OpenV2GTester(unittest.TestCase):
 
         print("[*] OK")
 
+    
+    # Validated
+    def test_init_iso1EVChargeParameterType(self):
+        print("\n[+] Testing init_iso1EVChargeParameterType")
+
+        ev_charge_parameter = OpenV2GStructDeclarator.iso1EVChargeParameterType(
+            DepartureTime=10,
+            DepartureTime_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1EVChargeParameterType)=}")
+
+        self.ov2g.init_iso1EVChargeParameterType(iso1EVChargeParameterType=ev_charge_parameter)
+
+        assert ev_charge_parameter.DepartureTime_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1DiffieHellmanPublickeyType(self):
+        print("\n[+] Testing init_iso1DiffieHellmanPublickeyType")
+
+        diffie_hellman_publickey = OpenV2GStructDeclarator.iso1DiffieHellmanPublickeyType(
+            Id="The ID",
+            CONTENT="The content"
+        )
+
+
+        # print(f"[Python] {sizeof(iso1DiffieHellmanPublickeyType)=}")
+        
+        self.ov2g.init_iso1DiffieHellmanPublickeyType(iso1DiffieHellmanPublickeyType=diffie_hellman_publickey)
+
+
+        print("[*] OK")
+
+    # Validated
+    def test_init_iso1SASchedulesType(self):
+        print("\n[+] Testing init_iso1SASchedulesType")
+
+        sa_schedules = OpenV2GStructDeclarator.iso1SASchedulesType(noContent=1)
+
+        # print(f"[Python] {sizeof(iso1SASchedulesType)=}")
+
+        self.ov2g.init_iso1SASchedulesType(iso1SASchedulesType=sa_schedules)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ServiceDetailReqType(self):
+        print("\n[+] Testing init_iso1ServiceDetailReqType")
+
+        service_detail_req = OpenV2GStructDeclarator.iso1ServiceDetailReqType(
+            ServiceID=1
+        )
+        
+        # print(f"[Python] {sizeof(iso1ServiceDetailReqType)=}")
+
+        self.ov2g.init_iso1ServiceDetailReqType(iso1ServiceDetailReqType=service_detail_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1RelativeTimeIntervalType(self):
+        print("\n[+] Testing init_iso1RelativeTimeIntervalType")
+
+        relative_time_interval = OpenV2GStructDeclarator.iso1RelativeTimeIntervalType(
+            start=1,
+            duration=10,
+            duration_isUsed=1
+        )
+        
+        print(f"[Python] {sizeof(iso1RelativeTimeIntervalType)=}")
+
+        self.ov2g.init_iso1RelativeTimeIntervalType(iso1RelativeTimeIntervalType=relative_time_interval)
+
+        assert relative_time_interval.duration_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1EMAIDType(self):
+        print("\n[+] Testing init_iso1EMAIDType")
+
+        emaid = OpenV2GStructDeclarator.iso1EMAIDType(
+            Id="The id",
+            CONTENT="The content"
+        )
+        
+        print(f"[Python] {sizeof(iso1EMAIDType)=}")
+
+        self.ov2g.init_iso1EMAIDType(iso1EMAIDType=emaid)
+
+        print("[*] OK")
+
+    
+    # Validated
+    def test_init_iso1EVStatusType(self):
+        print("\n[+] Testing init_iso1EVStatusType")
+
+        ev_status = OpenV2GStructDeclarator.iso1EVStatusType(
+            noContent=1
+        )
+        
+        # print(f"[Python] {sizeof(iso1EVStatusType)=}")
+
+        self.ov2g.init_iso1EVStatusType(iso1EVStatusType=ev_status)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1EVSEChargeParameterType(self):
+        print("\n[+] Testing init_iso1EVSEChargeParameterType")
+
+        evse_charge_parameter = OpenV2GStructDeclarator.iso1EVSEChargeParameterType(
+            noContent=1
+        )
+        
+        # print(f"[Python] {sizeof(iso1EVSEChargeParameterType)=}")
+
+        self.ov2g.init_iso1EVSEChargeParameterType(iso1EVSEChargeParameterType=evse_charge_parameter)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1EVPowerDeliveryParameterType(self):
+        print("\n[+] Testing init_iso1EVPowerDeliveryParameterType")
+
+        ev_power_delivery_parameter = OpenV2GStructDeclarator.iso1EVPowerDeliveryParameterType(
+            noContent=1
+        )
+        
+        # print(f"[Python] {sizeof(iso1EVPowerDeliveryParameterType)=}")
+
+        self.ov2g.init_iso1EVPowerDeliveryParameterType(iso1EVPowerDeliveryParameterType=ev_power_delivery_parameter)
+
+        print("[*] OK")
+
+    
+    # Validated
+    def test_init_iso1AuthorizationReqType(self):
+        print("\n[+] Testing init_iso1AuthorizationReqType")
+
+        authorization_req = OpenV2GStructDeclarator.iso1AuthorizationReqType(
+            Id="The ID",
+            Id_isUsed=1,
+            GenChallenge="Gen Challenge",
+            GenChallenge_isUsed=1
+        )
+        
+        # print(f"[Python] {sizeof(iso1AuthorizationReqType)=}")
+
+        self.ov2g.init_iso1AuthorizationReqType(iso1AuthorizationReqType=authorization_req)
+
+        assert authorization_req.Id_isUsed == 0
+        assert authorization_req.GenChallenge_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1MeterInfoType(self):
+        print("\n[+] Testing init_iso1MeterInfoType")
+
+        meter_info = OpenV2GStructDeclarator.iso1MeterInfoType(
+            MeterID="The ID",
+            MeterReading=10,
+            MeterReading_isUsed=1,
+            SigMeterReading=12,
+            SigMeterReading_isUsed=1,
+            MeterStatus=1,
+            MeterStatus_isUsed=1,
+            TMeter=321,
+            TMeter_isUsed=1
+        )
+
+        
+        # print(f"[Python] {sizeof(iso1MeterInfoType)=}")
+
+        self.ov2g.init_iso1MeterInfoType(iso1MeterInfoType=meter_info)
+
+        assert meter_info.MeterReading_isUsed == 0
+        assert meter_info.SigMeterReading_isUsed == 0
+        assert meter_info.MeterStatus_isUsed == 0
+        assert meter_info.TMeter_isUsed == 0
+
+
+        print("[*] OK")
+
+    # Validated
+    def test_init_iso1ObjectType(self):
+        print("\n[+] Testing init_iso1ObjectType")
+
+        object = OpenV2GStructDeclarator.iso1ObjectType(
+            Id="The ID",
+            Id_isUsed=1,
+            MimeType="MimeType",
+            MimeType_isUsed=1,
+            Encoding="Enconding",
+            Encoding_isUsed=1,
+            ANY="ANY",
+            ANY_isUsed=1
+        )
+
+        
+        # print(f"[Python] {sizeof(iso1ObjectType)=}")
+
+        self.ov2g.init_iso1ObjectType(iso1ObjectType=object)
+
+        assert object.Id_isUsed == 0
+        assert object.MimeType_isUsed == 0
+        assert object.Encoding_isUsed == 0
+        assert object.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1RSAKeyValueType(self):
+        print("\n[+] Testing init_iso1RSAKeyValueType")
+
+        rsa_key_value = OpenV2GStructDeclarator.iso1RSAKeyValueType(
+            Modulus=10,
+            Exponent=12
+        )
+
+        # print(f"[Python] {sizeof(iso1RSAKeyValueType)=}")
+
+        self.ov2g.init_iso1RSAKeyValueType(iso1RSAKeyValueType=rsa_key_value)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SessionStopResType(self):
+        print("\n[+] Testing init_iso1SessionStopResType")
+
+        session_stop_res = OpenV2GStructDeclarator.iso1SessionStopResType(
+            ResponseCode=2
+        )
+
+        # print(f"[Python] {sizeof(iso1SessionStopResType)=}")
+
+        self.ov2g.init_iso1SessionStopResType(iso1SessionStopResType=session_stop_res)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SignatureValueType(self):
+        print("\n[+] Testing init_iso1SignatureValueType")
+
+        signature_value = OpenV2GStructDeclarator.iso1SignatureValueType(
+            Id="The id",
+            Id_isUsed=1,
+            CONTENT="Content"
+        )
+
+        # print(f"[Python] {sizeof(iso1SignatureValueType)=}")
+
+        self.ov2g.init_iso1SignatureValueType(iso1SignatureValueType=signature_value)
+
+        assert signature_value.Id_isUsed == 0
+
+        print("[*] OK")
+
+    # Validated
+    def test_init_iso1SubCertificatesType(self):
+        print("\n[+] Testing init_iso1SubCertificatesType")
+
+        sub_certificates = OpenV2GStructDeclarator.iso1SubCertificatesType(
+            Certificate=[
+                "Certificate1",
+                "Certificate2"
+            ]
+        )
+
+        # print(f"[Python] {sizeof(iso1SubCertificatesType)=}")
+
+        self.ov2g.init_iso1SubCertificatesType(iso1SubCertificatesType=sub_certificates)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1DSAKeyValueType(self):
+        print("\n[+] Testing init_iso1DSAKeyValueType")
+
+        dsa_key_value = OpenV2GStructDeclarator.iso1DSAKeyValueType(
+            P=1,
+            P_isUsed=1,
+            Q=2,
+            Q_isUsed=1,
+            G=3,
+            G_isUsed=1,
+            Y=4,
+            J=5,
+            J_isUsed=1,
+            Seed=6,
+            Seed_isUsed=1,
+            PgenCounter=7,
+            PgenCounter_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1DSAKeyValueType)=}")
+        self.ov2g.init_iso1DSAKeyValueType(iso1DSAKeyValueType=dsa_key_value)
+
+        assert dsa_key_value.P_isUsed == 0
+        assert dsa_key_value.Q_isUsed == 0
+        assert dsa_key_value.G_isUsed == 0
+        assert dsa_key_value.J_isUsed == 0
+        assert dsa_key_value.Seed_isUsed == 0
+        assert dsa_key_value.PgenCounter_isUsed == 0
+
+        print("[*] OK")
+
+    # Validated
+    def test_init_iso1IntervalType(self):
+        print("\n[+] Testing init_iso1IntervalType")
+
+        interval_type = OpenV2GStructDeclarator.iso1IntervalType(
+            noContent=1
+        )
+
+        # print(f"[Python] {sizeof(iso1IntervalType)=}")
+
+        self.ov2g.init_iso1IntervalType(iso1IntervalType=interval_type)
+        
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1MeteringReceiptReqType(self):
+        print("\n[+] Testing init_iso1MeteringReceiptReqType")
+
+        metering_receipt_req = OpenV2GStructDeclarator.iso1MeteringReceiptReqType(
+            Id="Receipt ID",
+            Id_isUsed=1,
+            SessionID=87,
+            SAScheduleTupleID=1,
+            SAScheduleTupleID_isUsed=1,
+            MeterInfo=OpenV2GStructDeclarator.iso1MeterInfoType(
+                MeterID="The ID",
+                MeterReading=10,
+                MeterReading_isUsed=1,
+                SigMeterReading=12,
+                SigMeterReading_isUsed=1,
+                MeterStatus=1,
+                MeterStatus_isUsed=1,
+                TMeter=321,
+                TMeter_isUsed=1
+            )
+        )
+
+        # print(f"[Python] {sizeof(iso1MeteringReceiptReqType)=}")
+
+        self.ov2g.init_iso1MeteringReceiptReqType(iso1MeteringReceiptReqType=metering_receipt_req)
+
+        assert metering_receipt_req.Id_isUsed == 0
+        assert metering_receipt_req.SAScheduleTupleID_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1KeyValueType(self):
+        print("\n[+] Testing init_iso1KeyValueType")
+
+        key_value = OpenV2GStructDeclarator.iso1KeyValueType(
+            DSAKeyValue=OpenV2GStructDeclarator.iso1DSAKeyValueType(
+                P=1,
+                P_isUsed=1,
+                Q=2,
+                Q_isUsed=1,
+                G=3,
+                G_isUsed=1,
+                Y=4,
+                J=5,
+                J_isUsed=1,
+                Seed=6,
+                Seed_isUsed=1,
+                PgenCounter=7,
+                PgenCounter_isUsed=1
+            ),
+            DSAKeyValue_isUsed=1,
+            RSAKeyValue=OpenV2GStructDeclarator.iso1RSAKeyValueType(
+                Modulus=10,
+                Exponent=2
+            ),
+            RSAKeyValue_isUsed=1,
+            ANY="ANY STRING",
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1KeyValueType)=}")
+
+        self.ov2g.init_iso1KeyValueType(iso1KeyValueType=key_value)
+
+        assert key_value.DSAKeyValue_isUsed == 0
+        assert key_value.RSAKeyValue_isUsed == 0
+        assert key_value.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1X509IssuerSerialType(self):
+        print("\n[+] Testing init_iso1X509IssuerSerialType")
+
+        x509_issuer_serial = OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+            X509IssuerName="The issuer name",
+            X509SerialNumber=28731,
+        )
+
+        # print(f"[Python] {sizeof(iso1X509IssuerSerialType)=}")
+
+        self.ov2g.init_iso1X509IssuerSerialType(iso1X509IssuerSerialType=x509_issuer_serial)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1EVSEStatusType(self):
+        print("\n[+] Testing init_iso1EVSEStatusType")
+
+        evse_status_type = OpenV2GStructDeclarator.iso1EVSEStatusType(
+            NotificationMaxDelay=10,
+            EVSENotification=12
+        )
+
+        # print(f"[Python] {sizeof(iso1EVSEStatusType)=}")
+
+        self.ov2g.init_iso1EVSEStatusType(iso1EVSEStatusType=evse_status_type)
+
+        print("[*] OK")
+
+    # Validated
+    def test_init_iso1SignatureMethodType(self):
+        print("\n[+] Testing init_iso1SignatureMethodType")
+
+        signature_method = OpenV2GStructDeclarator.iso1SignatureMethodType(
+            Algorithm="SHA256",
+            HMACOutputLength=10,
+            HMACOutputLength_isUsed=1,
+            ANY="ANY String",
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1SignatureMethodType)=}")
+
+        self.ov2g.init_iso1SignatureMethodType(iso1SignatureMethodType=signature_method)
+
+        assert signature_method.HMACOutputLength_isUsed == 0
+        assert signature_method.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1X509DataType(self):
+        print("\n[+] Testing init_isoX509DataType")
+
+        x509_data = OpenV2GStructDeclarator.iso1X509DataType(
+            X509IssuerSerial=[
+                OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                    X509IssuerName="The issuer name",
+                    X509SerialNumber=28731,
+                )
+            ],
+            X509SKI=37182,
+            X509SubjectName="Subject Name",
+            X509Certificate=39123819,
+            X509CRL=231939,
+            ANY="Anything",
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1X509DataType)=}")
+
+        self.ov2g.init_iso1X509DataType(iso1X509DataType=x509_data)
+
+        assert x509_data.X509IssuerSerial.arrayLen == 0
+        assert x509_data.X509SKI.arrayLen == 0
+        assert x509_data.X509SubjectName.arrayLen == 0
+        assert x509_data.X509Certificate.arrayLen == 0
+        assert x509_data.X509CRL.arrayLen == 0
+        assert x509_data.ANY_isUsed == 0
+        
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1NotificationType(self):
+        print("\n[+] Testing init_iso1NotificationType")
+
+        notification = OpenV2GStructDeclarator.iso1NotificationType(
+            FaultCode=2,
+            FaultMsg="High temperature",
+            FaultMsg_isUsed=1
+        )
+
+        # print(f"{sizeof(iso1NotificationType)=}")
+
+        self.ov2g.init_iso1NotificationType(iso1NotificationType=notification)
+
+        assert notification.FaultMsg_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1TransformType(self):
+        print("\n[+] Testing init_iso1TransformType")
+
+        transform_type = OpenV2GStructDeclarator.iso1TransformType(
+            Algorithm="SHA256",
+            ANY="Any string",
+            ANY_isUsed=1,
+            XPath="/home/alex"
+        )
+
+        # print(f"[Python] {sizeof(iso1TransformType)=}")
+
+        self.ov2g.init_iso1TransformType(iso1TransformType=transform_type)
+        
+        assert transform_type.ANY_isUsed == 0
+        assert transform_type.XPath.arrayLen == 0
+
+        print("[*] OK")
+
+    # Validated
+    def test_init_iso1PaymentDetailsResType(self):
+        print("\n[+]Testing init_iso1PaymentDetailsResType")
+
+        payment_details_res = OpenV2GStructDeclarator.iso1PaymentDetailsResType(
+            ResponseCode=1,
+            GenChallenge="GenChallenge",
+            EVSETimeStamp=31241
+        )
+
+        # print(f"[Python] {sizeof(iso1PaymentDetailsResType)=}")
+
+        self.ov2g.init_iso1PaymentDetailsResType(iso1PaymentDetailsResType=payment_details_res)
+        
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ContractSignatureEncryptedPrivateKeyType(self):
+        print("\n[+]Testing init_iso1ContractSignatureEncryptedPrivateKeyType")
+
+        contract_signature_encrypted_private_key = OpenV2GStructDeclarator.iso1ContractSignatureEncryptedPrivateKeyType(
+            Id="The ID",
+            CONTENT="The content"
+        )
+
+        # print(f"[Python] {sizeof(iso1ContractSignatureEncryptedPrivateKeyType)=}")
+
+        self.ov2g.init_iso1ContractSignatureEncryptedPrivateKeyType(iso1ContractSignatureEncryptedPrivateKeyType=contract_signature_encrypted_private_key)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SPKIDataType(self):
+        print("\n[+] Testing init_iso1SPKIDataType")
+
+        spki_data_type = OpenV2GStructDeclarator.iso1SPKIDataType(
+            SPKISexp=64, 
+            ANY="Any String", 
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1SPKIDataType)=}")
+
+        self.ov2g.init_iso1SPKIDataType(iso1SPKIDataType=spki_data_type)
+
+        assert spki_data_type.SPKISexp.arrayLen == 0
+        assert spki_data_type.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SessionStopReqType(self):
+        print("\n[+] Testing init_iso1SessionStopReqType")
+
+        session_stop_req = OpenV2GStructDeclarator.iso1SessionStopReqType(
+            ChargingSession=1
+        )
+
+        print(f"[Python] {sizeof(iso1SessionStopReqType)=}")
+
+        self.ov2g.init_iso1SessionStopReqType(iso1SessionStopReqType=session_stop_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1EntryType(self):
+        print("\n[+] Testing init_iso1EntryType")
+
+        entry = OpenV2GStructDeclarator.iso1EntryType(
+            TimeInterval=OpenV2GStructDeclarator.iso1IntervalType(noContent=1),
+            RelativeTimeInterval=OpenV2GStructDeclarator.iso1RelativeTimeIntervalType(
+                start=0,
+                duration=10,
+                duration_isUsed=1
+            ),
+            TimeInterval_isUsed=1,
+            RelativeTimeInterval_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1EntryType)=}")
+
+        self.ov2g.init_iso1EntryType(iso1EntryType=entry)
+
+        assert entry.TimeInterval_isUsed == 0
+        assert entry.RelativeTimeInterval_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SessionSetupReqType(self):
+        print("\n[+] Testing init_iso1SessionSetupReqType")
+
+        session_setup_req_type = OpenV2GStructDeclarator.iso1SessionSetupReqType(EVCCID=1)
+
+        # print(f"[Python] {sizeof(iso1SessionSetupReqType)=}")
+
+        self.ov2g.init_iso1SessionSetupReqType(iso1SessionSetupReqType=session_setup_req_type)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CanonicalizationMethodType(self):
+        print("\n[+] Testing init_iso1CanonicalizationMethodType")
+
+        canonicalization_method_type = OpenV2GStructDeclarator.iso1CanonicalizationMethodType(
+            Algorithm="SHA256",
+            ANY="UNGA",
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1CanonicalizationMethodType)=}")
+
+        self.ov2g.init_iso1CanonicalizationMethodType(iso1CanonicalizationMethodType=canonicalization_method_type)
+
+        assert canonicalization_method_type.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1DC_EVStatusType(self):
+        print("\n[+] Testing init_iso1DC_EVStatusType")
+
+        dc_ev_status = OpenV2GStructDeclarator.iso1DC_EVStatusType(
+            EVReady=1,
+            EVErrorCode=2,
+            EVRESSSOC=50
+        )
+
+        # print(f"[Python] {sizeof(iso1DC_EVStatusType)=}")
+
+        self.ov2g.init_iso1DC_EVStatusType(iso1DC_EVStatusType=dc_ev_status)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ServiceType(self):
+        print("\n[+] Testing init_iso1ServiceType")
+
+        service = OpenV2GStructDeclarator.iso1ServiceType(
+            ServiceID=10,
+            ServiceName="The service name",
+            ServiceName_isUsed=1,
+            ServiceCategory=1,
+            ServiceScope="Service scope",
+            ServiceScope_isUsed=1,
+            FreeService=1
+        )
+
+        # print(f"[Python] {sizeof(iso1ServiceType)=}")
+
+        self.ov2g.init_iso1ServiceType(iso1ServiceType=service)
+
+        assert service.ServiceName_isUsed == 0
+        assert service.ServiceScope_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ServiceDiscoveryReqType(self):
+        print("\n[+] Testing init_iso1ServiceDiscoveryReqType")
+
+        service_discovery_req = OpenV2GStructDeclarator.iso1ServiceDiscoveryReqType(
+            ServiceScope="The service scope",
+            ServiceScope_isUsed=1,
+            ServiceCategory=2,
+            ServiceCategory_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1ServiceDiscoveryReqType)=}")
+
+        self.ov2g.init_iso1ServiceDiscoveryReqType(iso1ServiceDiscoveryReqType=service_discovery_req)
+
+        assert service_discovery_req.ServiceScope_isUsed == 0
+        assert service_discovery_req.ServiceCategory_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CableCheckReqType(self):
+        print("\n[+] Testing init_iso1CableCheckReqType")
+        
+        cable_check_req = OpenV2GStructDeclarator.iso1CableCheckReqType(
+            DC_EVStatus=OpenV2GStructDeclarator.iso1DC_EVStatusType(
+                EVReady=1,
+                EVErrorCode=2,
+                EVRESSSOC=50
+            )
+        )
+        
+        # print(f"[Python] {sizeof(iso1CableCheckReqType)=}")
+
+        self.ov2g.init_iso1CableCheckReqType(iso1CableCheckReqType=cable_check_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SelectedServiceType(self):
+        print("\n[+] Testing init_iso1SelectedServiceType")
+        
+        selected_service = OpenV2GStructDeclarator.iso1SelectedServiceType(
+            ServiceID=10,
+            ParameterSetID=12,
+            ParameterSetID_isUsed=1
+        )
+        
+        # print(f"[Python] {sizeof(iso1SelectedServiceType)=}")
+
+        self.ov2g.init_iso1SelectedServiceType(iso1SelectedServiceType=selected_service)
+
+        assert selected_service.ParameterSetID_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1AC_EVSEStatusType(self):
+        print("\n[+] Testing init_iso1AC_EVSEStatusType")
+        
+        ac_evse_status_type = OpenV2GStructDeclarator.iso1AC_EVSEStatusType(
+            NotificationMaxDelay=10,
+            EVSENotification=12,
+            RCD=13
+        )   
+        
+        # print(f"[Python] {sizeof(iso1AC_EVSEStatusType)=}")
+
+        self.ov2g.init_iso1AC_EVSEStatusType(iso1AC_EVSEStatusType=ac_evse_status_type)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1BodyBaseType(self):
+        print("\n[+] Testing init_iso1BodyBaseType")
+        
+        body_base = OpenV2GStructDeclarator.iso1BodyBaseType(
+            noContent=1
+        )   
+        
+        # print(f"[Python] {sizeof(iso1BodyBaseType)=}")
+
+        self.ov2g.init_iso1BodyBaseType(iso1BodyBaseType=body_base)
+
+        print("[*] OK")
+
+
+    # Validated    
+    def test_init_iso1SupportedEnergyTransferModeType(self):
+        print("\n[+] Testing init_iso1SupportedEnergyTransferModeType")
+        
+        supported_energy_transfer_mode = OpenV2GStructDeclarator.iso1SupportedEnergyTransferModeType(
+            EnergyTransferMode=[
+                iso1EnergyTransferModeType_DC_core,
+                iso1EnergyTransferModeType_DC_combo_core,
+            ]
+        )   
+        
+        # print(f"[Python] {sizeof(iso1SupportedEnergyTransferModeType)=}")
+
+        self.ov2g.init_iso1SupportedEnergyTransferModeType(iso1SupportedEnergyTransferModeType=supported_energy_transfer_mode)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ChargingStatusReqType(self):
+        print("\n[+] Testing init_iso1ChargingStatusReqType")
+        
+        charging_status_req = OpenV2GStructDeclarator.iso1ChargingStatusReqType(
+            noContent=1
+        )   
+        
+        # print(f"[Python] {sizeof(iso1BodyBaseType)=}")
+
+        self.ov2g.init_iso1ChargingStatusReqType(iso1ChargingStatusReqType=charging_status_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PaymentServiceSelectionResType(self):
+        print("\n[+] Testing init_iso1PaymentServiceSelectionResType")
+        
+        payment_service_selection_res = OpenV2GStructDeclarator.iso1PaymentServiceSelectionResType(
+            ResponseCode=1
+        )   
+        
+        # print(f"[Python] {sizeof(iso1PaymentServiceSelectionResType)=}")
+
+        self.ov2g.init_iso1PaymentServiceSelectionResType(iso1PaymentServiceSelectionResType=payment_service_selection_res)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1igestMethodType(self):
+        print("\n[+] Testing init_iso1DigestMethodType")
+
+        digest_method = OpenV2GStructDeclarator.iso1DigestMethodType(
+            Algorithm="SHA256",
+            ANY="ANY str",
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1DigestMethodType)=}")
+
+        self.ov2g.init_iso1DigestMethodType(iso1DigestMethodType=digest_method)
+
+        assert digest_method.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SignaturePropertyType(self):
+        print("\n[+] Testing init_iso1SignaturePropertyType")
+
+        signature_property_type = OpenV2GStructDeclarator.iso1SignaturePropertyType(
+            Target="The target",
+            Id="The id",
+            Id_isUsed=1,
+            ANY="Anything",
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1SignaturePropertyType)=}")
+
+        self.ov2g.init_iso1SignaturePropertyType(iso1SignaturePropertyType=signature_property_type)
+
+        assert signature_property_type.Id_isUsed == 0
+        assert signature_property_type.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PGPDataType(self):
+        print("\n[+] Testing init_iso1PGPDataType")
+
+        pgp_data = OpenV2GStructDeclarator.iso1PGPDataType(
+            PGPKeyID="PGPKEYID",
+            PGPKeyID_isUsed=1,
+            PGPKeyPacket="The packet",
+            PGPKeyPacket_isUsed=1,
+            ANY="ANY STR",
+            ANY_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1PGPDataType)=}")
+        self.ov2g.init_iso1PGPDataType(iso1PGPDataType=pgp_data)
+
+        assert pgp_data.PGPKeyID_isUsed == 0
+        assert pgp_data.PGPKeyPacket_isUsed == 0
+        assert pgp_data.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SessionSetupResType(self):
+        print("\n[+] Testing init_iso1SessionSetupResType")
+
+        session_setup_res = OpenV2GStructDeclarator.iso1SessionSetupResType(
+            ResponseCode=1,
+            EVSEID="EVSEID",
+            EVSETimeStamp=23188,
+            EVSETimeStamp_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1SessionSetupResType)=}")
+
+        self.ov2g.init_iso1SessionSetupResType(iso1SessionSetupResType=session_setup_res)
+
+        assert session_setup_res.EVSETimeStamp_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CertificateChainType(self):
+        print("\n[+] Testing init_iso1CertificateChainType")
+
+        certificate_chain = OpenV2GStructDeclarator.iso1CertificateChainType(
+            Id="The ID",
+            Id_isUsed=1,
+            Certificate="The certificate",
+            SubCertificates=OpenV2GStructDeclarator.iso1SubCertificatesType(
+                Certificate=[
+                    "Certificate1",
+                    "Certificate2"
+                ]
+            ),
+            SubCertificates_isUsed=1
+        )
+
+        # print(f"[Python] {sizeof(iso1CertificateChainType)=}")
+
+        self.ov2g.init_iso1CertificateChainType(iso1CertificateChainType=certificate_chain)
+
+        assert certificate_chain.Id_isUsed == 0
+        assert certificate_chain.SubCertificates_isUsed == 0
+
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1DC_EVSEStatusType(self):
+        print("\n[+] Testing init_iso1DC_EVSEStatusType")
+
+        dc_evse_status = OpenV2GStructDeclarator.iso1DC_EVSEStatusType(
+            NotificationMaxDelay=10,
+            EVSENotification=1,
+            EVSEIsolationStatus=2,
+            EVSEIsolationStatus_isUsed=1,
+            EVSEStatusCode=3            
+        )
+
+        # print(f"[Python] {sizeof(iso1DC_EVSEStatusType)=}")
+
+        self.ov2g.init_iso1DC_EVSEStatusType(iso1DC_EVSEStatusType=dc_evse_status)
+
+        assert dc_evse_status.EVSEIsolationStatus_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ServiceListType(self):
+        print("\n[+] Testing init_iso1ServiceListType")
+
+        service_list = OpenV2GStructDeclarator.iso1ServiceListType(
+            Service=[
+                OpenV2GStructDeclarator.iso1ServiceType(
+                    ServiceID=10,
+                    ServiceName="Service10",
+                    ServiceName_isUsed=1,
+                    ServiceCategory=1,
+                    ServiceScope="Service scope10",
+                    ServiceScope_isUsed=1,
+                    FreeService=1
+                ),
+
+                OpenV2GStructDeclarator.iso1ServiceType(
+                    ServiceID=11,
+                    ServiceName="Service11",
+                    ServiceName_isUsed=1,
+                    ServiceCategory=1,
+                    ServiceScope="Service scope11",
+                    ServiceScope_isUsed=1,
+                    FreeService=1
+                ),
+
+            ]                        
+        )
+
+        # print(f"[Python] {sizeof(iso1ServiceListType)=}")
+
+        self.ov2g.init_iso1ServiceListType(iso1ServiceListType=service_list)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PowerDeliveryResType(self):
+        print("\n[+] Testing init_iso1PowerDeliveryResType")
+
+        power_delivery_res = OpenV2GStructDeclarator.iso1PowerDeliveryResType(
+            ResponseCode=dinresponseCodeType_OK,
+            EVSEStatus=OpenV2GStructDeclarator.iso1EVSEStatusType(),
+            EVSEStatus_isUsed=1,
+            AC_EVSEStatus=OpenV2GStructDeclarator.iso1AC_EVSEStatusType(
+                NotificationMaxDelay=10,
+                EVSENotification=12,
+                RCD=13
+            ),  
+            AC_EVSEStatus_isUsed=1,
+            DC_EVSEStatus=OpenV2GStructDeclarator.iso1DC_EVSEStatusType(
+                NotificationMaxDelay=10,
+                EVSENotification=1,
+                EVSEIsolationStatus=2,
+                EVSEIsolationStatus_isUsed=1,
+                EVSEStatusCode=3            
+            ),
+            DC_EVSEStatus_isUsed=1,
+        )
+
+        # print(f"[Python] {sizeof(iso1PowerDeliveryResType)=}")
+
+        self.ov2g.init_iso1PowerDeliveryResType(iso1PowerDeliveryResType=power_delivery_res)
+
+        assert power_delivery_res.EVSEStatus_isUsed == 0
+        assert power_delivery_res.AC_EVSEStatus_isUsed == 0
+        assert power_delivery_res.DC_EVSEStatus_isUsed == 0
+        
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PaymentOptionListType(self):
+        print("\n[+] Testing init_iso1PaymentOptionListType")
+
+        payment_option_list = OpenV2GStructDeclarator.iso1PaymentOptionListType(
+            PaymentOption=[
+                iso1paymentOptionType_Contract,
+                iso1paymentOptionType_ExternalPayment,
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1PaymentOptionListType)=}")
+
+        self.ov2g.init_iso1PaymentOptionListType(iso1PaymentOptionListType=payment_option_list)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PhysicalValueType(self):
+        print("\n[+] Testing init_iso1PhysicalValueType")
+
+        physical_value = OpenV2GStructDeclarator.iso1PhysicalValueType(
+            Multiplier=1,
+            Unit=2,
+            Value=32
+        )
+
+        print(f"[Python] {sizeof(iso1PhysicalValueType)=}")
+
+        self.ov2g.init_iso1PhysicalValueType(iso1PhysicalValueType=physical_value)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PaymentDetailsReqType(self):
+        print("\n[+] Testing init_iso1PaymentDetailsReqType")
+
+        payment_details_req = OpenV2GStructDeclarator.iso1PaymentDetailsReqType(
+            eMAID="EMAID",
+            ContractSignatureCertChain=OpenV2GStructDeclarator.iso1CertificateChainType(
+                Id="The ID",
+                Id_isUsed=1,
+                Certificate="The certificate",
+                SubCertificates=OpenV2GStructDeclarator.iso1SubCertificatesType(
+                    Certificate=[
+                        "Certificate1",
+                        "Certificate2"
+                    ]
+                ),
+                SubCertificates_isUsed=1
+            )
+        )
+
+        print(f"[Python] {sizeof(iso1PaymentDetailsReqType)=}")
+
+        self.ov2g.init_iso1PaymentDetailsReqType(iso1PaymentDetailsReqType=payment_details_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1AuthorizationResType(self):
+        print("\n[+] Testing init_iso1AuthorizationResType")
+
+        authorization_res = OpenV2GStructDeclarator.iso1AuthorizationResType(
+            ResponseCode=1,
+            EVSEProcessing=1
+        )
+
+        print(f"[Python] {sizeof(iso1AuthorizationResType)=}")
+
+        self.ov2g.init_iso1AuthorizationResType(iso1AuthorizationResType=authorization_res)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1DC_EVSEChargeParameterType(self):
+        print("\n[+] Testing init_iso1DC_EVSEChargeParameterType")
+
+        dc_evse_charge_parameter = OpenV2GStructDeclarator.iso1DC_EVSEChargeParameterType(
+            DC_EVSEStatus=OpenV2GStructDeclarator.iso1DC_EVSEStatusType(
+                NotificationMaxDelay=10,
+                EVSENotification=1,
+                EVSEIsolationStatus=2,
+                EVSEIsolationStatus_isUsed=1,
+                EVSEStatusCode=3            
+            ),
+            EVSEMaximumCurrentLimit=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=10
+            ),
+            EVSEMaximumPowerLimit=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=20
+            ),
+            EVSEMaximumVoltageLimit=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=30
+            ),
+            EVSEMinimumCurrentLimit=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=40
+            ),
+            EVSEMinimumVoltageLimit=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=50
+            ),
+            EVSECurrentRegulationTolerance=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=60
+            ),
+            EVSECurrentRegulationTolerance_isUsed=1,
+            EVSEPeakCurrentRipple=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=80
+            ),
+            EVSEEnergyToBeDelivered=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=90
+            ),
+            EVSEEnergyToBeDelivered_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1DC_EVSEChargeParameterType)=}")
+
+        self.ov2g.init_iso1DC_EVSEChargeParameterType(iso1DC_EVSEChargeParameterType=dc_evse_charge_parameter)
+
+
+        assert dc_evse_charge_parameter.EVSECurrentRegulationTolerance_isUsed == 0
+        assert dc_evse_charge_parameter.EVSEEnergyToBeDelivered_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ChargingStatusResType(self):
+        print("\n[+] Testing init_iso1ChargingStatusResType")
+
+        charging_status_res = OpenV2GStructDeclarator.iso1ChargingStatusResType(
+            ResponseCode=1,
+            EVSEID="The EVSEID",
+            SAScheduleTupleID=10,
+            EVSEMaxCurrent=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=90
+            ),
+            EVSEMaxCurrent_isUsed=1,
+            MeterInfo=OpenV2GStructDeclarator.iso1MeterInfoType(
+                MeterID="The ID",
+                MeterReading=10,
+                MeterReading_isUsed=1,
+                SigMeterReading=12,
+                SigMeterReading_isUsed=1,
+                MeterStatus=1,
+                MeterStatus_isUsed=1,
+                TMeter=321,
+                TMeter_isUsed=1
+            ),
+            MeterInfo_isUsed=1,
+            ReceiptRequired=1,
+            ReceiptRequired_isUsed=1,
+            AC_EVSEStatus=OpenV2GStructDeclarator.iso1AC_EVSEStatusType(
+                NotificationMaxDelay=10,
+                EVSENotification=12,
+                RCD=13
+            )   
+        )
+
+        print(f"[Python] {sizeof(iso1ChargingStatusResType)=}")
+        
+        self.ov2g.init_iso1ChargingStatusResType(iso1ChargingStatusResType=charging_status_res)
+
+        assert charging_status_res.EVSEMaxCurrent_isUsed == 0
+        assert charging_status_res.MeterInfo_isUsed == 0
+        assert charging_status_res.ReceiptRequired_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated    
+    def test_init_iso1ListOfRootCertificateIDsType(self):
+        print("\n[+] Testing init_iso1ListOfRootCertificateIDsType")
+
+        list_of_root_certificate_ids = OpenV2GStructDeclarator.iso1ListOfRootCertificateIDsType(
+            RootCertificateID=[
+                OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                    X509IssuerName="Issuer 1",
+                    X509SerialNumber=11111111,
+                ),
+
+                OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                    X509IssuerName="Issuer 2",
+                    X509SerialNumber=2222222,
+                )
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1ListOfRootCertificateIDsType)=}")
+        
+        self.ov2g.init_iso1ListOfRootCertificateIDsType(iso1ListOfRootCertificateIDsType=list_of_root_certificate_ids)
+
+        
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ChargeServiceType(self):
+        print("\n[+] Testing init_iso1ChargeServiceType")
+
+        charge_service = OpenV2GStructDeclarator.iso1ChargeServiceType(
+            ServiceID=10,
+            ServiceName="The service name",
+            ServiceName_isUsed=1,
+            ServiceCategory=2,
+            ServiceScope="Service scope",
+            ServiceScope_isUsed=1,
+            FreeService=1,
+            SupportedEnergyTransferMode=OpenV2GStructDeclarator.iso1SupportedEnergyTransferModeType(
+                EnergyTransferMode=[
+                    iso1EnergyTransferModeType_DC_core,
+                    iso1EnergyTransferModeType_DC_combo_core,
+                ]
+            )             
+        )
+
+        print(f"[Python] {sizeof(iso1ChargeServiceType)=}")
+        
+        self.ov2g.init_iso1ChargeServiceType(iso1ChargeServiceType=charge_service)
+
+        assert charge_service.ServiceName_isUsed == 0
+        assert charge_service.ServiceScope_isUsed == 0
+
+        print("[*] OK")
+
+    
+    # Validated
+    def test_init_iso1SelectedServiceListType(self):
+        print("\n[+] Testing init_iso1SelectedServiceListType")
+
+        selected_service_list = OpenV2GStructDeclarator.iso1SelectedServiceListType(
+            SelectedService=[
+                OpenV2GStructDeclarator.iso1SelectedServiceType(
+                    ServiceID=1,
+                    ParameterSetID=2,
+                    ParameterSetID_isUsed=1
+                ),
+                OpenV2GStructDeclarator.iso1SelectedServiceType(
+                    ServiceID=2,
+                    ParameterSetID=3,
+                    ParameterSetID_isUsed=1
+                )
+            ]             
+        )
+
+        print(f"[Python] {sizeof(iso1SelectedServiceListType)=}")
+        
+        self.ov2g.init_iso1SelectedServiceListType(iso1SelectedServiceListType=selected_service_list)
+
+        assert selected_service_list.SelectedService.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CableCheckResType(self):
+        print("\n[+] Testing init_iso1CableCheckResType")
+
+        cable_check_res = OpenV2GStructDeclarator.iso1CableCheckResType(
+            ResponseCode=2,
+            DC_EVSEStatus=OpenV2GStructDeclarator.iso1DC_EVSEStatusType(
+                NotificationMaxDelay=10,
+                EVSENotification=1,
+                EVSEIsolationStatus=2,
+                EVSEIsolationStatus_isUsed=1,
+                EVSEStatusCode=3            
+            ),
+            EVSEProcessing=1                    
+        )
+
+        print(f"[Python] {sizeof(iso1CableCheckResType)=}")
+        
+        self.ov2g.init_iso1CableCheckResType(iso1CableCheckResType=cable_check_res)
+
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1TransformsType(self):
+        print("\n[+] Testing init_iso1TransformsType")
+
+        transforms = OpenV2GStructDeclarator.iso1TransformsType(
+            Transform=[
+                OpenV2GStructDeclarator.iso1TransformType(
+                    Algorithm="SHA256",
+                    ANY="Any string",
+                    ANY_isUsed=1,
+                    XPath="/home/alex"
+                )
+            ]           
+        )
+
+        print(f"[Python] {sizeof(iso1TransformsType)=}")
+        
+        self.ov2g.init_iso1TransformsType(iso1TransformsType=transforms)
+
+        assert transforms.Transform.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PreChargeReqType(self):
+        print("\n[+] Testing init_iso1PreChargeReqType")
+
+        pre_charge_req = OpenV2GStructDeclarator.iso1PreChargeReqType(
+            DC_EVStatus=OpenV2GStructDeclarator.iso1DC_EVStatusType(
+                EVReady=1,
+                EVErrorCode=2,
+                EVRESSSOC=50
+            ),
+            EVTargetVoltage=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            ),
+            EVTargetCurrent=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            )
+        )
+
+        print(f"[Python] {sizeof(iso1PreChargeReqType)=}")
+        
+        self.ov2g.init_iso1PreChargeReqType(iso1PreChargeReqType=pre_charge_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1AC_EVChargeParameterType(self):
+        print("\n[+] Testing init_iso1AC_EVChargeParameterType")
+
+        ac_ev_charge_parameter = OpenV2GStructDeclarator.iso1AC_EVChargeParameterType(
+            DepartureTime=10,
+            DepartureTime_isUsed=1,
+            EAmount=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            ),
+            EVMaxVoltage=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            ),
+            EVMaxCurrent=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            ),
+            EVMinCurrent=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            ),
+        )
+
+        print(f"[Python] {sizeof(iso1AC_EVChargeParameterType)=}")
+        
+        self.ov2g.init_iso1AC_EVChargeParameterType(iso1AC_EVChargeParameterType=ac_ev_charge_parameter)
+
+        assert ac_ev_charge_parameter.DepartureTime_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PMaxScheduleEntryType(self):
+        print("\n[+] Testing init_iso1PMaxScheduleEntryType")
+
+        pmax_schedule_entry = OpenV2GStructDeclarator.iso1PMaxScheduleEntryType(
+            TimeInterval=OpenV2GStructDeclarator.iso1IntervalType(),
+            TimeInterval_isUsed=1,
+            RelativeTimeInterval=OpenV2GStructDeclarator.iso1RelativeTimeIntervalType(
+                start=0,
+                duration=10,
+                duration_isUsed=1
+            ),
+            RelativeTimeInterval_isUsed=1,
+            PMax=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            ),
+        )
+
+        print(f"[Python] {sizeof(iso1PMaxScheduleEntryType)=}")
+        
+        self.ov2g.init_iso1PMaxScheduleEntryType(iso1PMaxScheduleEntryType=pmax_schedule_entry)
+
+        assert pmax_schedule_entry.TimeInterval_isUsed == 0
+        assert pmax_schedule_entry.RelativeTimeInterval_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1MeteringReceiptResType(self):
+        print("\n[+] Testing init_iso1MeteringReceiptResType")
+
+        metering_receipt_res = OpenV2GStructDeclarator.iso1MeteringReceiptResType(
+            EVSEStatus_isUsed=1,
+            AC_EVSEStatus_isUsed=1,
+            DC_EVSEStatus_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1MeteringReceiptResType)=}")
+        
+        self.ov2g.init_iso1MeteringReceiptResType(iso1MeteringReceiptResType=metering_receipt_res)
+
+        assert metering_receipt_res.EVSEStatus_isUsed == 0
+        assert metering_receipt_res.AC_EVSEStatus_isUsed == 0
+        assert metering_receipt_res.DC_EVSEStatus_isUsed == 0
+
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1MeteringReceiptResType(self):
+        print("\n[+] Testing init_iso1WeldingDetectionResType")
+
+        welding_detection_res = OpenV2GStructDeclarator.iso1WeldingDetectionResType(
+            ResponseCode=2,
+            DC_EVSEStatus=OpenV2GStructDeclarator.iso1DC_EVSEStatusType(
+                NotificationMaxDelay=10,
+                EVSENotification=1,
+                EVSEIsolationStatus=2,
+                EVSEIsolationStatus_isUsed=1,
+                EVSEStatusCode=3            
+            ),
+            EVSEPresentVoltage=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=32
+            ),
+
+        )
+
+        print(f"[Python] {sizeof(iso1WeldingDetectionResType)=}")
+        
+        self.ov2g.init_iso1WeldingDetectionResType(iso1WeldingDetectionResType=welding_detection_res)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ReferenceType(self):
+        print("\n[+] Testing init_iso1ReferenceType")
+
+        reference = OpenV2GStructDeclarator.iso1ReferenceType(
+            Id="the id",
+            Id_isUsed=1,
+            URI="the uri",
+            URI_isUsed=1,
+            Type="TYPE",
+            Type_isUsed=1,
+            Transforms=OpenV2GStructDeclarator.iso1TransformsType(
+                Transform=[
+                    OpenV2GStructDeclarator.iso1TransformType(
+                        Algorithm="SHA256",
+                        ANY="Any string",
+                        ANY_isUsed=1,
+                        XPath="/home/alex"
+                    )
+                ]           
+            ),
+            Transforms_isUsed=1,
+            DigestMethod=OpenV2GStructDeclarator.iso1DigestMethodType(
+                Algorithm="SHA256",
+                ANY="ANY str",
+                ANY_isUsed=1
+            ),
+            DigestValue="Digest value"
+        )
+
+        print(f"[Python] {sizeof(iso1ReferenceType)=}")
+        
+        self.ov2g.init_iso1ReferenceType(iso1ReferenceType=reference)
+
+        assert reference.Id_isUsed == 0
+        assert reference.URI_isUsed == 0
+        assert reference.Type_isUsed == 0
+        assert reference.Transforms_isUsed == 0
+
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CurrentDemandReqType(self):
+        print("\n[+] Testing init_iso1CurrentDemandReqType")
+
+        current_demand_req = OpenV2GStructDeclarator.iso1CurrentDemandReqType(
+            EVMaximumVoltageLimit_isUsed=1,
+            EVMaximumCurrentLimit_isUsed=1,
+            EVMaximumPowerLimit_isUsed=1,
+            BulkChargingComplete=1,
+            BulkChargingComplete_isUsed=1,
+            ChargingComplete=1,
+            RemainingTimeToFullSoC_isUsed=1,
+            RemainingTimeToBulkSoC_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1CurrentDemandReqType)=}")
+
+        self.ov2g.init_iso1CurrentDemandReqType(iso1CurrentDemandReqType=current_demand_req)
+
+        assert current_demand_req.EVMaximumVoltageLimit_isUsed == 0
+        assert current_demand_req.EVMaximumCurrentLimit_isUsed == 0
+        assert current_demand_req.EVMaximumPowerLimit_isUsed == 0
+        assert current_demand_req.BulkChargingComplete_isUsed == 0
+        assert current_demand_req.RemainingTimeToFullSoC_isUsed == 0
+        assert current_demand_req.RemainingTimeToBulkSoC_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CostType(self):
+        print("\n[+] Testing init_iso1CostType")
+
+        cost = OpenV2GStructDeclarator.iso1CostType(
+            amountMultiplier_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1CostType)=}")
+
+        self.ov2g.init_iso1CostType(iso1CostType=cost)
+
+        assert cost.amountMultiplier_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_iso1DC_EVPowerDeliveryParameterType(self):
+        print("\n[+] Testing init_iso1DC_EVPowerDeliveryParameterType")
+
+        dc_ev_power_delivery_parameter = OpenV2GStructDeclarator.iso1DC_EVPowerDeliveryParameterType(
+            BulkChargingComplete_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1DC_EVPowerDeliveryParameterType)=}")
+
+        self.ov2g.init_iso1DC_EVPowerDeliveryParameterType(iso1DC_EVPowerDeliveryParameterType=dc_ev_power_delivery_parameter)
+
+        assert dc_ev_power_delivery_parameter.BulkChargingComplete_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1RetrievalMethodType(self):
+        print("\n[+] Testing init_iso1RetrievalMethodType")
+
+        retrieval_method = OpenV2GStructDeclarator.iso1RetrievalMethodType(
+            URI="/home/alex",
+            URI_isUsed=1,
+            Type="the type",
+            Type_isUsed=1,
+            Transforms=OpenV2GStructDeclarator.iso1TransformsType(
+                Transform=[
+                    OpenV2GStructDeclarator.iso1TransformType(
+                        Algorithm="SHA112",
+                        ANY="ANy str",
+                        ANY_isUsed=1,
+                        XPath="/home/alex"
+                    )
+                ]
+            ),
+            Transforms_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1RetrievalMethodType)=}")
+
+        self.ov2g.init_iso1RetrievalMethodType(iso1RetrievalMethodType=retrieval_method)
+
+        assert retrieval_method.URI_isUsed == 0
+        assert retrieval_method.Type_isUsed == 0
+        assert retrieval_method.Transforms_isUsed == 0
+
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CertificateUpdateResType(self):
+        print("\n[+] Testing init_iso1CertificateUpdateResType")
+
+        certificate_update_res = OpenV2GStructDeclarator.iso1CertificateUpdateResType(
+            RetryCounter_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1CertificateUpdateResType)=}")
+
+        self.ov2g.init_iso1CertificateUpdateResType(iso1CertificateUpdateResType=certificate_update_res)
+
+        assert certificate_update_res.RetryCounter_isUsed == 0
+
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CertificateUpdateResType(self):
+        print("\n[+] Testing init_iso1CertificateInstallationResType")
+
+        certificate_installation_res = OpenV2GStructDeclarator.iso1CertificateInstallationResType(
+            ResponseCode=1,
+            SAProvisioningCertificateChain=OpenV2GStructDeclarator.iso1CertificateChainType(
+                Id="The ID",
+                Id_isUsed=1,
+                Certificate="The certificate",
+                SubCertificates=OpenV2GStructDeclarator.iso1SubCertificatesType(
+                    Certificate=[
+                        "Certificate1",
+                        "Certificate2"
+                    ]
+                ),
+                SubCertificates_isUsed=1
+            ),
+            ContractSignatureCertChain=OpenV2GStructDeclarator.iso1CertificateChainType(
+                Id="The ID",
+                Id_isUsed=1,
+                Certificate="The certificate",
+                SubCertificates=OpenV2GStructDeclarator.iso1SubCertificatesType(
+                    Certificate=[
+                        "Certificate1",
+                        "Certificate2"
+                    ]
+                ),
+                SubCertificates_isUsed=1
+            ),
+            ContractSignatureEncryptedPrivateKey=OpenV2GStructDeclarator.iso1ContractSignatureEncryptedPrivateKeyType(
+                Id="The ID",
+                CONTENT="The content"
+            ),
+            DHpublickey=OpenV2GStructDeclarator.iso1DiffieHellmanPublickeyType(
+                Id="The ID",
+                CONTENT="The content"
+            ),
+            eMAID=OpenV2GStructDeclarator.iso1EMAIDType(
+                Id="The id",
+                CONTENT="The content"
+            )
+        )
+
+        print(f"[Python] {sizeof(iso1CertificateInstallationResType)=}")
+
+        self.ov2g.init_iso1CertificateInstallationResType(iso1CertificateInstallationResType=certificate_installation_res)
+
+
+        print("[*] OK")
+
+    # Validated
+    def test_init_iso1WeldingDetectionReqType(self):
+        print("\n[+] Testing init_iso1WeldingDetectionReqType")
+
+
+        welding_detection_req = OpenV2GStructDeclarator.iso1WeldingDetectionReqType(
+            DC_EVStatus=OpenV2GStructDeclarator.iso1DC_EVStatusType(
+                EVReady=1,
+                EVErrorCode=2,
+                EVRESSSOC=50
+            )
+        )
+
+        print(f"[Python] {sizeof(iso1WeldingDetectionReqType)=}")
+
+        self.ov2g.init_iso1WeldingDetectionReqType(iso1WeldingDetectionReqType=welding_detection_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CurrentDemandResType(self):
+        print("\n[+] Testing init_iso1CurrentDemandResType")
+
+
+        current_demand_res = OpenV2GStructDeclarator.iso1CurrentDemandResType(
+            EVSEMaximumVoltageLimit_isUsed=1,
+            EVSEMaximumCurrentLimit_isUsed=1,
+            EVSEMaximumPowerLimit_isUsed=1,
+            MeterInfo_isUsed=1,
+            ReceiptRequired_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1CurrentDemandResType)=}")
+
+        self.ov2g.init_iso1CurrentDemandResType(iso1CurrentDemandResType=current_demand_res)
+
+        assert current_demand_res.EVSEMaximumVoltageLimit_isUsed == 0
+        assert current_demand_res.EVSEMaximumCurrentLimit_isUsed == 0
+        assert current_demand_res.EVSEMaximumPowerLimit_isUsed == 0
+        assert current_demand_res.MeterInfo_isUsed == 0
+        assert current_demand_res.ReceiptRequired_isUsed == 0
+
+        print("[*] OK")
+
+    
+    # Validated
+    def test_init_iso1AC_EVSEChargeParameterType(self):
+        print("\n[+] Testing init_iso1AC_EVSEChargeParameterType")
+
+
+        ac_evse_charge_parameter_type = OpenV2GStructDeclarator.iso1AC_EVSEChargeParameterType(
+        )
+
+        print(f"[Python] {sizeof(iso1AC_EVSEChargeParameterType)=}")
+
+        self.ov2g.init_iso1AC_EVSEChargeParameterType(iso1AC_EVSEChargeParameterType=ac_evse_charge_parameter_type)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PaymentServiceSelectionReqType(self):
+        print("\n[+] Testing init_iso1PaymentServiceSelectionReqType")
+
+
+        payment_service_selection_req = OpenV2GStructDeclarator.iso1PaymentServiceSelectionReqType(
+        )
+
+        print(f"[Python] {sizeof(iso1PaymentServiceSelectionReqType)=}")
+
+        self.ov2g.init_iso1PaymentServiceSelectionReqType(iso1PaymentServiceSelectionReqType=payment_service_selection_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SignaturePropertiesType(self):
+        print("\n[+] Testing init_iso1SignaturePropertiesType")
+
+
+        signature_properties = OpenV2GStructDeclarator.iso1SignaturePropertiesType(
+            Id_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1SignaturePropertiesType)=}")
+
+        self.ov2g.init_iso1SignaturePropertiesType(iso1SignaturePropertiesType=signature_properties)
+        
+        assert signature_properties.Id_isUsed == 0
+        assert signature_properties.SignatureProperty.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ParameterType(self):
+        print("\n[+] Testing init_iso1ParameterType")
+
+
+        parameter = OpenV2GStructDeclarator.iso1ParameterType(
+            boolValue_isUsed=1,
+            byteValue_isUsed=1,
+            shortValue_isUsed=1,
+            intValue_isUsed=1,
+            physicalValue_isUsed=1,
+            stringValue_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1ParameterType)=}")
+
+        self.ov2g.init_iso1ParameterType(iso1ParameterType=parameter)
+
+        assert parameter.boolValue_isUsed == 0
+        assert parameter.byteValue_isUsed == 0
+        assert parameter.shortValue_isUsed == 0
+        assert parameter.intValue_isUsed == 0
+        assert parameter.physicalValue_isUsed == 0
+        assert parameter.physicalValue_isUsed == 0
+        assert parameter.stringValue_isUsed == 0
+        
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CertificateInstallationReqType(self):
+        print("\n[+] Testing init_iso1CertificateInstallationReqType")
+
+        certification_installation_req = OpenV2GStructDeclarator.iso1CertificateInstallationReqType(
+            
+        )
+
+        print(f"[Python] {sizeof(iso1CertificateInstallationReqType)=}")
+
+        self.ov2g.init_iso1CertificateInstallationReqType(iso1CertificateInstallationReqType=certification_installation_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ServiceDiscoveryResType(self):
+        print("\n[+] Testing init_iso1ServiceDiscoveryResType")
+
+        service_discovery_res = OpenV2GStructDeclarator.iso1ServiceDiscoveryResType(
+            ServiceList_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1ServiceDiscoveryResType)=}")
+
+        self.ov2g.init_iso1ServiceDiscoveryResType(iso1ServiceDiscoveryResType=service_discovery_res)
+
+        assert service_discovery_res.ServiceList_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PreChargeResType(self):
+        print("\n[+] Testing init_iso1PreChargeResType")
+
+        pre_charge_res = OpenV2GStructDeclarator.iso1PreChargeResType(
+
+        )
+
+        print(f"[Python] {sizeof(iso1PreChargeResType)=}")
+
+        self.ov2g.init_iso1PreChargeResType(iso1PreChargeResType=pre_charge_res)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ParameterSetType(self):
+        print("\n[+] Testing init_iso1ParameterSetType")
+
+        parameter_set = OpenV2GStructDeclarator.iso1ParameterSetType(
+            ParameterSetID=2,
+            Parameter=[
+                OpenV2GStructDeclarator.iso1ParameterType(
+                    boolValue=1,
+                    boolValue_isUsed=1,
+                ),
+                OpenV2GStructDeclarator.iso1ParameterType(
+                    stringValue="Unga bunga",
+                    stringValue_isUsed=1,
+                ),
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1ParameterSetType)=}")
+
+        self.ov2g.init_iso1ParameterSetType(iso1ParameterSetType=parameter_set)
+
+        assert parameter_set.Parameter.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SignedInfoType(self):
+        print("\n[+] Testing init_iso1SignedInfoType")
+
+        signed_info = OpenV2GStructDeclarator.iso1SignedInfoType(
+            Id_isUsed=1,
+            Reference=[
+                OpenV2GStructDeclarator.iso1ReferenceType(
+                    Id="the id",
+                    Id_isUsed=1,
+                    URI="the uri",
+                    URI_isUsed=1,
+                    Type="TYPE",
+                    Type_isUsed=1,
+                    Transforms=OpenV2GStructDeclarator.iso1TransformsType(
+                        Transform=[
+                            OpenV2GStructDeclarator.iso1TransformType(
+                                Algorithm="SHA256",
+                                ANY="Any string",
+                                ANY_isUsed=1,
+                                XPath="/home/alex"
+                            )
+                        ]           
+                    ),
+                    Transforms_isUsed=1,
+                    DigestMethod=OpenV2GStructDeclarator.iso1DigestMethodType(
+                        Algorithm="SHA256",
+                        ANY="ANY str",
+                        ANY_isUsed=1
+                    ),
+                    DigestValue="Digest value"
+                )
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1SignedInfoType)=}")
+
+        self.ov2g.init_iso1SignedInfoType(iso1SignedInfoType=signed_info)
+
+        assert signed_info.Id_isUsed == 0
+        assert signed_info.Reference.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ProfileEntryType(self):
+        print("\n[+] Testing init_iso1ProfileEntryType")
+
+        profile_entry = OpenV2GStructDeclarator.iso1ProfileEntryType(
+            ChargingProfileEntryMaxNumberOfPhasesInUse_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1ProfileEntryType)=}")
+
+        self.ov2g.init_iso1ProfileEntryType(iso1ProfileEntryType=profile_entry)
+
+        assert profile_entry.ChargingProfileEntryMaxNumberOfPhasesInUse_isUsed == 0
+        print("[*] OK")
+    
+
+    # Validated
+    def test_init_iso1ManifestType(self):
+        print("\n[+] Testing init_iso1ManifestType")
+
+        manifest = OpenV2GStructDeclarator.iso1ManifestType(
+            Id_isUsed=1,
+            Reference=[
+                OpenV2GStructDeclarator.iso1ReferenceType(
+                    Id="the id",
+                    Id_isUsed=1,
+                    URI="the uri",
+                    URI_isUsed=1,
+                    Type="TYPE",
+                    Type_isUsed=1,
+                    Transforms=OpenV2GStructDeclarator.iso1TransformsType(
+                        Transform=[
+                            OpenV2GStructDeclarator.iso1TransformType(
+                                Algorithm="SHA256",
+                                ANY="Any string",
+                                ANY_isUsed=1,
+                                XPath="/home/alex"
+                            )
+                        ]           
+                    ),
+                    Transforms_isUsed=1,
+                    DigestMethod=OpenV2GStructDeclarator.iso1DigestMethodType(
+                        Algorithm="SHA256",
+                        ANY="ANY str",
+                        ANY_isUsed=1
+                    ),
+                    DigestValue="Digest value"
+                )
+            ]
+            
+        )
+
+        print(f"[Python] {sizeof(iso1ManifestType)=}")
+
+        self.ov2g.init_iso1ManifestType(iso1ManifestType=manifest)
+
+        assert manifest.Id_isUsed == 0
+        assert manifest.Reference.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1DC_EVChargeParameterType(self):
+        print("\n[+] Testing init_iso1DC_EVChargeParameterType")
+
+        dc_ev_charge_parameter = OpenV2GStructDeclarator.iso1DC_EVChargeParameterType(
+            DepartureTime_isUsed=1,
+            EVMaximumPowerLimit_isUsed=1,
+            EVEnergyCapacity_isUsed=1,
+            EVEnergyRequest_isUsed=1,
+            FullSOC_isUsed=1,
+            BulkSOC_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1DC_EVChargeParameterType)=}")
+
+        self.ov2g.init_iso1DC_EVChargeParameterType(iso1DC_EVChargeParameterType=dc_ev_charge_parameter)
+
+        assert dc_ev_charge_parameter.DepartureTime_isUsed == 0
+        assert dc_ev_charge_parameter.EVMaximumPowerLimit_isUsed == 0
+        assert dc_ev_charge_parameter.EVEnergyCapacity_isUsed == 0
+        assert dc_ev_charge_parameter.EVEnergyRequest_isUsed == 0
+        assert dc_ev_charge_parameter.FullSOC_isUsed == 0
+        assert dc_ev_charge_parameter.BulkSOC_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ConsumptionCostType(self):
+        print("\n[+] Testing init_iso1ConsumptionCostType")
+
+        consumption_cost = OpenV2GStructDeclarator.iso1ConsumptionCostType(
+            startValue=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                Multiplier=1,
+                Unit=2,
+                Value=3
+            ),
+            Cost=[
+                OpenV2GStructDeclarator.iso1CostType(
+                    costKind=1,
+                    amount=32,
+                    amountMultiplier=10,
+                    amountMultiplier_isUsed=1
+                )
+            ]  
+        )
+
+        print(f"[Python] {sizeof(iso1ConsumptionCostType)=}")
+
+        self.ov2g.init_iso1ConsumptionCostType(iso1ConsumptionCostType=consumption_cost)
+
+        assert consumption_cost.Cost.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PMaxScheduleType(self):
+        print("\n[+] Testing init_iso1PMaxScheduleType")
+
+        pmax_schedule = OpenV2GStructDeclarator.iso1PMaxScheduleType(
+              
+        )
+
+        print(f"[Python] {sizeof(iso1PMaxScheduleType)=}")
+
+        self.ov2g.init_iso1PMaxScheduleType(iso1PMaxScheduleType=pmax_schedule)
+
+        assert pmax_schedule.PMaxScheduleEntry.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1CertificateUpdateReqType(self):
+        print("\n[+] Testing init_iso1CertificateUpdateReqType")
+
+        certificate_update_req = OpenV2GStructDeclarator.iso1CertificateUpdateReqType(
+            Id="The id",
+            ContractSignatureCertChain=OpenV2GStructDeclarator.iso1CertificateChainType(
+                Id="The ID",
+                Id_isUsed=1,
+                Certificate="The certificate",
+                SubCertificates=OpenV2GStructDeclarator.iso1SubCertificatesType(
+                    Certificate=[
+                        "Certificate1",
+                        "Certificate2"
+                    ]
+                ),
+                SubCertificates_isUsed=1
+            ),
+            eMAID="Emaid",
+            ListOfRootCertificateIDs=OpenV2GStructDeclarator.iso1ListOfRootCertificateIDsType(
+                RootCertificateID=[
+                    OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                        X509IssuerName="Issuer 1",
+                        X509SerialNumber=11111111,
+                    ),
+
+                    OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                        X509IssuerName="Issuer 2",
+                        X509SerialNumber=2222222,
+                    )
+                ]
+            )
+        )
+
+        print(f"[Python] {sizeof(iso1CertificateUpdateReqType)=}")
+
+        self.ov2g.init_iso1CertificateUpdateReqType(iso1CertificateUpdateReqType=certificate_update_req)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1KeyInfoType(self):
+        print("\n[+] Testing init_iso1KeyInfoType")
+
+        key_info = OpenV2GStructDeclarator.iso1KeyInfoType(
+            Id="The id",
+            Id_isUsed=1,
+            KeyName=["Key1"],
+            KeyValue=[
+                OpenV2GStructDeclarator.iso1KeyValueType(
+                    DSAKeyValue=OpenV2GStructDeclarator.iso1DSAKeyValueType(
+                        P=1,
+                        P_isUsed=1,
+                        Q=2,
+                        Q_isUsed=1,
+                        G=3,
+                        G_isUsed=1,
+                        Y=4,
+                        J=5,
+                        J_isUsed=1,
+                        Seed=6,
+                        Seed_isUsed=1,
+                        PgenCounter=7,
+                        PgenCounter_isUsed=1
+                    ),
+                    DSAKeyValue_isUsed=1,
+                    RSAKeyValue=OpenV2GStructDeclarator.iso1RSAKeyValueType(
+                        Modulus=10,
+                        Exponent=2
+                    ),
+                    RSAKeyValue_isUsed=1,
+                    ANY="ANY STRING",
+                    ANY_isUsed=1
+                ),
+            ],
+            RetrievalMethod=[
+                OpenV2GStructDeclarator.iso1RetrievalMethodType(
+                    URI="/home/alex",
+                    URI_isUsed=1,
+                    Type="the type",
+                    Type_isUsed=1,
+                    Transforms=OpenV2GStructDeclarator.iso1TransformsType(
+                        Transform=[
+                            OpenV2GStructDeclarator.iso1TransformType(
+                                Algorithm="SHA112",
+                                ANY="ANy str",
+                                ANY_isUsed=1,
+                                XPath="/home/alex"
+                            )
+                        ]
+                    ),
+                    Transforms_isUsed=1
+                ),
+            ],
+            X509Data=[
+                OpenV2GStructDeclarator.iso1X509DataType(
+                    X509IssuerSerial=[
+                        OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                            X509IssuerName="The issuer name",
+                            X509SerialNumber=28731,
+                        )
+                    ],
+                    X509SKI=37182,
+                    X509SubjectName="Subject Name",
+                    X509Certificate=39123819,
+                    X509CRL=231939,
+                    ANY="Anything",
+                    ANY_isUsed=1
+                ),
+            ],
+            PGPData=[
+                OpenV2GStructDeclarator.iso1PGPDataType(
+                    PGPKeyID="PGPKEYID",
+                    PGPKeyID_isUsed=1,
+                    PGPKeyPacket="The packet",
+                    PGPKeyPacket_isUsed=1,
+                    ANY="ANY STR",
+                    ANY_isUsed=1
+                ),
+            ],
+            SPKIData=[
+                OpenV2GStructDeclarator.iso1SPKIDataType(
+                    SPKISexp=64, 
+                    ANY="Any String", 
+                    ANY_isUsed=1
+                ),
+            ],
+            MgmtData=["MGMT Data1"],
+            ANY="Any str",
+            ANY_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1KeyInfoType)=}")
+
+        self.ov2g.init_iso1KeyInfoType(iso1KeyInfoType=key_info)
+
+        assert key_info.Id_isUsed == 0
+        assert key_info.KeyName.arrayLen == 0
+        assert key_info.KeyValue.arrayLen == 0
+        assert key_info.RetrievalMethod.arrayLen == 0
+        assert key_info.X509Data.arrayLen == 0
+        assert key_info.PGPData.arrayLen == 0
+        assert key_info.SPKIData.arrayLen == 0
+        assert key_info.MgmtData.arrayLen == 0
+        assert key_info.ANY_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ChargeParameterDiscoveryReqType(self):
+        print("\n[+] Testing init_iso1ChargeParameterDiscoveryReqType")
+
+        charge_parameter_discovery_req = OpenV2GStructDeclarator.iso1ChargeParameterDiscoveryReqType(
+            MaxEntriesSAScheduleTuple_isUsed=1,
+            EVChargeParameter_isUsed=1,
+            AC_EVChargeParameter_isUsed=1,
+            DC_EVChargeParameter_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1ChargeParameterDiscoveryReqType)=}")
+
+        self.ov2g.init_iso1ChargeParameterDiscoveryReqType(iso1ChargeParameterDiscoveryReqType=charge_parameter_discovery_req)
+
+        assert charge_parameter_discovery_req.MaxEntriesSAScheduleTuple_isUsed == 0
+        assert charge_parameter_discovery_req.EVChargeParameter_isUsed == 0
+        assert charge_parameter_discovery_req.AC_EVChargeParameter_isUsed == 0
+        assert charge_parameter_discovery_req.DC_EVChargeParameter_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ChargingProfileType(self):
+        print("\n[+] Testing init_iso1ChargingProfileType")
+
+        charging_profile = OpenV2GStructDeclarator.iso1ChargingProfileType(
+            
+        )
+
+        print(f"[Python] {sizeof(iso1ChargingProfileType)=}")
+
+        self.ov2g.init_iso1ChargingProfileType(iso1ChargingProfileType=charging_profile)
+
+        assert charging_profile.ProfileEntry.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SalesTariffEntryType(self):
+        print("\n[+] Testing init_iso1SalesTariffEntryType")
+
+        sales_tariff_entry = OpenV2GStructDeclarator.iso1SalesTariffEntryType(
+            TimeInterval_isUsed=1,
+            RelativeTimeInterval_isUsed=1,
+            EPriceLevel_isUsed=1,
+            ConsumptionCost=[
+                OpenV2GStructDeclarator.iso1ConsumptionCostType(
+                    startValue=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                        Multiplier=1,
+                        Unit=2,
+                        Value=3
+                    ),
+                    Cost=[
+                        OpenV2GStructDeclarator.iso1CostType(
+                            costKind=1,
+                            amount=32,
+                            amountMultiplier=10,
+                            amountMultiplier_isUsed=1
+                        )
+                    ]  
+                )
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1SalesTariffEntryType)=}")
+
+        self.ov2g.init_iso1SalesTariffEntryType(iso1SalesTariffEntryType=sales_tariff_entry)
+
+        assert sales_tariff_entry.TimeInterval_isUsed == 0
+        assert sales_tariff_entry.RelativeTimeInterval_isUsed == 0
+        assert sales_tariff_entry.EPriceLevel_isUsed == 0
+        assert sales_tariff_entry.ConsumptionCost.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SalesTariffType(self):
+        print("\n[+] Testing init_iso1SalesTariffType")
+
+        sales_tariff = OpenV2GStructDeclarator.iso1SalesTariffType(
+            Id_isUsed=1,
+            SalesTariffDescription_isUsed=1,
+            NumEPriceLevels_isUsed=1,
+            SalesTariffEntry=[
+                OpenV2GStructDeclarator.iso1SalesTariffEntryType(
+                    TimeInterval_isUsed=1,
+                    RelativeTimeInterval_isUsed=1,
+                    EPriceLevel_isUsed=1,
+                    ConsumptionCost=[
+                        OpenV2GStructDeclarator.iso1ConsumptionCostType(
+                            startValue=OpenV2GStructDeclarator.iso1PhysicalValueType(
+                                Multiplier=1,
+                                Unit=2,
+                                Value=3
+                            ),
+                            Cost=[
+                                OpenV2GStructDeclarator.iso1CostType(
+                                    costKind=1,
+                                    amount=32,
+                                    amountMultiplier=10,
+                                    amountMultiplier_isUsed=1
+                                )
+                            ]  
+                        )
+                    ]
+                )
+
+            ]
+
+        )
+
+        print(f"[Python] {sizeof(iso1SalesTariffType)=}")
+
+        self.ov2g.init_iso1SalesTariffType(iso1SalesTariffType=sales_tariff)
+
+        assert sales_tariff.Id_isUsed == 0
+        assert sales_tariff.SalesTariffDescription_isUsed == 0
+        assert sales_tariff.NumEPriceLevels_isUsed == 0
+        assert sales_tariff.SalesTariffEntry.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SignatureType(self):
+        print("\n[+] Testing init_iso1SignatureType")
+
+        signature = OpenV2GStructDeclarator.iso1SignatureType(
+            Id_isUsed=1,
+            KeyInfo_isUsed=1,
+            Object=[
+                OpenV2GStructDeclarator.iso1ObjectType(
+                    Id="The ID",
+                    Id_isUsed=1,
+                    MimeType="MimeType",
+                    MimeType_isUsed=1,
+                    Encoding="Enconding",
+                    Encoding_isUsed=1,
+                    ANY="ANY",
+                    ANY_isUsed=1
+                )
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1SignatureType)=}")
+
+        self.ov2g.init_iso1SignatureType(iso1SignatureType=signature)
+
+        assert signature.Id_isUsed == 0
+        assert signature.KeyInfo_isUsed == 0
+        assert signature.Object.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1PowerDeliveryReqType(self):
+        print("\n[+] Testing init_iso1PowerDeliveryReqType")
+
+        power_delivery_req = OpenV2GStructDeclarator.iso1PowerDeliveryReqType(
+            ChargingProfile_isUsed=1,
+            EVPowerDeliveryParameter_isUsed=1,
+            DC_EVPowerDeliveryParameter_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1PowerDeliveryReqType)=}")
+
+        self.ov2g.init_iso1PowerDeliveryReqType(iso1PowerDeliveryReqType=power_delivery_req)
+
+        assert power_delivery_req.ChargingProfile_isUsed == 0
+        assert power_delivery_req.EVPowerDeliveryParameter_isUsed == 0
+        assert power_delivery_req.DC_EVPowerDeliveryParameter_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ServiceParameterListType(self):
+        print("\n[+] Testing init_iso1ServiceParameterListType")
+
+        service_parameter_list = OpenV2GStructDeclarator.iso1ServiceParameterListType(
+            ParameterSet=[
+                OpenV2GStructDeclarator.iso1ParameterSetType(
+                    ParameterSetID=2,
+                    Parameter=[
+                        OpenV2GStructDeclarator.iso1ParameterType(
+                            boolValue=1,
+                            boolValue_isUsed=1,
+                        ),
+                        OpenV2GStructDeclarator.iso1ParameterType(
+                            stringValue="Unga bunga",
+                            stringValue_isUsed=1,
+                        ),
+                    ]
+                )
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1ServiceParameterListType)=}")
+
+        self.ov2g.init_iso1ServiceParameterListType(iso1ServiceParameterListType=service_parameter_list)
+
+        assert service_parameter_list.ParameterSet.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ServiceDetailResType(self):
+        print("\n[+] Testing init_iso1ServiceDetailResType")
+
+        service_detail_res = OpenV2GStructDeclarator.iso1ServiceDetailResType(
+            ServiceParameterList_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1ServiceDetailResType)=}")
+
+        self.ov2g.init_iso1ServiceDetailResType(iso1ServiceDetailResType=service_detail_res)
+
+        assert service_detail_res.ServiceParameterList_isUsed == 0
+
+        print("[*] OK")
+
+    
+    # Validated
+    def test_init_iso1SAScheduleTupleType(self):
+        print("\n[+] Testing init_iso1SAScheduleTupleType")
+
+        sa_schedule_tuple = OpenV2GStructDeclarator.iso1SAScheduleTupleType(
+            SalesTariff_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1SAScheduleTupleType)=}")
+
+        self.ov2g.init_iso1SAScheduleTupleType(iso1SAScheduleTupleType=sa_schedule_tuple)
+
+        assert sa_schedule_tuple.SalesTariff_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1MessageHeaderType(self):
+        print("\n[+] Testing init_iso1MessageHeaderType")
+
+        message_header = OpenV2GStructDeclarator.iso1MessageHeaderType(
+            Notification_isUsed=1,
+            Signature_isUsed=1
+        )
+
+        print(f"[Python] {sizeof(iso1MessageHeaderType)=}")
+
+        self.ov2g.init_iso1MessageHeaderType(iso1MessageHeaderType=message_header)
+
+        assert message_header.Notification_isUsed == 0
+        assert message_header.Signature_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1SAScheduleListType(self):
+        print("\n[+] Testing init_iso1SAScheduleListType")
+
+        sa_schedule_list = OpenV2GStructDeclarator.iso1SAScheduleListType(
+            SAScheduleTuple=[
+                OpenV2GStructDeclarator.iso1SAScheduleTupleType(
+                    SalesTariff_isUsed=1
+                )
+            ]
+        )
+
+        print(f"[Python] {sizeof(iso1SAScheduleListType)=}")
+
+        self.ov2g.init_iso1SAScheduleListType(iso1SAScheduleListType=sa_schedule_list)
+
+        assert sa_schedule_list.SAScheduleTuple.arrayLen == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1ChargeParameterDiscoveryResType(self):
+        print("\n[+] Testing init_iso1ChargeParameterDiscoveryResType")
+
+        charge_parameter_discovery_res = OpenV2GStructDeclarator.iso1ChargeParameterDiscoveryResType(
+            SASchedules_isUsed=1,
+            SAScheduleList_isUsed=1,
+            EVSEChargeParameter_isUsed=1,
+            AC_EVSEChargeParameter_isUsed=1,
+            DC_EVSEChargeParameter_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1ChargeParameterDiscoveryResType)=}")
+
+        self.ov2g.init_iso1ChargeParameterDiscoveryResType(iso1ChargeParameterDiscoveryResType=charge_parameter_discovery_res)
+
+        assert charge_parameter_discovery_res.SASchedules_isUsed == 0
+        assert charge_parameter_discovery_res.SAScheduleList_isUsed == 0
+        assert charge_parameter_discovery_res.EVSEChargeParameter_isUsed == 0
+        assert charge_parameter_discovery_res.AC_EVSEChargeParameter_isUsed == 0
+        assert charge_parameter_discovery_res.DC_EVSEChargeParameter_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1BodyType(self):
+        print("\n[+] Testing init_iso1BodyType")
+
+        body = OpenV2GStructDeclarator.iso1BodyType(
+            BodyElement_isUsed=1,
+            SessionSetupReq_isUsed=1,
+            SessionSetupRes_isUsed=1,
+            ServiceDiscoveryReq_isUsed=1,
+            ServiceDiscoveryRes_isUsed=1,
+            ServiceDetailReq_isUsed=1,
+            ServiceDetailRes_isUsed=1,
+            PaymentServiceSelectionReq_isUsed=1,
+            PaymentServiceSelectionRes_isUsed=1,
+            PaymentDetailsReq_isUsed=1,
+            PaymentDetailsRes_isUsed=1,
+            AuthorizationReq_isUsed=1,
+            AuthorizationRes_isUsed=1,
+            ChargeParameterDiscoveryReq_isUsed=1,
+            ChargeParameterDiscoveryRes_isUsed=1,
+            PowerDeliveryReq_isUsed=1,
+            PowerDeliveryRes_isUsed=1,
+            MeteringReceiptReq_isUsed=1,
+            MeteringReceiptRes_isUsed=1,
+            SessionStopReq_isUsed=1,
+            SessionStopRes_isUsed=1,
+            CertificateUpdateReq_isUsed=1,
+            CertificateUpdateRes_isUsed=1,
+            CertificateInstallationReq_isUsed=1,
+            CertificateInstallationRes_isUsed=1,
+            ChargingStatusReq_isUsed=1,
+            ChargingStatusRes_isUsed=1,
+            CableCheckReq_isUsed=1,
+            CableCheckRes_isUsed=1,
+            PreChargeReq_isUsed=1,
+            PreChargeRes_isUsed=1,
+            CurrentDemandReq_isUsed=1,
+            CurrentDemandRes_isUsed=1,
+            WeldingDetectionReq_isUsed=1,
+            WeldingDetectionRes_isUsed=1,
+        )
+
+        print(f"[Python] {sizeof(iso1BodyType)=}")
+
+        self.ov2g.init_iso1BodyType(iso1BodyType=body)
+
+        assert body.BodyElement_isUsed == 0
+        assert body.SessionSetupReq_isUsed == 0
+        assert body.SessionSetupRes_isUsed == 0
+        assert body.ServiceDiscoveryReq_isUsed == 0
+        assert body.ServiceDiscoveryRes_isUsed == 0
+        assert body.ServiceDetailReq_isUsed == 0
+        assert body.ServiceDetailRes_isUsed == 0
+        assert body.PaymentServiceSelectionReq_isUsed == 0
+        assert body.PaymentServiceSelectionRes_isUsed == 0
+        assert body.PaymentDetailsReq_isUsed == 0
+        assert body.PaymentDetailsRes_isUsed == 0
+        assert body.AuthorizationReq_isUsed == 0
+        assert body.AuthorizationRes_isUsed == 0
+        assert body.ChargeParameterDiscoveryReq_isUsed == 0
+        assert body.ChargeParameterDiscoveryRes_isUsed == 0
+        assert body.PowerDeliveryReq_isUsed == 0
+        assert body.PowerDeliveryRes_isUsed == 0
+        assert body.MeteringReceiptReq_isUsed == 0
+        assert body.MeteringReceiptRes_isUsed == 0
+        assert body.SessionStopReq_isUsed == 0
+        assert body.SessionStopRes_isUsed == 0
+        assert body.CertificateUpdateReq_isUsed == 0
+        assert body.CertificateUpdateRes_isUsed == 0
+        assert body.CertificateInstallationReq_isUsed == 0
+        assert body.CertificateInstallationRes_isUsed == 0
+        assert body.ChargingStatusReq_isUsed == 0
+        assert body.ChargingStatusRes_isUsed == 0
+        assert body.CableCheckReq_isUsed == 0
+        assert body.CableCheckRes_isUsed == 0
+        assert body.PreChargeReq_isUsed == 0
+        assert body.PreChargeRes_isUsed == 0
+        assert body.CurrentDemandReq_isUsed == 0
+        assert body.CurrentDemandRes_isUsed == 0
+        assert body.WeldingDetectionReq_isUsed == 0
+        assert body.WeldingDetectionRes_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1AnonType_V2G_Message(self):
+        print("\n[+] Testing init_iso1AnonType_V2G_Message")
+
+        v2g_message = OpenV2GStructDeclarator.iso1AnonType_V2G_Message(
+            
+        )
+
+        print(f"[Python] {sizeof(iso1AnonType_V2G_Message)=}")
+
+        self.ov2g.init_iso1AnonType_V2G_Message(iso1AnonType_V2G_Message=v2g_message)
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1EXIDocument(self):
+        print("\n[+] Testing init_iso1EXIDocument")
+
+        exi_document = OpenV2GStructDeclarator.iso1EXIDocument(
+            V2G_Message_isUsed=1,
+            ServiceDiscoveryReq_isUsed=1,
+            ServiceDiscoveryRes_isUsed=1,
+            MeteringReceiptReq_isUsed=1,
+            PaymentDetailsReq_isUsed=1,
+            MeteringReceiptRes_isUsed=1,
+            PaymentDetailsRes_isUsed=1,
+            SessionSetupReq_isUsed=1,
+            SessionSetupRes_isUsed=1,
+            CableCheckReq_isUsed=1,
+            CableCheckRes_isUsed=1,
+            CertificateInstallationReq_isUsed=1,
+            CertificateInstallationRes_isUsed=1,
+            WeldingDetectionReq_isUsed=1,
+            WeldingDetectionRes_isUsed=1,
+            CertificateUpdateReq_isUsed=1,
+            CertificateUpdateRes_isUsed=1,
+            PaymentServiceSelectionReq_isUsed=1,
+            PowerDeliveryReq_isUsed=1,
+            PaymentServiceSelectionRes_isUsed=1,
+            PowerDeliveryRes_isUsed=1,
+            ChargingStatusReq_isUsed=1,
+            ChargingStatusRes_isUsed=1,
+            BodyElement_isUsed=1,
+            CurrentDemandReq_isUsed=1,
+            PreChargeReq_isUsed=1,
+            CurrentDemandRes_isUsed=1,
+            PreChargeRes_isUsed=1,
+            SessionStopReq_isUsed=1,
+            AuthorizationReq_isUsed=1,
+            SessionStopRes_isUsed=1,
+            AuthorizationRes_isUsed=1,
+            ChargeParameterDiscoveryReq_isUsed=1,
+            ChargeParameterDiscoveryRes_isUsed=1,
+            ServiceDetailReq_isUsed=1,
+            ServiceDetailRes_isUsed=1,
+            DC_EVSEStatus_isUsed=1,
+            RelativeTimeInterval_isUsed=1,
+            SalesTariffEntry_isUsed=1,
+            DC_EVPowerDeliveryParameter_isUsed=1,
+            SASchedules_isUsed=1,
+            AC_EVChargeParameter_isUsed=1,
+            SAScheduleList_isUsed=1,
+            DC_EVStatus_isUsed=1,
+            EVStatus_isUsed=1,
+            DC_EVChargeParameter_isUsed=1,
+            DC_EVSEChargeParameter_isUsed=1,
+            EVSEStatus_isUsed=1,
+            TimeInterval_isUsed=1,
+            EVPowerDeliveryParameter_isUsed=1,
+            EVSEChargeParameter_isUsed=1,
+            AC_EVSEStatus_isUsed=1,
+            Entry_isUsed=1,
+            AC_EVSEChargeParameter_isUsed=1,
+            PMaxScheduleEntry_isUsed=1,
+            EVChargeParameter_isUsed=1,
+            SignatureProperty_isUsed=1,
+            DSAKeyValue_isUsed=1,
+            SignatureProperties_isUsed=1,
+            KeyValue_isUsed=1,
+            Transforms_isUsed=1,
+            DigestMethod_isUsed=1,
+            Signature_isUsed=1,
+            RetrievalMethod_isUsed=1,
+            Manifest_isUsed=1,
+            Reference_isUsed=1,
+            CanonicalizationMethod_isUsed=1,
+            RSAKeyValue_isUsed=1,
+            Transform_isUsed=1,
+            PGPData_isUsed=1,
+            MgmtData_isUsed=1,
+            SignatureMethod_isUsed=1,
+            KeyInfo_isUsed=1,
+            SPKIData_isUsed=1,
+            X509Data_isUsed=1,
+            SignatureValue_isUsed=1,
+            KeyName_isUsed=1,
+            DigestValue_isUsed=1,
+            SignedInfo_isUsed=1,
+            Object_isUsed=1,
+            
+        )
+
+        print(f"[Python] {sizeof(iso1EXIDocument)=}")
+
+        self.ov2g.init_iso1EXIDocument(exiDoc=exi_document)
+
+        assert exi_document.V2G_Message_isUsed == 0
+        assert exi_document.ServiceDiscoveryReq_isUsed == 0
+        assert exi_document.ServiceDiscoveryRes_isUsed == 0
+        assert exi_document.MeteringReceiptReq_isUsed == 0
+        assert exi_document.PaymentDetailsReq_isUsed == 0
+        assert exi_document.MeteringReceiptRes_isUsed == 0
+        assert exi_document.PaymentDetailsRes_isUsed == 0
+        assert exi_document.SessionSetupReq_isUsed == 0
+        assert exi_document.SessionSetupRes_isUsed == 0
+        assert exi_document.CableCheckReq_isUsed == 0
+        assert exi_document.CableCheckRes_isUsed == 0
+        assert exi_document.CertificateInstallationReq_isUsed == 0
+        assert exi_document.CertificateInstallationRes_isUsed == 0
+        assert exi_document.WeldingDetectionReq_isUsed == 0
+        assert exi_document.WeldingDetectionRes_isUsed == 0
+        assert exi_document.CertificateUpdateReq_isUsed == 0
+        assert exi_document.CertificateUpdateRes_isUsed == 0
+        assert exi_document.PaymentServiceSelectionReq_isUsed == 0
+        assert exi_document.PowerDeliveryReq_isUsed == 0
+        assert exi_document.PaymentServiceSelectionRes_isUsed == 0
+        assert exi_document.PowerDeliveryRes_isUsed == 0
+        assert exi_document.ChargingStatusReq_isUsed == 0
+        assert exi_document.ChargingStatusRes_isUsed == 0
+        assert exi_document.BodyElement_isUsed == 0
+        assert exi_document.CurrentDemandReq_isUsed == 0
+        assert exi_document.PreChargeReq_isUsed == 0
+        assert exi_document.CurrentDemandRes_isUsed == 0
+        assert exi_document.PreChargeRes_isUsed == 0
+        assert exi_document.SessionStopReq_isUsed == 0
+        assert exi_document.AuthorizationReq_isUsed == 0
+        assert exi_document.SessionStopRes_isUsed == 0
+        assert exi_document.AuthorizationRes_isUsed == 0
+        assert exi_document.ChargeParameterDiscoveryReq_isUsed == 0
+        assert exi_document.ChargeParameterDiscoveryRes_isUsed == 0
+        assert exi_document.ServiceDetailReq_isUsed == 0
+        assert exi_document.ServiceDetailRes_isUsed == 0
+        assert exi_document.DC_EVSEStatus_isUsed == 0
+        assert exi_document.RelativeTimeInterval_isUsed == 0
+        assert exi_document.SalesTariffEntry_isUsed == 0
+        assert exi_document.DC_EVPowerDeliveryParameter_isUsed == 0
+        assert exi_document.SASchedules_isUsed == 0
+        assert exi_document.AC_EVChargeParameter_isUsed == 0
+        assert exi_document.SAScheduleList_isUsed == 0
+        assert exi_document.DC_EVStatus_isUsed == 0
+        assert exi_document.EVStatus_isUsed == 0
+        assert exi_document.DC_EVChargeParameter_isUsed == 0
+        assert exi_document.DC_EVSEChargeParameter_isUsed == 0
+        assert exi_document.EVSEStatus_isUsed == 0
+        assert exi_document.TimeInterval_isUsed == 0
+        assert exi_document.EVPowerDeliveryParameter_isUsed == 0
+        assert exi_document.EVSEChargeParameter_isUsed == 0
+        assert exi_document.AC_EVSEStatus_isUsed == 0
+        assert exi_document.Entry_isUsed == 0
+        assert exi_document.AC_EVSEChargeParameter_isUsed == 0
+        assert exi_document.PMaxScheduleEntry_isUsed == 0
+        assert exi_document.EVChargeParameter_isUsed == 0
+        assert exi_document.SignatureProperty_isUsed == 0
+        assert exi_document.DSAKeyValue_isUsed == 0
+        assert exi_document.SignatureProperties_isUsed == 0
+        assert exi_document.KeyValue_isUsed == 0
+        assert exi_document.Transforms_isUsed == 0
+        assert exi_document.DigestMethod_isUsed == 0
+        assert exi_document.Signature_isUsed == 0
+        assert exi_document.RetrievalMethod_isUsed == 0
+        assert exi_document.Manifest_isUsed == 0
+        assert exi_document.Reference_isUsed == 0
+        assert exi_document.CanonicalizationMethod_isUsed == 0
+        assert exi_document.RSAKeyValue_isUsed == 0
+        assert exi_document.Transform_isUsed == 0
+        assert exi_document.PGPData_isUsed == 0
+        assert exi_document.MgmtData_isUsed == 0
+        assert exi_document.SignatureMethod_isUsed == 0
+        assert exi_document.KeyInfo_isUsed == 0
+        assert exi_document.SPKIData_isUsed == 0
+        assert exi_document.X509Data_isUsed == 0
+        assert exi_document.SignatureValue_isUsed == 0
+        assert exi_document.KeyName_isUsed == 0
+        assert exi_document.DigestValue_isUsed == 0
+        assert exi_document.SignedInfo_isUsed == 0
+        assert exi_document.Object_isUsed == 0
+
+        print("[*] OK")
+
+
+    # Validated
+    def test_init_iso1EXISchemaInformedElementFragmentGrammar(self):
+        print("\n[+] Testing init_iso1EXISchemaInformedElementFragmentGrammar")
+
+        exi_schema_informed_element_fragment_grammar = OpenV2GStructDeclarator.iso1EXISchemaInformedElementFragmentGrammar(
+            Id_isUsed=1,
+            CHARACTERS_GENERIC_isUsed=1
+        )
+
+
+        print(f"[Python] {sizeof(iso1EXISchemaInformedElementFragmentGrammar)=}")
+
+        self.ov2g.init_iso1EXISchemaInformedElementFragmentGrammar(exiFrag=exi_schema_informed_element_fragment_grammar)
+
+        assert exi_schema_informed_element_fragment_grammar.Id_isUsed == 0
+        assert exi_schema_informed_element_fragment_grammar.CHARACTERS_GENERIC_isUsed == 0
+        print("[*] OK")
+
+
+
+    # Validated
+    def test_encode_and_decode_iso1EXIDocument(self):
+        print("\n[+] Testing encoding and decoding of ISO1 EXI Document")
+    
+        exi_doc = OpenV2GStructDeclarator.iso1EXIDocument(
+            CertificateUpdateReq=OpenV2GStructDeclarator.iso1CertificateUpdateReqType(
+                Id="The id",
+                ContractSignatureCertChain=OpenV2GStructDeclarator.iso1CertificateChainType(
+                    Id="The ID",
+                    Id_isUsed=1,
+                    Certificate="The certificate",
+                    SubCertificates=OpenV2GStructDeclarator.iso1SubCertificatesType(
+                        Certificate=[
+                            "Certificate1",
+                            "Certificate2"
+                        ]
+                    ),
+                    SubCertificates_isUsed=1
+                ),
+                eMAID="Emaid",
+                ListOfRootCertificateIDs=OpenV2GStructDeclarator.iso1ListOfRootCertificateIDsType(
+                    RootCertificateID=[
+                        OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                            X509IssuerName="Issuer 1",
+                            X509SerialNumber=11111111,
+                        ),
+
+                        OpenV2GStructDeclarator.iso1X509IssuerSerialType(
+                            X509IssuerName="Issuer 2",
+                            X509SerialNumber=2222222,
+                        )
+                    ]
+                )
+            ),
+            CertificateUpdateReq_isUsed=1
+        )
+
+        size = c_size_t(1024)
+        buffer_byte = c_uint8(0)
+        buffer_capacity = c_uint8(1024)
+        buffer = (c_ubyte*1024)()
+        pos = c_size_t(8)
+
+        stream = OpenV2GStructDeclarator.bitstream_t(
+            size=size,
+            data=buffer,
+            pos=pos,
+            buffer=buffer_byte,
+            capacity=buffer_capacity
+        )
+
+        # write V2GTP header
+        print(f"{stream.size=}")
+        errn = self.ov2g.write_v2gtpHeader(stream.data, stream.size-V2GTP_HEADER_LENGTH, V2GTP_EXI_TYPE) 
+        print(f"write_v2gtpHeader: {errn=}")
+        print(f"{buffer[:8]}")
+        assert errn == 0
+
+        # encode ISO1 EXI document
+        errn = self.ov2g.encode_iso1ExiDocument(stream=stream, exiDoc=exi_doc)    
+        print(f"encode_iso1ExiDocument: {errn=}")
+        assert errn == 0
+
+        # read V2GTP header
+        payloadLength = c_uint32()
+        pos = c_size_t(0)
+        stream.pos = pointer(pos)
+        errn = self.ov2g.read_v2gtpHeader(inStream=stream.data, payloadLength=pointer(payloadLength))
+        print(f"read_v2gtpHeader: {errn=}")
+        # print(f"{buffer[:]=}")
+        assert errn == 0
+
+        # decode ISO1 EXI document
+        pos = c_size_t(8)
+        stream.pos = pointer(pos)
+        exi_doc_decoded = OpenV2GStructDeclarator.iso1EXIDocument()
+        errn = self.ov2g.decode_iso1ExiDocument(stream=stream, exiDoc=exi_doc_decoded)
+        print(f"decode_iso1ExiDocument: {errn=}")
+        assert errn == 0
+
+        print(f"{exi_doc_decoded.CertificateUpdateReq_isUsed=}")   
+        print(f"{OpenV2GUtils.convert_array_type_characters_to_str(val=exi_doc_decoded.CertificateUpdateReq.Id.characters[:])=}")       
+
+        print("[*] OK")
+    
 
 if __name__ == '__main__':
     unittest.main()

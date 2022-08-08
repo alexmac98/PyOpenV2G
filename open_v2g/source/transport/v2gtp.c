@@ -43,11 +43,9 @@
 int write_v2gtpHeader(uint8_t* outStream, uint32_t outStreamLength, uint16_t payloadType)
 {
 	// printf("[C] outStream pointer: %p\n", outStream);
-
-	
 	// for(int i = 0; i < outStreamLength; i++) printf("%x ", outStream[i]);
 	// printf("\n");
-	
+	// validated	
 	/* write v2gtp version number 1=byte */
 	outStream[0]=V2GTP_VERSION;
 
@@ -74,8 +72,15 @@ int write_v2gtpHeader(uint8_t* outStream, uint32_t outStreamLength, uint16_t pay
 
 int read_v2gtpHeader(uint8_t* inStream, uint32_t* payloadLength)
 {
-	printf("[C] pointer of inStream: %p\n", inStream);
+	// printf("[C] pointer of inStream: %p\n", inStream);
+	// validated
 	uint16_t payloadType=0;
+
+	printf("Enters Here");
+	int i = 0;
+	for(; i<8; i++){
+		printf("%x ", inStream[i]);
+	}
 
 	/* check, if we support this v2gtp version */
 	if(inStream[0]!=V2GTP_VERSION || inStream[1]!=V2GTP_VERSION_INV)

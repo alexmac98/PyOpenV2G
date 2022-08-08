@@ -48,4 +48,21 @@ class OpenV2GUtils:
 
         return BYTES
 
-    
+
+    def convert_array_type_bytes_to_int(val: list[int]):
+        value = 0
+
+        for i in range(len(val)):
+            value |= (val[i] << 8*(len(val)-i-1))
+
+        return value
+
+
+    def convert_array_type_characters_to_str(val: list[int]):
+        str = ""
+
+        for i in range(len(val)):
+            if val[i] != 0:
+                str += chr(val[i])
+
+        return str

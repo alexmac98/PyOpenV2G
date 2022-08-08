@@ -2105,13 +2105,13 @@ struct dinEXIDocument {
 	struct dinAC_EVSEChargeParameterType AC_EVSEChargeParameter ;
 	struct dinPMaxScheduleEntryType PMaxScheduleEntry ;
 	struct dinEVChargeParameterType EVChargeParameter ;
-	struct dinServiceDiscoveryReqType ServiceDiscoveryReq ;
-	struct dinServiceDiscoveryResType ServiceDiscoveryRes ;
-	struct dinMeteringReceiptReqType MeteringReceiptReq ;
-	struct dinPaymentDetailsReqType PaymentDetailsReq ;
-	struct dinMeteringReceiptResType MeteringReceiptRes ;
-	struct dinPaymentDetailsResType PaymentDetailsRes ;
-	struct dinSessionSetupReqType SessionSetupReq ;
+	struct dinServiceDiscoveryReqType ServiceDiscoveryReq ; // [x]
+	struct dinServiceDiscoveryResType ServiceDiscoveryRes ; // [X]
+	struct dinMeteringReceiptReqType MeteringReceiptReq ; // [X]
+	struct dinPaymentDetailsReqType PaymentDetailsReq ; // [X]
+	struct dinMeteringReceiptResType MeteringReceiptRes ; // [X]
+	struct dinPaymentDetailsResType PaymentDetailsRes ; // [X]
+	struct dinSessionSetupReqType SessionSetupReq ; // [X]
 	struct dinSessionSetupResType SessionSetupRes ;
 	struct dinCableCheckReqType CableCheckReq ;
 	struct dinCableCheckResType CableCheckRes ;

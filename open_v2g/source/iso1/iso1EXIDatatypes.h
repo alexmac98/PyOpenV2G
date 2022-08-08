@@ -58,7 +58,7 @@ extern "C" {
 
 #define UNION_YES 1
 #define UNION_NO 2
-#define SAVE_MEMORY_WITH_UNNAMED_UNION UNION_YES
+#define SAVE_MEMORY_WITH_UNNAMED_UNION UNION_NO
 
 /* Note: Please find below a list of occurrence limits that have been applied */
 /* Limit occurrence of element "http://www.w3.org/2000/09/xmldsig#":X509IssuerSerial from unbounded to 1 (see #define iso1X509DataType_X509IssuerSerial_ARRAY_SIZE) */
@@ -332,9 +332,9 @@ struct iso1SubCertificatesType {
 	/* element: "urn:iso:15118:2:2013:MsgDataTypes":Certificate, urn:iso:15118:2:2013:MsgDataTypes,certificateType */
 	struct {
 		struct {
-		uint8_t bytes[iso1SubCertificatesType_Certificate_BYTES_SIZE];
-		uint16_t bytesLen;
-	}  array[iso1SubCertificatesType_Certificate_ARRAY_SIZE];
+			uint8_t bytes[iso1SubCertificatesType_Certificate_BYTES_SIZE];
+			uint16_t bytesLen;
+		}  array[iso1SubCertificatesType_Certificate_ARRAY_SIZE];
 		uint16_t arrayLen;
 	} Certificate;
 };
