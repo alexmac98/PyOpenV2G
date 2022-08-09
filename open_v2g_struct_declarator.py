@@ -48,17 +48,24 @@ class OpenV2GStructDeclarator:
         struct._warning_ = _warning_
         return struct
 
-    def bitstream_t(size: ctypes.c_size_t, 
-                    data: (ctypes.c_ubyte*256), 
-                    pos: ctypes.c_size_t, 
-                    buffer: ctypes.c_uint8, 
-                    capacity: ctypes.c_uint8):
+    def bitstream_t(size: int=256,
+                    data: list[int]=[],
+                    pos: int=0,
+                    buffer: int=0,
+                    capacity: int=256):
+
+        c_size = ctypes.c_size_t(size)
+        c_data = (ctypes.c_ubyte*size)(*data) 
+        c_pos = ctypes.c_size_t(pos)
+        c_buffer = ctypes.c_uint8(buffer) 
+        c_capacity = ctypes.c_uint8(capacity)
+
         struct = bitstream_t()
-        struct.size = size
-        struct.data = ctypes.cast(data, ctypes.POINTER(ctypes.c_ubyte))
-        struct.pos = ctypes.pointer(pos)
-        struct.buffer = buffer
-        struct.capacity = capacity
+        struct.size = c_size
+        struct.data = ctypes.cast(c_data, ctypes.POINTER(ctypes.c_ubyte))
+        struct.pos = ctypes.pointer(c_pos)
+        struct.buffer = c_buffer
+        struct.capacity = c_capacity
         return struct
 
     # --------------------- DIN ---------------------

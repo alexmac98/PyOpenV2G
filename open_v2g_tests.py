@@ -95,32 +95,29 @@ class OpenV2GTester(unittest.TestCase):
     def test_apphandshake(self):
         print("\n[+] Testing apphandshake")
 
-        buffer1 = (c_ubyte*256)()
-        buffer2 = (c_ubyte*256)()
-
-        size = c_size_t(256)
-        pos1 = c_size_t(8)
-        pos2 = c_size_t(0)
-
-        buffer_byte = c_uint8(0)
-        buffer_capacity = c_uint8(256)
         # encode request
         stream1 = OpenV2GStructDeclarator.bitstream_t(
-            size=size,
-            data=buffer1,
-            pos=pos1,
-            buffer=buffer_byte,
-            capacity=buffer_capacity
+            size=256,
+            data=[],
+            pos=8,
+            buffer=0,
+            capacity=256
         )
 
         # encode response
         stream2 = OpenV2GStructDeclarator.bitstream_t(
-            size=size,
-            data=buffer2,
-            pos=pos2,
-            buffer=buffer_byte,
-            capacity=buffer_capacity
+            size=256,
+            data=[],
+            pos=0,
+            buffer=0,
+            capacity=256
         )
+
+        buffer1_address = addressof(stream1.data.contents)
+        buffer1 = (c_ubyte*stream1.size).from_address(buffer1_address)
+
+        buffer2_address = addressof(stream2.data.contents)
+        buffer2 = (c_ubyte*stream2.size).from_address(buffer2_address)
 
         ns0 = "urn:iso:15118:2:2010:MsgDef"
         ns1 = "urn:din:70121:2012:MsgDef"
@@ -146,19 +143,19 @@ class OpenV2GTester(unittest.TestCase):
         handshake.supportedAppProtocolReq.AppProtocol.array[1].Priority = 2
         
         print("----- FIRST -----")
-        print(f"[Python][before encode] pos1 = {pos1.value}")
-        print(f"[Python][before encode] buffer1 = {[hex(b) for b in buffer1[:pos1.value]]}")
+        print(f"[Python][before encode] pos1 = {stream1.pos.contents.value}")
+        print(f"[Python][before encode] buffer1 = {[hex(b) for b in buffer1[:stream1.pos.contents.value]]}")
         errn = self.ov2g.encode_appHandExiDocument(stream=stream1, exiDoc=handshake)
         print(f"[Python] errn[encode_appHandExiDocument]: {errn}")
-        print(f"[Python][after encode] pos1 = {pos1.value}")
-        print(f"[Python][after encode] buffer1 = {[hex(b) for b in buffer1[:pos1.value]]}")
+        print(f"[Python][after encode] pos1 = {stream1.pos.contents.value}")
+        print(f"[Python][after encode] buffer1 = {[hex(b) for b in buffer1[:stream1.pos.contents.value]]}")
         print()
 
         if errn == 0:
-            errn = self.ov2g.write_v2gtpHeader(stream1.data, pos1.value-V2GTP_HEADER_LENGTH, V2GTP_EXI_TYPE) 
+            errn = self.ov2g.write_v2gtpHeader(stream1.data, stream1.size-V2GTP_HEADER_LENGTH, V2GTP_EXI_TYPE) 
             print(f"[Python] errn[write_v2gtpHeader]: {errn}")
-            print(f"[Python][after write_v2gtpheader] pos1 = {pos1.value}")
-            print(f"[Python][after write_v2gtpheader] buffer1 = {[hex(b) for b in buffer1[:pos1.value]]}")
+            print(f"[Python][after write_v2gtpheader] pos1 = {stream1.pos.contents.value}")
+            print(f"[Python][after write_v2gtpheader] buffer1 = {[hex(b) for b in buffer1[:stream1.pos.contents.value]]}")
             print()
 
             if errn == 0:
@@ -3903,19 +3900,13 @@ class OpenV2GTester(unittest.TestCase):
     def test_encode_dinExiDocument(self):
         print("\n[+] Testing encode_dinExiDocument")
 
-        buffer = (c_ubyte*256)()
-        size = c_size_t(256)
-        pos = c_size_t(8)
-        buffer_byte = c_uint8(0)
-        buffer_capacity = c_uint8(256)
         # encode request
-
         stream = OpenV2GStructDeclarator.bitstream_t(
-            size=size,
-            data=buffer,
-            pos=pos,
-            buffer=buffer_byte,
-            capacity=buffer_capacity
+            size=256,
+            data=[],
+            pos=0,
+            buffer=0,
+            capacity=256
         )
 
         exi_doc = OpenV2GStructDeclarator.dinEXIDocument(
@@ -3940,18 +3931,12 @@ class OpenV2GTester(unittest.TestCase):
     def test_encode_and_decode_dinEXIDocument(self):
         print("\n[+] Testing encode_and_decode_dinEXIDocument")
 
-        size = c_size_t(256)
-        buffer_byte = c_uint8(0)
-        buffer_capacity = c_uint8(256)
-
-        buffer = (c_ubyte*256)()
-        pos = c_size_t(8)
         stream = OpenV2GStructDeclarator.bitstream_t(
-            size=size,
-            data=buffer,
-            pos=pos,
-            buffer=buffer_byte,
-            capacity=buffer_capacity
+            size=256,
+            data=[],
+            pos=8,
+            buffer=0,
+            capacity=256
         )
 
         exi_doc = OpenV2GStructDeclarator.dinEXIDocument(
@@ -6882,19 +6867,18 @@ class OpenV2GTester(unittest.TestCase):
             CertificateUpdateReq_isUsed=1
         )
 
-        size = c_size_t(1024)
-        buffer_byte = c_uint8(0)
-        buffer_capacity = c_uint8(1024)
-        buffer = (c_ubyte*1024)()
         pos = c_size_t(8)
 
         stream = OpenV2GStructDeclarator.bitstream_t(
-            size=size,
-            data=buffer,
-            pos=pos,
-            buffer=buffer_byte,
-            capacity=buffer_capacity
+            size=1024,
+            data=[],
+            pos=8,
+            buffer=0,
+            capacity=1024
         )
+
+        buffer_address = addressof(stream.data.contents)
+        buffer = (c_ubyte*stream.size).from_address(buffer_address)
 
         # write V2GTP header
         print(f"{stream.size=}")
